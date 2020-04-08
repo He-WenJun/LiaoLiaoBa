@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.PunishmentMapper">
+    <sql id="Base_Column">
+        PunishmentID,UserID,TakeEffectDate,EndDate,StateID,Reason
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Punishment">
+        <id property="punishmentID" column="PunishmentID" jdbcType="VARCHAR" javaType="java.lang.String"></id>
+        <result property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="takeEffectDate" column="TakeEffectDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <result property="endDate" column="EndDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <result property="stateID" column="StateID" jdbcType="INTEGER" javaType="java.lang.Integer"></result>
+        <result property="reason" column="Reason" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <select id="queryPunishmentList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM punishment
+        WHERE
+        UserID = #{userId}
+        AND
+        EndDate > #{nowDate}
+        AND
+        StateID IN
+        <foreach collection="stateIdArray" item="stateIdArray" open="(" close=")" separator=",">
+            #{stateIdArray}
+        </foreach>
+    </select>
+
+    <select id="queryPunishmentAllList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM punishment
+        WHERE
+        UserID = #{userId}
+        AND
+        EndDate > #{nowDate}
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+server:
+  port: 8112
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          #配置文件读取路径
+          search-locations: classpath:/shared/{application}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8111/eureka
+security:
+  user:
+    name: user
+    password: user
+

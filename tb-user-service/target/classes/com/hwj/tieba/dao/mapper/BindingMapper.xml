@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.BindingMapper">
+    <sql id="Base_Column">
+        BindingID,UserID,BindingType,Account,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Binding">
+        <id property="bindingId" column="BindingID" jdbcType="VARCHAR" javaType="java.lang.String"></id>
+        <result property="userId" column="UserID" jdbcType="INTEGER" javaType="java.lang.String"></result>
+        <result property="bindingType" column="BindingType" jdbcType="VARCHAR" javaType="java.lang.Integer"></result>
+        <result property="account" column="Account" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="enrollDate" column="EnrollDate" jdbcType="VARCHAR" javaType="java.util.Date"></result>
+        <result property="updateDate" column="UpdateDate" jdbcType="VARCHAR" javaType="java.util.Date"></result>
+    </resultMap>
+
+    <insert id="insertBinding" parameterType="com.hwj.tieba.entity.Binding">
+        INSERT INTO
+        binding
+        (<include refid="Base_Column"></include>)
+        VALUES
+        (#{bindingId},#{userId},#{bindingType},#{account},#{enrollDate},#{updateDate})
+    </insert>
+
+</mapper>

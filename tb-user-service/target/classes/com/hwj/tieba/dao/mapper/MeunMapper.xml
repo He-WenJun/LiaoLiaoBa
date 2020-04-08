@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.MenuMapper">
+    <sql id="Base_Column_Menu_Parent">
+        ID,`Name`,EnrollDate,`Update`
+    </sql>
+    <resultMap id="BaseResultMap_Menu_Parent" type="com.hwj.tieba.entity.MenuParent">
+        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"></id>
+        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <result property="update" column="Update" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+    </resultMap>
+
+    <select id="queryMenuParentById" resultMap="BaseResultMap_Menu_Parent">
+        SELECT
+        <include refid="Base_Column_Menu_Parent"></include>
+        FROM menu_parent_type
+        <where>
+            ID IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
+    
+    
+    
+    <sql id="Base_Column_Menu_Son">
+        ID,ParentID,`Name`,Resource,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap_Menu_Son" type="com.hwj.tieba.entity.MenuSon">
+        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"></id>
+        <result property="parentId" column="ParentID" jdbcType="INTEGER" javaType="java.lang.Integer"></result>
+        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="resource" column="Resource" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+    </resultMap>
+
+    <select id="queryMenuSonByParentId" resultMap="BaseResultMap_Menu_Son">
+        SELECT
+        <include refid="Base_Column_Menu_Son"></include>
+        FROM menu_son_type
+        <where>
+            ParentID IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

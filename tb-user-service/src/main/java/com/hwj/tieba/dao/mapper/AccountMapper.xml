@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.AccountMapper">
+    <sql id="Base_Column">
+        UserID,RoleID,UserName,Email,Phone,`Password`,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Account">
+        <id property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"></id>
+        <result property="roleID" column="RoleID" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="userName" column="UserName" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="email" column="Email" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="phone" column="Phone" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="password" column="Password" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+    </resultMap>
+
+    <select id="queryAccountByAccountAndPassword" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM account
+        WHERE
+        (UserName = #{accountNumber} OR Email = #{accountNumber})
+        AND
+        `Password` = #{md5Password}
+    </select>
+
+    <select id="queryAccountByInfo" parameterType="com.hwj.tieba.entity.Account" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM account
+        <where>
+            <if test="userName !=null" >
+                OR UserName = #{userName}
+            </if>
+            <if test="email !=null" >
+                OR Email = #{email}
+            </if>
+            <if test="phone !=null" >
+                OR Phone = #{phone}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertAccount" parameterType="com.hwj.tieba.entity.Account">
+        INSERT INTO
+        account
+        (<include refid="Base_Column"></include>)
+        VALUES
+        (#{userID},#{roleID},#{userName},#{email},#{phone},#{password},#{enrollDate},#{updateDate})
+    </insert>
+</mapper>

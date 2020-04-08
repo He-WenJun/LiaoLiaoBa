@@ -1,0 +1,16 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6666
+    password: 510151
+    database: 0
+zuul:
+  #路由前缀
+  prefix: /api
+  routes:
+    user-service:
+      path: /user/**
+      serviceId: user-service
+  sensitive-headers: true
+  add-host-header: true
+      　
