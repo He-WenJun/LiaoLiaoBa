@@ -5,10 +5,10 @@
         ID,`Name`,EnrollDate,`Update`
     </sql>
     <resultMap id="BaseResultMap_Menu_Parent" type="com.hwj.tieba.entity.MenuParent">
-        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"></id>
-        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
-        <result property="update" column="Update" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="update" column="Update" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
     <select id="queryMenuParentById" resultMap="BaseResultMap_Menu_Parent">
