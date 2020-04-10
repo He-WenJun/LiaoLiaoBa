@@ -5,14 +5,14 @@
         UserID,RoleID,UserName,Email,Phone,`Password`,EnrollDate,UpdateDate
     </sql>
     <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Account">
-        <id property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"></id>
-        <result property="roleID" column="RoleID" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="userName" column="UserName" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="email" column="Email" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="phone" column="Phone" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="password" column="Password" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
-        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <id property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="roleID" column="RoleID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="userName" column="UserName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="email" column="Email" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="phone" column="Phone" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="password" column="Password" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
     <select id="queryAccountByAccountAndPassword" resultMap="BaseResultMap">

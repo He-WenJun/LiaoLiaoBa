@@ -56,15 +56,14 @@ public class LoginTokenFiltre extends ZuulFilter {
             //包含登录token
             Cookie loginTokenCookie = null;
             for (Cookie cookie:cookies){
-                if(Constants.LOGINNAMEKEY.equals(cookie.getName())){
+                if(Constants.LOGIN_NAME_KEY.equals(cookie.getName())){
                     loginNameKeyCookie = cookie;
-                    continue;
                 }
-                else if(Constants.LOGINTOKEN.equals(cookie.getName())){
+                else if(Constants.LOGIN_TOKEN.equals(cookie.getName())){
                     loginTokenCookie = cookie;
                 }
             }
-            if(loginNameKeyCookie != null || loginNameKeyCookie != null){
+            if(loginNameKeyCookie != null && loginTokenCookie != null){
                 //获取redis中的token
                 String correctLoginToken =  redisUtil.get(loginNameKeyCookie.getValue(),String.class);
                 //判断登录Token是否与redis中相同，若不同说明账号已在别处登录
@@ -95,7 +94,7 @@ public class LoginTokenFiltre extends ZuulFilter {
                     response.addCookie(loginTokenCookie);
 
                     try {
-                        ServerResponse serverResponse = ServerResponse.createByErrorCodeMessage(3,"账号已在别处登录");
+                        ServerResponse<String> serverResponse = ServerResponse.createByErrorCodeMessage(3,"账号已在别处登录");
                         response.setHeader("Content-type", "text/html;charset=UTF-8");
                         response.getWriter().print(JSON.toJSONString(serverResponse));
                     } catch (IOException e) {

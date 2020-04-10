@@ -84,4 +84,6 @@ public class AccountInfo {
     public void setUpdateDate(Date updateDate) {
         UpdateDate = updateDate;
     }
+
+
 }

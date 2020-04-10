@@ -16,9 +16,7 @@ import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.entity.Punishment;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.service.AccountService;
-import com.hwj.tieba.service.PunishmentService;
 import com.hwj.tieba.util.*;
-import com.hwj.tieba.vo.AccountVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,12 +56,12 @@ public class AccountServiceImpl implements AccountService {
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
-    public ServerResponse<AccountVO> login(String accountNumber, String password,String loinVerifyCode ,HttpServletRequest request,HttpServletResponse response) {
+    public ServerResponse<String> login(String accountNumber, String password,String loinVerifyCode ,HttpServletRequest request,HttpServletResponse response) {
         //在请求头中获取网关写入的sessionId
         final String sessionId = request.getHeader("SessionId");
 
         //获取redis中的session对象
-        Map<String,String> sessionMap = (Map<String, String>) redisUtil.hget(sessionId);
+        Map<String,String> sessionMap = redisUtil.hget(sessionId);
         String verifyCode = JSON.parseObject(sessionMap.get("LoginVerifyCode"),String.class);
 
         if(StringUtils.isEmpty(verifyCode) || !verifyCode.equals(loinVerifyCode)){
@@ -99,31 +97,7 @@ public class AccountServiceImpl implements AccountService {
             }
         }
 
-        //将信息装入AccountOV中，过滤敏感信息
-        AccountVO accountVO = new AccountVO();
-        accountVO.setUserName(account.getUserName());
-        accountVO.setEnrollDate(account.getEnrollDate());
 
-        //若邮箱不为空则进行过滤
-        if(!StringUtils.isEmpty(account.getEmail())){
-            StringBuffer sbEmail = new StringBuffer(account.getEmail());
-            int index = sbEmail.lastIndexOf("@");
-            sbEmail.replace(index-5,index-1,"****");
-            accountVO.setEmail(sbEmail.toString());
-        }
-
-        //若手机号不为空则也进行过滤
-        if(!StringUtils.isEmpty(account.getPhone())){
-            StringBuffer sbPhone = new StringBuffer(account.getPhone());
-            sbPhone.replace(4,7,"****");
-            accountVO.setPhone(sbPhone.toString());
-        }
-
-        //将无用信息置空，把账号信息存入redis保存的session对象当中
-        account.setPassword(null);
-        account.setPhone(null);
-        account.setUpdateDate(null);
-        account.setEnrollDate(null);
 
         //将账号实例序列化成json字符串，将用户实例存入
         sessionMap.put("Account", JSON.toJSONString(account));
@@ -159,7 +133,7 @@ public class AccountServiceImpl implements AccountService {
         //发送到消息中间件中
         loginIpAddressProducer.sendLoginIpMessage().send(MessageBuilder.withPayload(loginIPDto).build());
 
-        return ServerResponse.createBySuccess("登录成功",accountVO);
+        return ServerResponse.createBySuccess("登录成功");
     }
 
     @Override
@@ -182,7 +156,7 @@ public class AccountServiceImpl implements AccountService {
         final String sessionId = request.getHeader("SessionId");
         System.out.println("验证码sessionId:"+sessionId);
         //获取redis中的session对象
-        Map<String,String> sessionMap = (Map<String, String>) redisUtil.hget(sessionId);
+        Map<String,String> sessionMap = redisUtil.hget(sessionId);
 
         //存入验证码
         sessionMap.put("LoginVerifyCode",JSON.toJSONString(verifyCode));
@@ -192,7 +166,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public ServerResponse enrollHold(Account account) {
+    public ServerResponse<String> enrollHold(Account account) {
         if(StringUtils.isEmpty(account)){
             throw new TieBaException("参数有误");
         }
@@ -228,7 +202,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     @Transactional
-    public ServerResponse enroll(String userName) {
+    public ServerResponse<String> enroll(String userName) {
         String key = Constants.TOKEN_PREFIX+"ENROLL:"+userName;
         //取出redis中的账号注册信息
         Account account = redisUtil.get(key,Account.class);
@@ -264,17 +238,17 @@ public class AccountServiceImpl implements AccountService {
          bindingMapper.insertBinding(binding);
          accountInfoMapper.insertAccountInfo(accountInfo);
 
-        return ServerResponse.createBySuccess("注册成功",null);
+        return ServerResponse.createBySuccess("注册成功");
     }
 
     @Override
-    public ServerResponse enrollVerification(String userName) {
+    public ServerResponse<String> enrollVerification(String userName) {
         Account account = new Account();
         account.setUserName(userName);
         List<Account> resultAccountList = accountMapper.queryAccountByInfo(account);
         if(StringUtils.isEmpty(resultAccountList)){
             throw new TieBaException("未查询到账号");
         }
-        return ServerResponse.createBySuccess("注册成功",null);
+        return ServerResponse.createBySuccess("注册成功");
     }
 }

@@ -8,6 +8,7 @@ import com.hwj.tieba.service.AccountService;
 import com.hwj.tieba.service.MenuService;
 import com.hwj.tieba.util.RedisUtil;
 import com.hwj.tieba.vo.AccountVO;
+import com.hwj.tieba.vo.MenuVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,10 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ServerResponse<AccountVO> login(String accountNumber, String password,String loinVerifyCode, HttpServletRequest request,HttpServletResponse response){
+    public ServerResponse<String> login(String accountNumber, String password,String loinVerifyCode, HttpServletRequest request,HttpServletResponse response){
         log.info("User-Service端SessionId ："+request.getHeader("SessionId"));
-        ServerResponse<AccountVO> accountVO = accountService.login(accountNumber,password,loinVerifyCode,request,response);
-        log.info("user-service端返回： "+ JSON.toJSONString(accountVO));
-        return accountVO;
+        ServerResponse<String> serverResponse = accountService.login(accountNumber,password,loinVerifyCode,request,response);
+        return serverResponse;
     }
 
     @RequestMapping(value = "/verificationCode")
@@ -43,35 +43,36 @@ public class AccountController {
 
     @ResponseBody
     @RequestMapping(value = "/enrollHold",method = RequestMethod.POST)
-    public ServerResponse enrollHold(Account account){
-        ServerResponse serverResponse = accountService.enrollHold(account);
+    public ServerResponse<String> enrollHold(Account account){
+        ServerResponse<String> serverResponse = accountService.enrollHold(account);
         return serverResponse;
     }
 
     @RequestMapping(value = "/enroll",method = RequestMethod.GET)
     public String enroll(String userName,HttpServletRequest request){
-        ServerResponse serverResponse = accountService.enroll(userName);
+        ServerResponse<String> serverResponse = accountService.enroll(userName);
         request.setAttribute("serverResponse",serverResponse);
         return "login/enrollResult";
     }
 
     @ResponseBody
     @RequestMapping(value = "/enrollVerification",method = RequestMethod.GET)
-    public ServerResponse enrollVerification(String userName){
-        ServerResponse serverResponse = accountService.enrollVerification(userName);
+    public ServerResponse<String> enrollVerification(String userName){
+        ServerResponse<String> serverResponse = accountService.enrollVerification(userName);
         return serverResponse;
     }
 
     @ResponseBody
     @RequestMapping(value = "/menu",method = RequestMethod.GET)
-    public ServerResponse menu(HttpServletRequest request){
-        ServerResponse serverResponse = menuService.getMenu(request.getHeader("SessionId"));
+    public ServerResponse<MenuVO> menu(HttpServletRequest request){
+        ServerResponse<MenuVO> serverResponse = menuService.getMenu(request.getHeader("SessionId"));
         return serverResponse;
     }
 
     @ResponseBody
     @RequestMapping(value = "/userInfo",method = RequestMethod.GET)
-    public ServerResponse userInfo(){
-
+    public ServerResponse<AccountVO> userInfo(HttpServletRequest request){
+        ServerResponse<AccountVO> serverResponse = accountInfoService.getUserInfo(request.getHeader("SessionId"));
+        return serverResponse;
     }
 }

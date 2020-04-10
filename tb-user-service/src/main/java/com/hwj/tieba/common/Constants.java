@@ -1,7 +1,5 @@
 package com.hwj.tieba.common;
 
-import com.hwj.tieba.entity.Binding;
-
 public class Constants {
     /**md5加密统一盐值*/
     public static final String MD5_SALT = "TIEBA";
@@ -9,8 +7,11 @@ public class Constants {
     /**redis当中的key过期时间*/
     public static Integer KEY_EXPIRES = 60*30;
 
+    /**账号等级每级所需经验值*/
+    public static Integer LEVEL = 100;
+
     /**账号状态类型*/
-    public static interface StateType{
+    public interface StateType{
         /**封禁*/
         int STATE_BAN = 1;
         /**冻结*/
@@ -20,7 +21,7 @@ public class Constants {
     }
 
     /**角色ID*/
-    public static interface RoleType{
+    public interface RoleType{
         /**普通用户*/
         int ORDINARY = 1;
         /**小吧管理员*/
@@ -32,7 +33,7 @@ public class Constants {
     }
 
     /**绑定类型*/
-    public static interface BindingType{
+    public interface BindingType{
         /**邮箱绑定*/
         int MAIL = 1;
         /**手机绑定*/

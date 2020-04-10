@@ -7,9 +7,9 @@ public interface LoginLocationService {
     /**
      * 对用户的登录ip进行验证，如若发现异地则对账号绑定的邮箱发送邮件提醒
      * @param loginLocation 包含登录信息
-     * @param loginLocation 当前用户sessionId
+     * @param sessionId 当前用户sessionId
      */
-    public void loginIPVerification (LoginLocation loginLocation,String sessionId);
+    void loginIPVerification (LoginLocation loginLocation,String sessionId);
 
     /**
      * 插入登录记录

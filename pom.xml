@@ -15,6 +15,7 @@
         <module>tb-eureka-server</module>
         <module>tb-user-service</module>
         <module>tb-verification-service</module>
+        <module>tb-post-service</module>
     </modules>
 
     <parent>
@@ -88,6 +89,12 @@
             <resource>
                 <!--   描述存放资源的目录，该路径相对POM路径-->
                 <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>classpath:/resources</directory>
                 <includes>
                     <include>**/*.xml</include>
                 </includes>

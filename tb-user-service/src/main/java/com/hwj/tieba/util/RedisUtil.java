@@ -17,7 +17,7 @@ public class RedisUtil {
 
     public <T> T get(String key,Class<T> type){
         String jsonData = redisTemplate.opsForValue().get(key);
-        return JSON.parseObject(jsonData,type);
+        return JSON.parseObject(JSON.parse(jsonData).toString(),type);
     }
 
     public <T> List<T> getArray(String key,Class<T> type){
@@ -25,9 +25,9 @@ public class RedisUtil {
         return JSON.parseArray(jsonData,type);
     }
 
-    public Object hget(String key){
-        Map<Object,Object> jsonData = redisTemplate.opsForHash().entries(key);
-        return jsonData;
+    public Map<String, String> hget(String key){
+        Object jsonData = redisTemplate.opsForHash().entries(key);
+        return (Map<String, String>)jsonData;
     }
 
     public void hmset(String key,Map<String,String> map){

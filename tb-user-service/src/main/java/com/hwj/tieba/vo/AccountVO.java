@@ -1,5 +1,7 @@
 package com.hwj.tieba.vo;
 
+import com.hwj.tieba.common.Constants;
+
 import java.util.Date;
 
 public class AccountVO {
@@ -11,15 +13,30 @@ public class AccountVO {
     private String phone;
     /**注册时间*/
     private Date enrollDate;
+    /**头像路径*/
+    private String headPictureSrc;
+    /**账号经验值*/
+    private Long exp;
+    /**账号级别所*/
+    private Integer level;
+    /**每级所需经验*/
+    private Integer levelExp = Constants.LEVEL;
 
-    @Override
-    public String toString() {
-        return "AccountVO{" +
-                "UserName='" + UserName + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", enrollDate='" + enrollDate + '\'' +
-                '}';
+
+    public Integer getLevelExp() {
+        return levelExp;
+    }
+
+    public void setLevelExp(Integer levelExp) {
+        this.levelExp = levelExp;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public String getUserName() {
@@ -52,5 +69,21 @@ public class AccountVO {
 
     public void setEnrollDate(Date enrollDate) {
         this.enrollDate = enrollDate;
+    }
+
+    public String getHeadPictureSrc() {
+        return headPictureSrc;
+    }
+
+    public void setHeadPictureSrc(String headPictureSrc) {
+        this.headPictureSrc = headPictureSrc;
+    }
+
+    public Long getExp() {
+        return exp;
+    }
+
+    public void setExp(Long exp) {
+        this.exp = exp;
     }
 }

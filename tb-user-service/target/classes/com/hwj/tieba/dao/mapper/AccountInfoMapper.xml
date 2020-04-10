@@ -5,14 +5,14 @@
         UserID,Age,Introduce,HeadPictureID,BackgroundPictureID,EXP,EnrollDate,UpdateDate
     </sql>
     <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.AccountInfo">
-        <id property="userId" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"></id>
-        <result property="age" column="Age" jdbcType="INTEGER" javaType="java.lang.Integer"></result>
-        <result property="introduce" column="Introduce" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="headPictureId" column="HeadPictureID" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="backgroundPictureId" column="BackgroundPictureID" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="exp" column="EXP" jdbcType="BIGINT" javaType="java.lang.Long"></result>
-        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
-        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <id property="userId" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="age" column="Age" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="introduce" column="Introduce" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="headPictureId" column="HeadPictureID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="backgroundPictureId" column="BackgroundPictureID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="exp" column="EXP" jdbcType="BIGINT" javaType="java.lang.Long"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
     <insert id="insertAccountInfo" parameterType="com.hwj.tieba.entity.AccountInfo">
@@ -33,6 +33,16 @@
             <foreach collection="userIdList" item="userIdList" open="(" close=")" separator=",">
                 #{userIdList}
             </foreach>
+        </where>
+    </select>
+
+    <select id="quitAccountExpAndHeadPicture" resultMap="BaseResultMap">
+        SELECT
+        HeadPictureID,EXP
+        FROM
+        account_info
+        <where>
+            UserID = #{userId}
         </where>
     </select>
 

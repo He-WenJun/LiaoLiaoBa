@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tb-gateway-server" />
         <module name="tb-config-server" />
+        <module name="tb-post-service" />
         <module name="tb-user-service" />
         <module name="tb-eureka-server" />
         <module name="tb-verification-service" />
+        <module name="tb-gateway-server" />
       </profile>
     </annotationProcessing>
   </component>

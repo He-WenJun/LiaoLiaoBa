@@ -1,6 +1,7 @@
 package com.hwj.tieba.service;
 
 import com.hwj.tieba.resp.ServerResponse;
+import com.hwj.tieba.vo.MenuVO;
 
 public interface MenuService {
     /**
@@ -8,5 +9,5 @@ public interface MenuService {
      * @param sessionId 会话Id
      * @return 包含菜单信息
      */
-    public ServerResponse getMenu(String sessionId);
+    ServerResponse<MenuVO> getMenu(String sessionId);
 }

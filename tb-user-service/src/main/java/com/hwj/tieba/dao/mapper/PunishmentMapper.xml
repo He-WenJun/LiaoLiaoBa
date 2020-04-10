@@ -5,12 +5,12 @@
         PunishmentID,UserID,TakeEffectDate,EndDate,StateID,Reason
     </sql>
     <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Punishment">
-        <id property="punishmentID" column="PunishmentID" jdbcType="VARCHAR" javaType="java.lang.String"></id>
-        <result property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="takeEffectDate" column="TakeEffectDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
-        <result property="endDate" column="EndDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
-        <result property="stateID" column="StateID" jdbcType="INTEGER" javaType="java.lang.Integer"></result>
-        <result property="reason" column="Reason" jdbcType="VARCHAR" javaType="java.lang.String"></result>
+        <id property="punishmentID" column="PunishmentID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="takeEffectDate" column="TakeEffectDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="endDate" column="EndDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="stateID" column="StateID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="reason" column="Reason" jdbcType="VARCHAR" javaType="java.lang.String"/>
     </resultMap>
 
     <select id="queryPunishmentList" resultMap="BaseResultMap">
