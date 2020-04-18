@@ -28,12 +28,16 @@ spring:
   #  cache: false
   #  mode: LEGACYHTML5
   #  encoding: UTF-8
-#ORM框架  Mybatis
 mybatis:
-  mapper-locations: classpath:com/hwj/tieba/dao/mapper/*.xml
+  mapper-locations: classpath:com/hwj/tieba/dao/Mapper/*.xml
   type-aliases-package: classpath:com.hwj.tieba.entity
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+
 #日志
-#logging:
-#  level:
- #   com.hwj.tieba.dao: debug
+logging:
+  level:
+    com.hwj.tieba.dao: debug
+
 

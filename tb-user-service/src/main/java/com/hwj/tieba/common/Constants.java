@@ -7,6 +7,9 @@ public class Constants {
     /**redis当中的key过期时间*/
     public static Integer KEY_EXPIRES = 60*30;
 
+    /**redis account相关的key以这个打头*/
+    public static final String TOKEN_PREFIX = "TB:ACCOUNT:";
+
     /**账号等级每级所需经验值*/
     public static Integer LEVEL = 100;
 
@@ -39,7 +42,4 @@ public class Constants {
         /**手机绑定*/
         int PHONE = 2;
     }
-
-    /***redis account相关的key以这个打头**/
-    public static final String TOKEN_PREFIX = "TB:ACCOUNT:";
 }

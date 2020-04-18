@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.BaMapper">
+    <sql id="Base_Column">
+        BaId,TypeId,BaName,Introduce,EXP,HeadPictureID,BackgroundPictureID,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Ba">
+        <id property="baId" column="BaId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="typeId" column="TypeId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="baName" column="BaName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="introduce" column="Introduce" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="exp" column="EXP" jdbcType="BIGINT" javaType="java.lang.Long"/>
+        <result property="headPictureId" column="HeadPictureID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="backgroundPictureId" column="BackgroundPictureID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="queryBaById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM ba
+        WHERE
+        BaId = #{id}
+    </select>
+
+    <select id="queryBaByIdList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM ba
+        <where>
+            BaId IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

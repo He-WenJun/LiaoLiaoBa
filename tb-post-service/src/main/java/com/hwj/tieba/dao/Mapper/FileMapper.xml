@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.FileMapper">
+    <sql id="Base_Column">
+        ID,MD5,`Name`,Src,TypeID,Suffix,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.File">
+        <id property="id" column="ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="md5" column="MD5" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="src" column="Src" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="typeId" column="TypeID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="suffix" column="Suffix" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="queryFileById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM file
+        WHERE
+        ID = #{fileId}
+    </select>
+
+    <select id="queryFileListById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM file
+        WHERE
+        ID IN
+        <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+            #{idList}
+        </foreach>
+    </select>
+
+</mapper>

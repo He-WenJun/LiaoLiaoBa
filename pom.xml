@@ -81,6 +81,13 @@
                 <artifactId>nekohtml</artifactId>
                 <version>1.9.22</version>
             </dependency>
+
+            <!--Mybatis分页-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.2.12</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
