@@ -39,6 +39,13 @@ public class RedisUtil {
         redisTemplate.opsForValue().set(key,jsonData,time, TimeUnit.SECONDS);
     }
 
+    public void setStr(String key,Integer time,String strData){
+        redisTemplate.opsForValue().set(key,strData,time, TimeUnit.SECONDS);
+    }
+    public String getStr(String key){
+        return redisTemplate.opsForValue().get(key);
+    }
+
     public void del(String key){
         redisTemplate.delete(key);
     }

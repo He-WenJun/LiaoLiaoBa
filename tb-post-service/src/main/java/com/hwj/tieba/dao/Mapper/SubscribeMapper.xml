@@ -13,7 +13,7 @@
         <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
-    <select id="quitSubscribeByUserIdAndTypeId" resultMap="BaseResultMap">
+    <select id="querySubscribeByUserIdAndTypeId" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column"></include>
         FROM subscribe
@@ -22,4 +22,31 @@
         AND
         TypeID = #{typeId}
     </select>
+
+    <select id="querySubscribeByObjectIdAndUserId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM subscribe
+        WHERE
+        ObjectId = #{objectId}
+        AND
+        UserID = #{userId}
+    </select>
+
+    <delete id="deleteSubscribeByObjectIdAndUserId">
+        DELETE
+        FROM subscribe
+        WHERE
+        ObjectID = #{objectId}
+    </delete>
+
+    <insert id="insertSubscribe" parameterType="com.hwj.tieba.entity.Subscribe">
+        INSERT INTO
+        subscribe
+        (<include refid="Base_Column"></include>)
+        VALUES
+        (#{id},#{typeId},#{objectId},#{userId},#{enrollDate},#{updateDate})
+    </insert>
+
+
 </mapper>

@@ -16,6 +16,17 @@ public class Subscribe {
     /**修改时间*/
     private Date updateDate;
 
+
+    public Subscribe(){}
+    public Subscribe(String id, Integer typeId, String objectId, String userId, Date enrollDate, Date updateDate) {
+        this.id = id;
+        this.typeId = typeId;
+        this.objectId = objectId;
+        this.userId = userId;
+        this.enrollDate = enrollDate;
+        this.updateDate = updateDate;
+    }
+
     public String getId() {
         return id;
     }

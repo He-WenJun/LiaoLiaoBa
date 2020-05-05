@@ -15,7 +15,7 @@ spring:
       password: user
       fail-fast: true
       retry:
-        max-attempts: 10
+        max-attempts: 20
         multiplier: 1500
 eureka:
   client:

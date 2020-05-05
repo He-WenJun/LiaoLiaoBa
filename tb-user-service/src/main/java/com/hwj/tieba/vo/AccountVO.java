@@ -5,8 +5,9 @@ import com.hwj.tieba.common.Constants;
 import java.util.Date;
 
 public class AccountVO {
+    private String userId;
     /**用户名*/
-    private String UserName;
+    private String userName;
     /**用户邮箱*/
     private String email;
     /**用户手机号*/
@@ -22,6 +23,13 @@ public class AccountVO {
     /**每级所需经验*/
     private Integer levelExp = Constants.LEVEL;
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public Integer getLevelExp() {
         return levelExp;
@@ -40,11 +48,11 @@ public class AccountVO {
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getEmail() {

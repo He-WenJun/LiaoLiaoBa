@@ -10,6 +10,9 @@ public class Constants {
     /**redis account相关的key以这个打头*/
     public static final String TOKEN_PREFIX = "TB:ACCOUNT:";
 
+    /***redis 帖子相关的key以这个打头**/
+    public static final String POST_TOKEN_PREFIX = "TB:POST:";
+
     /**账号等级每级所需经验值*/
     public static Integer LEVEL = 100;
 

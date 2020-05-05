@@ -1,12 +1,9 @@
 package com.hwj.tieba.stream;
 
 import com.alibaba.fastjson.JSONObject;
-import com.hwj.tieba.dto.LoginIPDto;
-import com.hwj.tieba.entity.Account;
+import com.hwj.tieba.dto.LoginIPDTO;
 import com.hwj.tieba.entity.LoginLocation;
 import com.hwj.tieba.service.LoginLocationService;
-import com.hwj.tieba.stream.consumer.EnrollMailVerificationConsumer;
-import com.hwj.tieba.util.MailUtil;
 import com.hwj.tieba.util.QueryIPUtil;
 import com.hwj.tieba.util.UUIDUtil;
 import org.slf4j.Logger;
@@ -14,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
-
-import java.util.Date;
 
 @EnableBinding(value = {com.hwj.tieba.stream.consumer.LoginIpAddressConsumer.class})
 public class LoginIpAddressListener {
@@ -28,7 +23,7 @@ public class LoginIpAddressListener {
     private QueryIPUtil queryIPUtil;
 
     @StreamListener(com.hwj.tieba.stream.consumer.LoginIpAddressConsumer.INPUT_LOGIN_IP_ADDRESS)
-    public void receiveLoginIpMessage(LoginIPDto logInMessage){
+    public void receiveLoginIpMessage(LoginIPDTO logInMessage){
         //测试ip 110.179.228.16山西太原 120.243.244.245安徽马鞍山 218.195.219.255新疆乌鲁木齐
         logInMessage.setLoginIpAddress("120.243.244.245");
 

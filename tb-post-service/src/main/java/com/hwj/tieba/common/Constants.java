@@ -14,6 +14,9 @@ public class Constants {
     /**吧的等级每级所需经验值*/
     public static final Integer LEVEL = 1000;
 
+    /**在贴吧签到时贴吧所加的经验值*/
+    public static final Integer SING_IN_EXP = 10;
+
     /**订阅类型*/
     public interface SubscribeType{
         /**用户*/

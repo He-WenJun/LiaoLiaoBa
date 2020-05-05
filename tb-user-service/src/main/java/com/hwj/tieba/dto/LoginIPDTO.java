@@ -2,7 +2,7 @@ package com.hwj.tieba.dto;
 
 import java.util.Date;
 
-public class LoginIPDto {
+public class LoginIPDTO {
     /**用户ID*/
     private String userID;
     /**登录ip*/
@@ -12,8 +12,8 @@ public class LoginIPDto {
     /**sessionId*/
     private String sessionId;
 
-    public LoginIPDto(){}
-    public LoginIPDto(String userID, String loginIpAddress, Date loginDate,String sessionId){
+    public LoginIPDTO(){}
+    public LoginIPDTO(String userID, String loginIpAddress, Date loginDate, String sessionId){
         this.userID = userID;
         this.loginIpAddress = loginIpAddress;
         this.loginDate = loginDate;

@@ -39,14 +39,14 @@ public class MenuServiceImpl implements MenuService {
         }
 
         //若redis中包含菜单信息则直接返回，不再查询
-        if(redisUtil.hasKey(Constants.TOKEN_PREFIX+"MENU:"+account.getUserID())){
-            MenuVO menuVO = redisUtil.get(Constants.TOKEN_PREFIX+"MENU:"+account.getUserID(),MenuVO.class);
+        if(redisUtil.hasKey(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId())){
+            MenuVO menuVO = redisUtil.get(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId(),MenuVO.class);
             return ServerResponse.createBySuccess(menuVO);
         }
 
 
         //获取角色Id
-        String roleIdStr = account.getRoleID();
+        String roleIdStr = account.getRoleId();
         String userName = account.getUserName();
 
         //角色Id是一串数字字符串，一个用户可以有多个角色
@@ -89,7 +89,7 @@ public class MenuServiceImpl implements MenuService {
         MenuVO menuVO = new MenuVO(menuParentList,menuSonList);
 
         //将结果存入redis
-        redisUtil.set(Constants.TOKEN_PREFIX+"MENU:"+account.getUserID(),60,JSON.toJSONString(menuVO));
+        redisUtil.set(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId(),60,JSON.toJSONString(menuVO));
 
         return ServerResponse.createBySuccess(menuVO);
     }

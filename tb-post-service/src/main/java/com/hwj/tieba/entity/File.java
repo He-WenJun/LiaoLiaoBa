@@ -5,8 +5,6 @@ import java.util.Date;
 public class File {
     /**文件ID*/
     private String id;
-    /**文件Md5值*/
-    private String md5;
     /**文件名称*/
     private String name;
     /**文件路径*/
@@ -26,14 +24,6 @@ public class File {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getMd5() {
-        return md5;
-    }
-
-    public void setMd5(String md5) {
-        this.md5 = md5;
     }
 
     public String getName() {

@@ -18,15 +18,15 @@
 
     <select id="queryBaById" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column"></include>
+        <include refid="Base_Column"/>
         FROM ba
         WHERE
-        BaId = #{id}
+        BaName = #{baName}
     </select>
 
     <select id="queryBaByIdList" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column"></include>
+        <include refid="Base_Column"/>
         FROM ba
         <where>
             BaId IN
@@ -35,5 +35,17 @@
             </foreach>
         </where>
     </select>
+
+    <update id="updateBaExpByBaId">
+        UPDATE ba updBa,
+        (
+            SELECT BaId,EXP FROM ba WHERE BaId IN
+            <foreach collection="baIdList" item="baIdList" open="(" close=")" separator=",">
+                #{baIdList}
+            </foreach>
+        ) selba
+        SET updBa.EXP = selba.EXP + #{increaseExp}
+        WHERE updBa.BaId IN (selba.BaId)
+    </update>
 
 </mapper>

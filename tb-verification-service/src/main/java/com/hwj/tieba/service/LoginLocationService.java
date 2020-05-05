@@ -1,6 +1,5 @@
 package com.hwj.tieba.service;
 
-import com.hwj.tieba.dto.LoginIPDto;
 import com.hwj.tieba.entity.LoginLocation;
 
 public interface LoginLocationService {

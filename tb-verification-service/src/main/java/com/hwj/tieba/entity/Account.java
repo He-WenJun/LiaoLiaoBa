@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Account {
     /**用ID*/
-    private String userID;
+    private String userId;
     /**账号角色ID*/
-    private Integer roleID;
+    private String roleId;
     /**用户名*/
     private String userName;
     /**用户邮箱*/
@@ -23,7 +23,7 @@ public class Account {
     @Override
     public String toString() {
         return "Account{" +
-                "userID='" + userID + '\'' +
+                "userID='" + userId + '\'' +
                 ", userName='" + userName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
@@ -32,20 +32,20 @@ public class Account {
                 '}';
     }
 
-    public String getUserID() {
-        return userID;
+    public String getUserId() {
+        return userId;
     }
 
-    public Integer getRoleID() {
-        return roleID;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public void setRoleID(Integer roleID) {
-        this.roleID = roleID;
+    public String getRoleId() {
+        return roleId;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setRoleId(String roleId) {
+        this.roleId = roleId;
     }
 
     public String getUserName() {

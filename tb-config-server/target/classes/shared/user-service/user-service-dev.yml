@@ -22,7 +22,7 @@ spring:
         output_enroll_mail_verification:
           destination: enroll_mail_verification_channel
   thymeleaf:
-    prefix: http://localhost/resources/html/
+    prefix: http://liaoliaoba.com/resources/html/
     suffix: .html
     content: text/html
     cache: false

@@ -18,8 +18,19 @@ public class AccountInfo {
     /**插入时间*/
     private Date enrollDate;
     /**修改时间*/
-    private Date UpdateDate;
+    private Date updateDate;
 
+    public AccountInfo(){}
+    public AccountInfo(String userId, Integer age, String introduce, String headPictureId, String backgroundPictureId, Long exp, Date enrollDate, Date updateDate) {
+        this.userId = userId;
+        this.age = age;
+        this.introduce = introduce;
+        this.headPictureId = headPictureId;
+        this.backgroundPictureId = backgroundPictureId;
+        this.exp = exp;
+        this.enrollDate = enrollDate;
+        updateDate = updateDate;
+    }
 
     public String getUserId() {
         return userId;
@@ -78,11 +89,11 @@ public class AccountInfo {
     }
 
     public Date getUpdateDate() {
-        return UpdateDate;
+        return updateDate;
     }
 
     public void setUpdateDate(Date updateDate) {
-        UpdateDate = updateDate;
+        this.updateDate = updateDate;
     }
 
 

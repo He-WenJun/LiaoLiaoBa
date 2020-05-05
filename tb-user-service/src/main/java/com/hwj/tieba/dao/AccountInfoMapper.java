@@ -23,14 +23,14 @@ public interface AccountInfoMapper {
      * @param userIdList 用户ID集合
      * @return 用户经验值
      */
-    List<AccountInfo> quitAccountExpAndHeadPictureList(@Param("userIdList") List<String> userIdList);
+    List<AccountInfo> queryAccountExpAndHeadPictureList(@Param("userIdList") List<String> userIdList);
 
     /**
      * 查询多个账号的经验值和头像
      * @param userId 用户ID
      * @return 用户头像和经验值
      */
-    AccountInfo quitAccountExpAndHeadPicture(@Param("userId") String userId);
+    AccountInfo queryAccountExpAndHeadPicture(@Param("userId") String userId);
 
     /**
      * 修改账号经验值
@@ -39,4 +39,12 @@ public interface AccountInfoMapper {
      * @return 受影响行数
      */
     Integer updateUserExp(@Param("userExp") Long exp, @Param("nowDate") Date nowDate);
+
+    /**
+     * 增加指定账号经验值
+     * @param increaseExp 要增加的经验值
+     * @param userId 用户Id
+     * @return 受影响行数
+     */
+    Integer updateAccountExp(@Param("increaseExp") Integer increaseExp,@Param("userId") String userId);
 }

@@ -25,12 +25,11 @@ public interface AccountMapper {
      */
     List<Account> queryAccountByInfo(Account account);
 
-
-
     /**
      * 插入账号
      * @param account 插入的账号
      * @return
      */
     Integer insertAccount(Account account);
+
 }

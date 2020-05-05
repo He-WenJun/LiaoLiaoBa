@@ -23,7 +23,7 @@
         (#{userId},#{age},#{introduce},#{headPictureId},#{backgroundPictureId},#{exp},#{enrollDate},#{updateDate})
     </insert>
 
-    <select id="quitAccountExpAndHeadPictureList" resultMap="BaseResultMap">
+    <select id="queryAccountExpAndHeadPictureList" resultMap="BaseResultMap">
         SELECT
         HeadPictureID,EXP
         FROM
@@ -36,7 +36,7 @@
         </where>
     </select>
 
-    <select id="quitAccountExpAndHeadPicture" resultMap="BaseResultMap">
+    <select id="queryAccountExpAndHeadPicture" resultMap="BaseResultMap">
         SELECT
         HeadPictureID,EXP
         FROM
@@ -51,5 +51,12 @@
         account_info
         SET EXP = #{exp} , UpdateDate = #{updateDate}
         WHEN UserID = #{userID}
+    </update>
+
+    <update id="updateAccountExp">
+        UPDATE account_info info_a,
+        (SELECT EXP FROM account_info WHERE UserID = #{userId}) info_b
+        SET info_a.EXP = info_b.EXP + #{increaseExp}
+        WHERE info_a.UserID = #{userId};
     </update>
 </mapper>

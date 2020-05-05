@@ -12,5 +12,12 @@ public interface AccountInfoService {
      */
     ServerResponse<AccountVO> getUserInfo(String sessionId);
 
-
+    /**
+     * 增加指定账号经验值
+     * @param increaseExp 要增加的经验值
+     * @param token 增加经验值的令牌
+     * @param userId 用户Id
+     * @return 增加结果
+     */
+    ServerResponse<String> increaseAccountExp(Integer increaseExp,String token, String userId);
 }

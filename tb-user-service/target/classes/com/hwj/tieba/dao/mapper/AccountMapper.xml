@@ -5,8 +5,8 @@
         UserID,RoleID,UserName,Email,Phone,`Password`,EnrollDate,UpdateDate
     </sql>
     <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Account">
-        <id property="userID" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="roleID" column="RoleID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <id property="userId" column="UserID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="roleId" column="RoleID" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="userName" column="UserName" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="email" column="Email" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="phone" column="Phone" jdbcType="VARCHAR" javaType="java.lang.String"/>
@@ -30,13 +30,16 @@
         <include refid="Base_Column"></include>
         FROM account
         <where>
-            <if test="userName !=null" >
+            <if test="userId != null" >
+                OR UserId = #{userId}
+            </if>
+            <if test="userName != null" >
                 OR UserName = #{userName}
             </if>
-            <if test="email !=null" >
+            <if test="email != null" >
                 OR Email = #{email}
             </if>
-            <if test="phone !=null" >
+            <if test="phone != null" >
                 OR Phone = #{phone}
             </if>
         </where>
@@ -47,6 +50,7 @@
         account
         (<include refid="Base_Column"></include>)
         VALUES
-        (#{userID},#{roleID},#{userName},#{email},#{phone},#{password},#{enrollDate},#{updateDate})
+        (#{userId},#{roleId},#{userName},#{email},#{phone},#{password},#{enrollDate},#{updateDate})
     </insert>
+
 </mapper>

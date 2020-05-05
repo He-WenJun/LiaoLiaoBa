@@ -17,7 +17,7 @@ spring:
       fail-fast: true
       retry:
         #获取配置文件重试次数
-        max-attempts: 10
+        max-attempts: 20
         #获取配置文件重试间隔时间，毫秒
         multiplier: 1500
 eureka:

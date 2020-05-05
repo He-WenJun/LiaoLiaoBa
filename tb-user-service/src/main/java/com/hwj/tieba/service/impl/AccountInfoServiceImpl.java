@@ -36,7 +36,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
             throw new TieBaException("未登录");
         }
 
-        String key = Constants.TOKEN_PREFIX+"INFO:"+account.getUserID();
+        String key = Constants.TOKEN_PREFIX+"INFO:"+account.getUserId();
 
         if(redisUtil.hasKey(key)){
             AccountVO accountVO = redisUtil.get(key,AccountVO.class);
@@ -44,7 +44,7 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         }
 
         //查询用户头像ID和经验值
-        AccountInfo resultAccountInfo = accountInfoMapper.quitAccountExpAndHeadPicture(account.getUserID());
+        AccountInfo resultAccountInfo = accountInfoMapper.queryAccountExpAndHeadPicture(account.getUserId());
         //查询出头像路径
         File resultImage = fileMapper.queryImageById(resultAccountInfo.getHeadPictureId());
 
@@ -85,7 +85,33 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         account.setUpdateDate(null);
         account.setEnrollDate(null);*/
 
-        redisUtil.set(Constants.TOKEN_PREFIX+"INFO:"+account.getUserID(),60,accountVO);
+        redisUtil.set(Constants.TOKEN_PREFIX+"INFO:"+account.getUserId(),60,accountVO);
         return ServerResponse.createBySuccess(accountVO);
     }
+
+    @Override
+    public ServerResponse<String> increaseAccountExp(Integer increaseExp, String token, String userId) {
+        if(StringUtils.isEmpty(increaseExp) || StringUtils.isEmpty(token) || StringUtils.isEmpty(userId)){
+            throw new TieBaException("参数有误");
+        }
+
+        String key = Constants.POST_TOKEN_PREFIX+"INCREASE_ACCOUNT_EXP_TOKEN:"+userId;
+        if(redisUtil.hasKey(key)){
+            System.out.println( redisUtil.getStr(key).equals(token));
+            if(! token.equals(redisUtil.getStr(key))){
+                throw new TieBaException("令牌错误");
+            }
+        }else {
+            throw new TieBaException("令牌错误");
+        }
+
+        accountInfoMapper.updateAccountExp(increaseExp,userId);
+
+        redisUtil.del(key);
+        redisUtil.del(Constants.TOKEN_PREFIX+"INFO:"+userId);
+
+        return ServerResponse.createBySuccess("账号经验+"+increaseExp,null);
+    }
+
+
 }
