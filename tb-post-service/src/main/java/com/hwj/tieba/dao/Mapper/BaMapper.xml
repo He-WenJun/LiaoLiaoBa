@@ -16,7 +16,7 @@
         <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
-    <select id="queryBaById" resultMap="BaseResultMap">
+    <select id="queryBaByBaName" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column"/>
         FROM ba
@@ -34,6 +34,21 @@
                 #{idList}
             </foreach>
         </where>
+    </select>
+
+    <select id="queryBaByBaId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM ba
+        WHERE BaId = #{id}
+    </select>
+
+    <select id="queryBaByTypeId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM ba
+        WHERE
+        TypeId = #{typeId}
     </select>
 
     <update id="updateBaExpByBaId">

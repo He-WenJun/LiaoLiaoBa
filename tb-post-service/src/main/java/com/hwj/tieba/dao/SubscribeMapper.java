@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -40,4 +41,11 @@ public interface SubscribeMapper {
      * @return 受影响行数
      */
     Integer insertSubscribe(Subscribe subscribe);
+
+    /**
+     * 查询订阅个数
+     * @param objectIdList 订阅目标Id
+     * @return 订阅个数
+     */
+    List<Map<String,Object>> countSubscribe(@Param("objectIdList") List<String> objectIdList);
 }

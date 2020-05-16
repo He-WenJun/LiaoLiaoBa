@@ -8,12 +8,15 @@ import com.hwj.tieba.common.Constants;
 import com.hwj.tieba.dao.BaTypeMapper;
 import com.hwj.tieba.entity.BaParentType;
 import com.hwj.tieba.entity.BaSonType;
+import com.hwj.tieba.exception.TieBaException;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.service.BaTypeService;
+import com.hwj.tieba.util.FigureUtil;
 import com.hwj.tieba.util.RedisUtil;
 import com.hwj.tieba.vo.BaTypeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +29,7 @@ public class BaTypeServiceImpl implements BaTypeService {
     private RedisUtil redisUtil;
 
     @Override
-    public ServerResponse<PageInfo<BaTypeVO>> getBaType(Integer pageNumber) {
+    public ServerResponse<PageInfo<BaTypeVO>> getBaType(int pageNumber) {
         //组装key
         String key = Constants.POST_TOKEN_PREFIX+"TYPE:"+pageNumber;
         if(redisUtil.hasKey(key)){
@@ -38,7 +41,6 @@ public class BaTypeServiceImpl implements BaTypeService {
         Page<Object> page = PageHelper.startPage(pageNumber, Constants.pageCountSize);
         //查询吧的父类型
         List<BaParentType> baParentTypeList = baTypeMapper.queryBaParentType();
-        System.out.println("page : "+page.toString());
 
         //取出父类型id
         List<Integer> baSonTypeIdList = new ArrayList<Integer>(baParentTypeList.size());
@@ -73,5 +75,28 @@ public class BaTypeServiceImpl implements BaTypeService {
 
         System.out.println("PageInfo："+JSON.toJSONString(ServerResponse.createBySuccess(pageInfo)));
         return ServerResponse.createBySuccess(pageInfo);
+    }
+
+    @Override
+    public ServerResponse<BaTypeVO> getSonType(String sonTypeId) {
+        if(StringUtils.isEmpty(sonTypeId) || !FigureUtil.isNumeric(sonTypeId)){
+            throw new TieBaException("参数有误");
+        }
+        String key = Constants.POST_TOKEN_PREFIX +"TYPE:BA_LIST"+sonTypeId;
+        if(redisUtil.hasKey(key)){
+            BaTypeVO baTypeVO = redisUtil.get(key,BaTypeVO.class);
+            return ServerResponse.createBySuccess(baTypeVO);
+        }
+        //查询这个子类型Id对应的父类型Id
+        int parentId = baTypeMapper.queryParentIdBySonTypeId(sonTypeId);
+        //查询父类型
+        BaParentType baParentType = baTypeMapper.queryParentTypeById(parentId);
+        List<Integer> parentIdList = new ArrayList<Integer>();
+        parentIdList.add(parentId);
+        //查询这个父类型Id下的所有子类型
+        List<BaSonType> baSonTypeList = baTypeMapper.queryBaSonTypeByParentId(parentIdList);
+        BaTypeVO baTypeVO = new BaTypeVO(baParentType,baSonTypeList);
+        redisUtil.set(key,60,baTypeVO);
+        return ServerResponse.createBySuccess(baTypeVO);
     }
 }

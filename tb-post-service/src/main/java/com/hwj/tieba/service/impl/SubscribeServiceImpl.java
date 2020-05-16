@@ -120,6 +120,7 @@ public class SubscribeServiceImpl implements SubscribeService {
 
     @Override
     public ServerResponse<String> addSubscribeBa(String sessionId, String baName) {
+
         if(StringUtils.isEmpty(baName)){
             throw new TieBaException("参数有误");
         }
@@ -136,7 +137,7 @@ public class SubscribeServiceImpl implements SubscribeService {
                 }
             }
         }else {
-            subscribeBa = baMapper.queryBaById(baName);
+            subscribeBa = baMapper.queryBaByBaName(baName);
             if(subscribeBa == null){
                 throw new TieBaException("没有找到这个贴吧");
             }
@@ -147,7 +148,7 @@ public class SubscribeServiceImpl implements SubscribeService {
         }
 
         if(subscribeBa == null){
-            subscribeBa = baMapper.queryBaById(baName);
+            subscribeBa = baMapper.queryBaByBaName(baName);
             if(subscribeBa == null){
                 throw new TieBaException("没有找到这个贴吧");
             }

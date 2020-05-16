@@ -48,5 +48,15 @@
         (#{id},#{typeId},#{objectId},#{userId},#{enrollDate},#{updateDate})
     </insert>
 
+    <select id="countSubscribe" resultType="java.util.Map">
+        SELECT COUNT(ID) AS `count`,ObjectID AS objectId
+        FROM subscribe
+        WHERE ObjectID IN
+        <foreach collection="objectIdList" item="objectIdList" open="(" close=")" separator=",">
+            #{objectIdList}
+        </foreach>
+        GROUP BY ID
+    </select>
+
 
 </mapper>

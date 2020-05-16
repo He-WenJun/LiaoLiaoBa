@@ -1,12 +1,16 @@
 package com.hwj.tieba.vo;
 
+import com.hwj.tieba.common.Constants;
+
 import java.util.Date;
 
 public class BaVO {
     /**吧Id*/
     private String baId;
-    /**吧类型*/
-    private String type;
+    /**吧类型Id*/
+    private String typeId;
+    /**吧类型名称*/
+    private String typeName;
     /**吧名称*/
     private String baName;
     /**介绍*/
@@ -15,16 +19,24 @@ public class BaVO {
     private Integer level;
     /**吧经验值*/
     private Long exp;
+    /**每级所需经验*/
+    private Integer levelExp = Constants.LEVEL;
     /**头像的图片Id*/
     private String headPictureSrc;
     /**背景图片Id*/
     private String backgroundPictureSrc;
+    /**贴吧的订阅数量*/
+    private String countSubscribe;
+    /**贴吧的帖子数量*/
+    private String countPost;
     /**创建时间*/
     private Date enrollDate;
 
-    public BaVO(String baId, String type, String baName, String introduce, Integer level, Long exp, String headPictureSrc, String backgroundPictureSrc, Date enrollDate) {
+    public BaVO(){}
+
+    public BaVO(String baId, String typeId, String baName, String introduce, Integer level, Long exp, String headPictureSrc, String backgroundPictureSrc, Date enrollDate) {
         this.baId = baId;
-        this.type = type;
+        this.typeId = typeId;
         this.baName = baName;
         this.introduce = introduce;
         this.level = level;
@@ -49,15 +61,6 @@ public class BaVO {
     public void setBackgroundPictureSrc(String backgroundPictureSrc) {
         this.backgroundPictureSrc = backgroundPictureSrc;
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Long getExp() {
         return exp;
     }
@@ -75,11 +78,11 @@ public class BaVO {
     }
 
     public String getTypeId() {
-        return type;
+        return typeId;
     }
 
-    public void setTypeId(String type) {
-        this.type = type;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
     }
 
     public String getBaName() {
@@ -112,5 +115,37 @@ public class BaVO {
 
     public void setEnrollDate(Date enrollDate) {
         this.enrollDate = enrollDate;
+    }
+
+    public String getCountSubscribe() {
+        return countSubscribe;
+    }
+
+    public void setCountSubscribe(String countSubscribe) {
+        this.countSubscribe = countSubscribe;
+    }
+
+    public String getCountPost() {
+        return countPost;
+    }
+
+    public void setCountPost(String countPost) {
+        this.countPost = countPost;
+    }
+
+    public Integer getLevelExp() {
+        return levelExp;
+    }
+
+    public void setLevelExp(Integer levelExp) {
+        this.levelExp = levelExp;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

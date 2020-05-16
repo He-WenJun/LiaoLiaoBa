@@ -42,23 +42,20 @@ public class DateUtil {
         return sdf.format(date);
     }
 
-    /**
-     * 得到两个时间差  格式yyyy-MM-dd HH:mm:ss
-     *
-     * @param start 2019-06-27 14:12:40
-     * @param end   2019-08-27 14:12:40
-     * @return 5270400000
-     */
-    public static long dateSubtraction(String start, String end) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-            Date date1 = df.parse(start);
-            Date date2 = df.parse(end);
-            return date2.getTime() - date1.getTime();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return 0;
+    //计算时间差，以小时为单位。如：2018-08-08 和 2018-08-07 相差24h
+    public static int getDistanceTime(Date startTime, Date endTime) {
+        int hour = 0;
+        long time1 = startTime.getTime();
+        long time2 = endTime.getTime();
+
+        long diff;
+        if (time1 < time2) {
+            diff = time2 - time1;
+        } else {
+            diff = time1 - time2;
         }
+        hour =(int)(diff /(60 * 60 * 1000));
+        return hour;
     }
 
     /**
@@ -338,6 +335,20 @@ public class DateUtil {
             list.add(i);
         }
         return list;
+    }
+
+    public static String dateInterval(int hour){
+        if(hour == 0){
+            return "1小时内";
+        }else if(hour < 24){
+            return hour+"小时前";
+        }else if(hour < 24*30){
+            return hour/24+"天前";
+        }else if(hour < 24*30*12){
+            return hour/(24*30)+"月前";
+        }else {
+            return hour/(24*30*12)+"年前";
+        }
     }
 
 }

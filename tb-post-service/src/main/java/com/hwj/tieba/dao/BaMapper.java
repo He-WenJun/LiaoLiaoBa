@@ -15,7 +15,7 @@ public interface BaMapper {
      * @param baName 贴吧名称
      * @return 吧
      */
-    Ba queryBaById(@Param("baName") String baName);
+    Ba queryBaByBaName(@Param("baName") String baName);
 
     /**
      * 根据吧id集合查询多个贴吧
@@ -23,6 +23,20 @@ public interface BaMapper {
      * @return 吧列表
      */
     List<Ba> queryBaByIdList(@Param("idList") List<String> idList);
+
+    /**
+     * 根据吧id查询贴吧
+     * @param id 吧id集合
+     * @return 吧列表
+     */
+    Ba queryBaByBaId(@Param("id") String id);
+
+    /**
+     * 根据类型Id查询对应的吧
+     * @param typeId 贴吧类型Id
+     * @return 吧列表
+     */
+    List<Ba> queryBaByTypeId(String typeId);
 
     /**
      * 根据吧Id修改对应经验值

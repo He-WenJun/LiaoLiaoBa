@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
@@ -37,4 +38,12 @@ public interface FileMapper {
      * @return 受影响行数
      */
     Integer insertFile(@Param("file") File file);
+
+
+    /**
+     * 查询帖子或评论中的图片
+     * @param objectIdList 目标Id集合
+     * @return
+     */
+    List<Map<String,Object>> queryPostCommentFile(@Param("objectIdList") List<String> objectIdList);
 }

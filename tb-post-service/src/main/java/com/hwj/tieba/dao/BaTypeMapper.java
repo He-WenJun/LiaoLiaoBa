@@ -23,4 +23,25 @@ public interface BaTypeMapper {
      * @return 子类型集合
      */
     List<BaSonType> queryBaSonTypeByParentId (@Param("idList") List<Integer> idList);
+
+    /**
+     * 按子类型Id查询对应的父类型Id
+     * @param sonTypeId 子类型Id
+     * @return
+     */
+    Integer queryParentIdBySonTypeId(@Param("sonTypeId") String sonTypeId);
+
+    /**
+     * 根据id查询父类型
+     * @param parentId 父类型Id
+     * @return
+     */
+    BaParentType queryParentTypeById(@Param("id") int parentId);
+
+    /**
+     * 根据Id查询子类型
+     * @param sonId 子类型Id
+     * @return
+     */
+    BaSonType querySonTypeById(@Param("id") int sonId);
 }

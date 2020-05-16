@@ -33,6 +33,15 @@
         </foreach>
     </select>
 
+    <select id="queryPostCommentFile" resultType="java.util.Map">
+        SELECT ObjectId AS objectId,FileId AS fileId
+        FROM post_file_relation
+        WHERE ObjectId IN 
+        <foreach collection="objectIdList" item="objectIdList" open="(" close=")" separator=",">
+            #{objectIdList}
+        </foreach>
+    </select>
+
     <insert id="insertFileList">
         INSERT INTO
         file

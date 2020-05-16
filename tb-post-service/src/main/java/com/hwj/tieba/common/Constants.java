@@ -26,6 +26,6 @@ public class Constants {
     }
 
     /**分页每页显示条数*/
-    public static final Integer pageCountSize = 5;
+    public static final Integer pageCountSize = 10;
 
 }
