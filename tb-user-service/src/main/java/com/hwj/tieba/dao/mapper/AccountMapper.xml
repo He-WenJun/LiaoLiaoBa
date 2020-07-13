@@ -25,9 +25,9 @@
         `Password` = #{md5Password}
     </select>
 
-    <select id="queryAccountByInfo" parameterType="com.hwj.tieba.entity.Account" resultMap="BaseResultMap">
+    <select id="queryAccount" parameterType="com.hwj.tieba.entity.Account" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column"></include>
+        <include refid="Base_Column"/>
         FROM account
         <where>
             <if test="userId != null" >
@@ -39,9 +39,18 @@
             <if test="email != null" >
                 OR Email = #{email}
             </if>
-            <if test="phone != null" >
-                OR Phone = #{phone}
-            </if>
+        </where>
+    </select>
+
+    <select id="queryAccountList" parameterType="com.hwj.tieba.entity.Account" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM account
+        <where>
+            UserID IN
+            <foreach collection="accountList" item="accountList" open="(" close=")" separator=",">
+                #{accountList.userId}
+            </foreach>
         </where>
     </select>
 

@@ -14,16 +14,23 @@ public interface AccountMapper {
      * 按账号和密码查询账号记录
      * @param accountNumber 账号 既可以是用户名也可以是邮箱
      * @param md5Password 账号密码
-     * @return  返回一个账号实例
+     * @return
      */
     Account queryAccountByAccountAndPassword(@Param("accountNumber") String accountNumber,@Param("md5Password") String md5Password);
 
     /**
      * 按账号信息查询账号
      * @param account 查询的账号
-     * @return 返回账号实例
+     * @return
      */
-    List<Account> queryAccountByInfo(Account account);
+    List<Account> queryAccount(Account account);
+
+    /**
+     * 按账号信息查询账号列表
+     * @param accountList 查询的账号集合
+     * @return
+     */
+    List<Account> queryAccountList(@Param("accountList") List<Account> accountList);
 
     /**
      * 插入账号

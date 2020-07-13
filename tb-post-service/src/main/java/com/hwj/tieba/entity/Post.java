@@ -7,12 +7,13 @@ public class Post {
     private Integer postType;
     private String topicId;
     private String userId;
-    private String baId;
+    private String moduleId;
     private String postName;
-    private String content;
+    private String postContent;
     private Long readCount;
     private Date enrollDate;
     private Date updateDate;
+
 
     public String getPostId() {
         return postId;
@@ -46,12 +47,12 @@ public class Post {
         this.userId = userId;
     }
 
-    public String getBaId() {
-        return baId;
+    public String getModuleId() {
+        return moduleId;
     }
 
-    public void setBaId(String baId) {
-        this.baId = baId;
+    public void setModuleId(String moduleId) {
+        this.moduleId = moduleId;
     }
 
     public String getPostName() {
@@ -62,12 +63,12 @@ public class Post {
         this.postName = postName;
     }
 
-    public String getContent() {
-        return content;
+    public String getPostContent() {
+        return postContent;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setPostContent(String postContent) {
+        this.postContent = postContent;
     }
 
     public Long getReadCount() {

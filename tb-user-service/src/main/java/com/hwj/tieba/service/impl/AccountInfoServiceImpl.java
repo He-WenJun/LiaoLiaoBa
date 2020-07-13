@@ -3,6 +3,7 @@ package com.hwj.tieba.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.hwj.tieba.common.Constants;
 import com.hwj.tieba.dao.AccountInfoMapper;
+import com.hwj.tieba.dao.AccountMapper;
 import com.hwj.tieba.dao.FileMapper;
 import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.entity.AccountInfo;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -24,6 +27,8 @@ public class AccountInfoServiceImpl implements AccountInfoService {
     private AccountInfoMapper accountInfoMapper;
     @Autowired
     private FileMapper fileMapper;
+    @Autowired
+    private AccountMapper accountMapper;
     @Autowired
     private RedisUtil redisUtil;
 
@@ -44,14 +49,14 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         }
 
         //查询用户头像ID和经验值
-        AccountInfo resultAccountInfo = accountInfoMapper.queryAccountExpAndHeadPicture(account.getUserId());
+        AccountInfo resultAccountInfo = accountInfoMapper.queryAccountInfo(account.getUserId());
         //查询出头像路径
         File resultImage = fileMapper.queryImageById(resultAccountInfo.getHeadPictureId());
 
         //计算账户等级
         int level = 1;
         Long exp = resultAccountInfo.getExp();
-        if(resultAccountInfo.getExp() >=100){
+        if(resultAccountInfo.getExp() >= Constants.LEVEL){
             level += (int) (resultAccountInfo.getExp() / Constants.LEVEL);
             exp = resultAccountInfo.getExp() % Constants.LEVEL;
         }
@@ -111,6 +116,53 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         redisUtil.del(Constants.TOKEN_PREFIX+"INFO:"+userId);
 
         return ServerResponse.createBySuccess("账号经验+"+increaseExp,null);
+    }
+
+    @Override
+    public ServerResponse<List<AccountVO>> getUserInfoList(List<String> userIdList) {
+        if(userIdList == null || userIdList.size() == 0){
+            throw new TieBaException("参数错误");
+        }
+
+        List<Account> accountList = new ArrayList<>();
+        for (String userId : userIdList){
+            Account account = new Account();
+            account.setUserId(userId);
+            accountList.add(account);
+        }
+        List<Account> resultAccountList = accountMapper.queryAccountList(accountList);
+        List<AccountInfo> resultAccountInfoList =  accountInfoMapper.queryAccountInfoList(userIdList);
+
+        List<String> imgIdList = new ArrayList<>();
+        for (AccountInfo accountInfo : resultAccountInfoList){
+            imgIdList.add(accountInfo.getHeadPictureId());
+            imgIdList.add(accountInfo.getBackgroundPictureId());
+        }
+        List<File> resultImageList = fileMapper.queryImageListById(imgIdList);
+
+
+        List<AccountVO> accountVOList = new ArrayList<>();
+        for(int i = 0; i < resultAccountList.size(); i++){
+            for (int j = 0; j < resultAccountInfoList.size(); j++) {
+                if (resultAccountList.get(i).getUserId().equals(resultAccountInfoList.get(j).getUserId())) {
+                    AccountVO accountVO = new AccountVO(resultAccountList.get(i), resultAccountInfoList.get(j));
+                    for (int a = 0; a < resultImageList.size(); a++) {
+                        if (accountVO.getHeadPictureSrc() != null && accountVO.getBackgroundPicture() != null) {
+                            break;
+                        }
+                        if (resultAccountInfoList.get(j).getHeadPictureId().equals(resultImageList.get(a).getId())) {
+                            accountVO.setHeadPictureSrc(resultImageList.get(a).getSrc().substring(resultImageList.get(a).getSrc().indexOf("file") - 1));
+                        } else if (resultAccountInfoList.get(j).getBackgroundPictureId().equals(resultImageList.get(a).getId())) {
+                            accountVO.setBackgroundPicture(resultImageList.get(a).getSrc().substring(resultImageList.get(a).getSrc().indexOf("file") - 1));
+                        }
+                    }
+                    accountVOList.add(accountVO);
+                    break;
+                }
+            }
+        }
+
+        return ServerResponse.createBySuccess(accountVOList);
     }
 
 

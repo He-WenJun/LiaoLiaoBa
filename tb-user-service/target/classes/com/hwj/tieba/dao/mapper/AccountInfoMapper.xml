@@ -18,14 +18,14 @@
     <insert id="insertAccountInfo" parameterType="com.hwj.tieba.entity.AccountInfo">
         INSERT INTO
         account_info
-        (<include refid="Base_Column"></include>)
+        (<include refid="Base_Column"/>)
         VALUES
         (#{userId},#{age},#{introduce},#{headPictureId},#{backgroundPictureId},#{exp},#{enrollDate},#{updateDate})
     </insert>
 
-    <select id="queryAccountExpAndHeadPictureList" resultMap="BaseResultMap">
+    <select id="queryAccountInfoList" resultMap="BaseResultMap">
         SELECT
-        HeadPictureID,EXP
+        <include refid="Base_Column"/>
         FROM
         account_info
         <where>
@@ -36,9 +36,9 @@
         </where>
     </select>
 
-    <select id="queryAccountExpAndHeadPicture" resultMap="BaseResultMap">
+    <select id="queryAccountInfo" resultMap="BaseResultMap">
         SELECT
-        HeadPictureID,EXP
+        <include refid="Base_Column"/>
         FROM
         account_info
         <where>

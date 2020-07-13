@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 @Controller
 public class AccountController {
@@ -112,6 +113,17 @@ public class AccountController {
     public ServerResponse<String> increaseAccountExp(Integer increaseExp,String token,String userId){
         ServerResponse serverResponse = accountInfoService.increaseAccountExp(increaseExp,token,userId);
         return serverResponse;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getUserInfoList", method = RequestMethod.POST)
+    public ServerResponse<String> getUserInfoList(@RequestBody List<String> userIdList){
+        ServerResponse serverResponse = accountInfoService.getUserInfoList(userIdList);
+        return serverResponse;
+    }
+
+    public ServerResponse<List<AccountVO>> getAccountInfoList(List<String> userIdList){
+        return null;
     }
 
     @InitBinder("acc")

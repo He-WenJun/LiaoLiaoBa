@@ -60,4 +60,13 @@
         (#{file.id},#{file.name},#{file.src},#{file.typeId},#{file.suffix},#{file.enrollDate},#{file.updateDate})
     </insert>
 
+    <insert id="insertPostCommentFile" parameterType="com.hwj.tieba.entity.PostFileRelation">
+        INSERT INTO post_file_relation
+        (Id,ObjectId,FileId,EnrollDate,UpdateDate)
+        VALUES
+        <foreach collection="uploads" item="uploads" separator=",">
+            (#{uploads.id},#{uploads.objectId},#{uploads.fileId},#{uploads.enrollDate},#{uploads.updateDate})
+        </foreach>
+    </insert>
+
 </mapper>

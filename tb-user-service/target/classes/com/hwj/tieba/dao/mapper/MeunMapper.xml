@@ -2,23 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hwj.tieba.dao.MenuMapper">
     <sql id="Base_Column_Menu_Parent">
-        ID,`Name`,EnrollDate,`Update`
+        ID,`Name`,Icon,Resource,EnrollDate,`Update`
     </sql>
     <resultMap id="BaseResultMap_Menu_Parent" type="com.hwj.tieba.entity.MenuParent">
         <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
         <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="icon" column="Icon" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="resource" column="Resource" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
         <result property="update" column="Update" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
     <select id="queryMenuParentById" resultMap="BaseResultMap_Menu_Parent">
         SELECT
-        <include refid="Base_Column_Menu_Parent"></include>
+        <include refid="Base_Column_Menu_Parent"/>
         FROM menu_parent_type
         <where>
             ID IN
             <foreach collection="idList" item="idList" open="(" close=")" separator=",">
-                #{idList}
+                #{idList.menuParentId}
             </foreach>
         </where>
     </select>
@@ -29,24 +31,46 @@
         ID,ParentID,`Name`,Resource,EnrollDate,UpdateDate
     </sql>
     <resultMap id="BaseResultMap_Menu_Son" type="com.hwj.tieba.entity.MenuSon">
-        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"></id>
-        <result property="parentId" column="ParentID" jdbcType="INTEGER" javaType="java.lang.Integer"></result>
-        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="resource" column="Resource" jdbcType="VARCHAR" javaType="java.lang.String"></result>
-        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
-        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"></result>
+        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="parentId" column="ParentID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="resource" column="Resource" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
 
     <select id="queryMenuSonByParentId" resultMap="BaseResultMap_Menu_Son">
-        SELECT
-        <include refid="Base_Column_Menu_Son"></include>
+        SELECT <include refid="Base_Column_Menu_Son"/>
         FROM menu_son_type
         <where>
             ParentID IN
             <foreach collection="idList" item="idList" open="(" close=")" separator=",">
-                #{idList}
+                #{idList.id}
             </foreach>
         </where>
     </select>
+
+    <sql id="Base_Column_Menu_Role_Item">
+        Id,MenuParentId,RoleId,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap_Menu_Role_Item" type="com.hwj.tieba.entity.Menu_Role_Item">
+        <id property="id" column="ID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="menuParentId" column="MenuParentId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="roleId" column="RoleId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+    <select id="queryMenuParentByRoleId" resultMap="BaseResultMap_Menu_Role_Item">
+        SELECT <include refid="Base_Column_Menu_Role_Item"/>
+        FROM menu_reole_item
+        <where>
+            RoleId IN
+            <foreach collection="roleIdList" item="roleIdList" open="(" close=")" separator=",">
+                #{roleIdList}
+            </foreach>
+        </where>
+
+    </select>
+
 
 </mapper>

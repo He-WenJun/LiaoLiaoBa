@@ -138,7 +138,7 @@ public class AccountServiceImpl implements AccountService {
         verificationAccount.setEmail(account.getEmail());
         verificationAccount.setUserName(account.getUserName());
 
-        List<Account> resultAccountList = accountMapper.queryAccountByInfo(verificationAccount);
+        List<Account> resultAccountList = accountMapper.queryAccount(verificationAccount);
 
         if(!StringUtils.isEmpty(resultAccountList)){
             for (Account resultAccount : resultAccountList ){
@@ -187,7 +187,9 @@ public class AccountServiceImpl implements AccountService {
         Account account = redisUtil.get(key_Account,Account.class);
         //删除redis中暂存的注册信息
         redisUtil.del(key_Account);
-        //存入注册时间和角色id
+        //存入用户Id,注册时间,角色id
+        if(account.getUserId() == null)
+            account.setUserId(UUIDUtil.getStringUUID());
         Date nowDate = new Date();
         account.setEnrollDate(nowDate);
         account.setUpdateDate(nowDate);
@@ -202,7 +204,6 @@ public class AccountServiceImpl implements AccountService {
         binding.setEnrollDate(nowDate);
         binding.setUpdateDate(nowDate);
 
-
         //初始化账号详细信息
         AccountInfo accountInfo = null;
         //拼接key
@@ -213,12 +214,13 @@ public class AccountServiceImpl implements AccountService {
             accountInfo = redisUtil.get(key_AccountInfo,AccountInfo.class);
         }else{
             accountInfo = new AccountInfo();
-            accountInfo.setHeadPictureId("0031cab2f3234845bfdd41ba7e93de38");
         }
-
+        if(StringUtils.isEmpty(accountInfo.getHeadPictureId()) || accountInfo.getHeadPictureId().equals("undefined"))
+            accountInfo.setHeadPictureId("0031cab2f3234845bfdd41ba7e93de38");
         accountInfo.setUserId(account.getUserId());
         accountInfo.setEnrollDate(account.getEnrollDate());
         accountInfo.setUpdateDate(account.getUpdateDate());
+        accountInfo.setBackgroundPictureId("0031cab2f3234845bfdd41ba7e93de38");
         accountInfo.setExp(0L);
 
         //插入账号信息
@@ -236,7 +238,7 @@ public class AccountServiceImpl implements AccountService {
 
         Account account = new Account();
         account.setUserId(userId);
-        List<Account> accountList = accountMapper.queryAccountByInfo(account);
+        List<Account> accountList = accountMapper.queryAccount(account);
         if(accountList.size() == 0){
            throw new TieBaException(1,"注册结果验证中...");
         }
@@ -288,7 +290,7 @@ public class AccountServiceImpl implements AccountService {
         //若查询到账号，则不是第一次使用支付宝登录，不用注册账号
         Account account = new Account();
         account.setUserId(accountJson.getString("user_id"));
-        List<Account> accountList = accountMapper.queryAccountByInfo(account);
+        List<Account> accountList = accountMapper.queryAccount(account);
         if(accountList.size() > 0){
             final String sessionId = request.getHeader("SessionId");
             //获取redis中的session对象

@@ -9,8 +9,8 @@
         <module name="tb-config-server" />
         <module name="tb-post-service" />
         <module name="tb-user-service" />
+        <module name="tb-mail-service" />
         <module name="tb-eureka-server" />
-        <module name="tb-verification-service" />
         <module name="tb-gateway-server" />
       </profile>
     </annotationProcessing>

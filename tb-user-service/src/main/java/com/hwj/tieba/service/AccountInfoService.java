@@ -1,8 +1,9 @@
 package com.hwj.tieba.service;
 
-import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.vo.AccountVO;
+
+import java.util.List;
 
 public interface AccountInfoService {
     /**
@@ -20,4 +21,11 @@ public interface AccountInfoService {
      * @return 增加结果
      */
     ServerResponse<String> increaseAccountExp(Integer increaseExp,String token, String userId);
+
+    /**
+     * 获取账号信息列表
+     * @param userIdList 包含用户Id
+     * @return
+     */
+    ServerResponse<List<AccountVO>> getUserInfoList(List<String> userIdList);
 }

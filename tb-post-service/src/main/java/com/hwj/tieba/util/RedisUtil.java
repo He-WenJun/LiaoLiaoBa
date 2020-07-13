@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -49,10 +51,29 @@ public class RedisUtil {
     public void del(String key){
         redisTemplate.delete(key);
     }
+
+    public void deletes(String prex) {
+        Set<String> keys = redisTemplate.keys(prex);
+        if (keys.size()>0) {
+            redisTemplate.delete(keys);
+        }
+    }
+
     public void hdel(String map,Object... keys){
         redisTemplate.opsForHash().delete(map,keys);
     }
+
     public boolean hasKey (String key){
         return redisTemplate.hasKey(key);
     }
+
+    public void listLeftPush(String key, Object value){
+        redisTemplate.opsForList().leftPush(key,JSON.toJSONString(value));
+    }
+
+    public void listRightPush(String key, Object value){
+        redisTemplate.opsForList().rightPush(key,JSON.toJSONString(value));
+    }
+
+
 }

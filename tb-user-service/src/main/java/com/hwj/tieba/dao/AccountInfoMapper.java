@@ -19,18 +19,18 @@ public interface AccountInfoMapper {
     Integer insertAccountInfo(AccountInfo accountInfo);
 
     /**
-     * 查询多个账号的经验值和头像
+     * 查询多个账号的详细信息
      * @param userIdList 用户ID集合
      * @return 用户经验值
      */
-    List<AccountInfo> queryAccountExpAndHeadPictureList(@Param("userIdList") List<String> userIdList);
+    List<AccountInfo> queryAccountInfoList(@Param("userIdList") List<String> userIdList);
 
     /**
-     * 查询多个账号的经验值和头像
+     * 查询账号的经验值和头像
      * @param userId 用户ID
      * @return 用户头像和经验值
      */
-    AccountInfo queryAccountExpAndHeadPicture(@Param("userId") String userId);
+    AccountInfo queryAccountInfo(@Param("userId") String userId);
 
     /**
      * 修改账号经验值

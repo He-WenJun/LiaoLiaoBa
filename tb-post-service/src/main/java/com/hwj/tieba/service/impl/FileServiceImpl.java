@@ -21,8 +21,9 @@ public class FileServiceImpl implements FileService {
         if(image == null){
             throw new TieBaException("参数有误");
         }
+        System.out.println(image.getSrc());
         //拼接储存路径
-        image.setSrc("/file/img"+image.getSrc().substring(image.getSrc().lastIndexOf("/")));
+        image.setSrc(image.getSrc().substring(image.getSrc().indexOf("file")-1));
         //修改后缀
         image.setSuffix(image.getSuffix().substring(image.getSuffix().lastIndexOf("/")+1));
         //生成图片Id
@@ -40,9 +41,5 @@ public class FileServiceImpl implements FileService {
         return serverResponse;
     }
 
-    public static void main(String[] args) {
-        String path = "B:\\nginx/conf";
-        String name = path.substring(path.indexOf("/"));
-        System.out.println(name);
-    }
+
 }

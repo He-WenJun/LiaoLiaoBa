@@ -6,21 +6,21 @@ import com.hwj.tieba.entity.MenuSon;
 import java.util.List;
 
 public class MenuVO {
-    private List<MenuParent> menuParentList;
+    private MenuParent menuParent;
     private List<MenuSon> menuSonsList;
 
     public MenuVO (){}
-    public MenuVO (List<MenuParent> menuParentList , List<MenuSon> menuSonsList){
-        this.menuParentList = menuParentList;
+    public MenuVO (MenuParent menuParent , List<MenuSon> menuSonsList){
+        this.menuParent = menuParent;
         this.menuSonsList = menuSonsList;
     }
 
-    public List<MenuParent> getMenuParentList() {
-        return menuParentList;
+    public MenuParent getMenuParent() {
+        return menuParent;
     }
 
-    public void setMenuParentList(List<MenuParent> menuParentList) {
-        this.menuParentList = menuParentList;
+    public void setMenuParent(MenuParent menuParent) {
+        this.menuParent = menuParent;
     }
 
     public List<MenuSon> getMenuSonsList() {

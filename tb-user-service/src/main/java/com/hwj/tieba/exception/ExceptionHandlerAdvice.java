@@ -25,7 +25,7 @@ public class ExceptionHandlerAdvice {
 
     @ExceptionHandler(TieBaException.class)
     public ServerResponse captureException(TieBaException e){
-        log.error(e.getMessage(),e);
+        //log.error(e.getMessage(),e);
         return ServerResponse.createByErrorCodeMessage(ResponseEnum.ERROR.getCode(),e.getMessage());
     }
 

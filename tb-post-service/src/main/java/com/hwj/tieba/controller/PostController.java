@@ -2,16 +2,20 @@ package com.hwj.tieba.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
+import com.hwj.tieba.entity.Comment;
 import com.hwj.tieba.entity.File;
+import com.hwj.tieba.entity.Post;
+import com.hwj.tieba.entity.Reply;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.service.*;
-import com.hwj.tieba.vo.BaTypeVO;
-import com.hwj.tieba.vo.BaVO;
-import com.hwj.tieba.vo.PostItemVO;
+import com.hwj.tieba.vo.ModuleTypeVo;
+import com.hwj.tieba.vo.ModuleVo;
+import com.hwj.tieba.vo.CommentItemVo;
+import com.hwj.tieba.vo.PostItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -21,17 +25,19 @@ public class PostController {
     @Autowired
     private SubscribeService subscribeService;
     @Autowired
-    private BaTypeService baTypeService;
+    private ModuleTypeService moduleTypeService;
     @Autowired
     private FileService fileService;
     @Autowired
-    private BaService baService;
+    private ModuleService moduleService;
     @Autowired
     private PostService postService;
+    @Autowired
+    private CommentService commentService;
 
 
     @ResponseBody
-    @RequestMapping(value = "/uploadImg")
+    @PostMapping(value = "/uploadImg")
     public ServerResponse<String> uploadImg(HttpServletRequest request){
         File image = new File();
         image.setName(request.getParameter("crowd_file_name"));
@@ -41,86 +47,135 @@ public class PostController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/getSubscribeBa")
-    public ServerResponse<List<BaVO>> getSubscribeBa(HttpServletRequest request){
-        ServerResponse serverResponse = subscribeService.getSubscribeBa(request.getHeader("SessionId"));
+    @GetMapping(value = "/getSubscribeModule")
+    public ServerResponse<List<ModuleVo>> getSubscribeBa(HttpServletRequest request){
+        ServerResponse serverResponse = subscribeService.getSubscribeModule(request.getHeader("SessionId"));
         return serverResponse;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/delSubscribe")
+    @PostMapping(value = "/delSubscribe")
     public ServerResponse<String> delSubscribeBa(String objectId, HttpServletRequest request){
         ServerResponse serverResponse = subscribeService.delSubscribe(request.getHeader("SessionId"),objectId);
         return serverResponse;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/addSubscribeBa", method = RequestMethod.POST)
-    public ServerResponse<String> addSubscribeBa(String baName, HttpServletRequest request){
-        ServerResponse serverResponse = subscribeService.addSubscribeBa(request.getHeader("SessionId"),baName);
+    @PostMapping(value = "/addSubscribeModule")
+    public ServerResponse<String> addSubscribeBa(String moduleName, HttpServletRequest request){
+        ServerResponse serverResponse = subscribeService.addSubscribeModule(request.getHeader("SessionId"),moduleName);
         return serverResponse;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/baType")
-    public ServerResponse<PageInfo<BaTypeVO>> baType(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber){
-        ServerResponse<PageInfo<BaTypeVO>> serverResponse = baTypeService.getBaType(pageNumber);
+    @GetMapping(value = "/moduleType")
+    public ServerResponse<PageInfo<ModuleTypeVo>> moduleType(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber){
+        ServerResponse<PageInfo<ModuleTypeVo>> serverResponse = moduleTypeService.getBaType(pageNumber);
         return serverResponse;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/singleBaSignIn")
-    public  ServerResponse<String> baSignIn(String baId, HttpServletRequest request){
-        ServerResponse serverResponse = baService.singleBaSignIn(request.getHeader("SessionId"),baId);
+    @PostMapping(value = "/singleModuleSignIn")
+    public  ServerResponse<String> moduleSignIn(String moduleId, HttpServletRequest request){
+        ServerResponse serverResponse = moduleService.singleModuleSignIn(request.getHeader("SessionId"),moduleId);
         return serverResponse;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/verificationSignIn")
-    public  ServerResponse<String> verificationSignIn(String baId, HttpServletRequest request){
-        ServerResponse serverResponse = baService.verificationSignIn(request.getHeader("SessionId"),baId);
+    @GetMapping(value = "/verificationSignIn")
+    public  ServerResponse<String> verificationSignIn(String moduleId, HttpServletRequest request){
+        ServerResponse serverResponse = moduleService.verificationSignIn(request.getHeader("SessionId"),moduleId);
         return serverResponse;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/baSignIn")
-    public  ServerResponse<String> baSignIn(HttpServletRequest request){
-        ServerResponse serverResponse = baService.baSignIn(request.getHeader("SessionId"));
+    @GetMapping(value = "/moduleSignIn")
+    public  ServerResponse<String> moduleSignIn(HttpServletRequest request){
+        ServerResponse serverResponse = moduleService.moduleSignIn(request.getHeader("SessionId"));
         return serverResponse;
     }
 
 
     @ResponseBody
-    @RequestMapping("/baList/{typeId}")
-    public  ServerResponse<BaTypeVO> baType(@PathVariable(value = "typeId") String typeId){
-        ServerResponse serverResponse = baTypeService.getSonType(typeId);
+    @GetMapping("/moduleList/{typeId}")
+    public  ServerResponse<ModuleTypeVo> moduleType(@PathVariable(value = "typeId") String typeId){
+        ServerResponse serverResponse = moduleTypeService.getSonType(typeId);
         return serverResponse;
     }
 
-    @RequestMapping("/baList/{typeId}/{pageNumber}")
-    public String baList(@PathVariable(value = "typeId") String typeId, @PathVariable(value = "pageNumber") int pageNumber, HttpServletRequest request){
-        ServerResponse serverResponse = baService.baList(pageNumber,typeId);
+    @GetMapping("/moduleList/{typeId}/{pageNumber}")
+    public String moduleList(@PathVariable(value = "typeId") String typeId, @PathVariable(value = "pageNumber") int pageNumber, HttpServletRequest request){
+        ServerResponse serverResponse = moduleService.moduleList(pageNumber,typeId);
         request.setAttribute("serverResponse",JSON.toJSONString(serverResponse));
         System.out.println(JSON.toJSONString(serverResponse));
-        return "tieBaList";
+        return "moduleList";
     }
 
-    @RequestMapping("/tieBaInfo/dispatcher/{Id}")
-    public String dispatcherTieBaInfo(@PathVariable("Id") String Id, HttpServletRequest request){
-        request.setAttribute("serverResponse",ServerResponse.createBySuccess(Id));
-        return "tiebaInfo";
-    }
-
-    @ResponseBody
-    @RequestMapping("/tieBaInfo")
-    public ServerResponse<BaVO> tieBaInfo(String id){
-        return baService.baInfo(id);
+    @GetMapping("/moduleInfo/dispatcher/{Id}")
+    public String dispatcherTieBaInfo(@PathVariable("Id") String id, HttpServletRequest request){
+        request.setAttribute("serverResponse",ServerResponse.createBySuccess(id));
+        return "moduleInfo";
     }
 
     @ResponseBody
-    @RequestMapping("/postList")
-    public  ServerResponse<PageInfo<PostItemVO>> postList(String baId, String pageNumber){
-        return postService.getPost(baId, pageNumber);
+    @GetMapping("/moduleInfo")
+    public ServerResponse<ModuleVo> moduleInfo(String id){
+        return moduleService.moduleInfo(id);
     }
+
+    @ResponseBody
+    @GetMapping("/postList")
+    public ServerResponse<PageInfo<PostItemVo>> postList(String moduleId, String pageNumber){
+        return postService.getPostList(moduleId, pageNumber);
+    }
+
+    @ResponseBody
+    @PostMapping("/commitPost")
+    public ServerResponse commitPost(Post post, HttpServletRequest request){
+        return postService.commitPost(post,request.getHeader("SessionId"));
+    }
+
+    @GetMapping("/postInfo/dispatcher/{Id}")
+    public String dispatcherPostInfo(@PathVariable("Id") String id, HttpServletRequest request){
+        request.setAttribute("serverResponse",ServerResponse.createBySuccess(id));
+        return "postInfo";
+    }
+
+    @ResponseBody
+    @GetMapping("/postInfo")
+    public ServerResponse<PostItemVo> post(String postId){
+        return postService.getPost(postId);
+    }
+
+    @ResponseBody
+    @GetMapping("/commentInfo")
+    public ServerResponse<PageInfo<CommentItemVo>> comment(@RequestParam(value = "postId") String postId, @RequestParam(value = "pageNumber", defaultValue = "1") int pageNumber){
+        return commentService.getComment(postId, pageNumber);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/commitComment")
+    public ServerResponse<String> commitComment(Comment comment, @RequestParam(value = "uploadIds", required = false ) List<String> uploadIds, HttpServletRequest request){
+        return commentService.insertComment(comment, uploadIds, request.getHeader("SessionId"));
+    }
+    @ResponseBody
+    @PostMapping(value = "/commitReply")
+    public ServerResponse<String> commitReply(Reply reply,String targetUserId,HttpServletRequest request){
+        return commentService.insertReply(reply,targetUserId,request.getHeader("SessionId"));
+    }
+
+    @ResponseBody
+    @GetMapping("/getMyPostName")
+    public ServerResponse<List<Post>> getMyPostName(HttpServletRequest request){
+        return postService.getMyPostName(request.getHeader("SessionId"));
+    }
+
+    @ResponseBody
+    @PostMapping("/updatePost")
+    public  ServerResponse<String> updatePost(Post post,HttpServletRequest request){
+        System.out.println(post.getPostContent());
+        return postService.updatePost(post,request.getHeader("SessionId"));
+    }
+
 
 }

@@ -2,14 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hwj.tieba.dao.CommentMapper">
     <sql id="Base_Column">
-        CommentId,PostId,UserId,Content,Praise,EnrollDate,UpdateDate
+        CommentId,PostId,UserId,Content,EnrollDate,UpdateDate
     </sql>
     <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Comment">
         <id property="commentId" column="CommentId" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="postId" column="PostId" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="userId" column="UserId" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="content" column="Content" jdbcType="VARCHAR" javaType="java.lang.String"/>
-        <result property="praise" column="Praise" jdbcType="BIGINT" javaType="java.lang.Long"/>
         <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
         <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
     </resultMap>
@@ -33,5 +32,19 @@
         </foreach>
         GROUP BY PostId
     </select>
+
+    <select id="queryComment" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column"/>
+        FROM `comment`
+        WHERE PostId = #{postId}
+        ORDER BY EnrollDate
+    </select>
+
+    <insert id="insertComment" parameterType="com.hwj.tieba.entity.Comment">
+        INSERT INTO `comment`
+        (<include refid="Base_Column"/>)
+        VALUES
+        (#{comment.commentId},#{comment.postId},#{comment.userId},#{comment.content},#{comment.enrollDate},#{comment.updateDate})
+    </insert>
 
 </mapper>

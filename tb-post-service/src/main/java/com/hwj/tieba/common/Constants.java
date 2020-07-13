@@ -17,12 +17,23 @@ public class Constants {
     /**在贴吧签到时贴吧所加的经验值*/
     public static final Integer SING_IN_EXP = 10;
 
+    /**评论时贴吧所加的经验值*/
+    public static final Integer COMMENT_EXP = 20;
+
     /**订阅类型*/
     public interface SubscribeType{
         /**用户*/
         int USER = 1;
         /**吧*/
-        int BA = 2;
+        int MODULE = 2;
+    }
+
+    /**生效状态*/
+    public interface StateType{
+        /**生效*/
+        int TAKE_EFFECT = 1;
+        /**失效*/
+        int LOSE_EFFICACY = 2;
     }
 
     /**分页每页显示条数*/

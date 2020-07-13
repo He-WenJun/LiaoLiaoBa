@@ -1,6 +1,7 @@
 package com.hwj.tieba.entity;
 
 import java.util.Date;
+import java.util.Map;
 
 public class File {
     /**文件ID*/

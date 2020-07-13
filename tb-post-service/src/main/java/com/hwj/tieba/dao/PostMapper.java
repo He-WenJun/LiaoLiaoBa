@@ -12,16 +12,44 @@ import java.util.Map;
 @Repository
 public interface PostMapper {
     /**
-     * 查询对应吧下的帖子数量
-     * @param baIdList  吧id列表
+     * 查询对应模块下的帖子数量
+     * @param moduleIdList  模块id列表
      * @return 帖子数量列表
      */
-    List<Map<String,Object>> countPost(@Param("baIdList") List<String> baIdList);
+    List<Map<String,Object>> countPost(@Param("moduleIdList") List<String> moduleIdList);
 
     /**
-     * 查询指定贴吧下的帖子,并按插入时间降序排序
-     * @param BaId 贴吧Id
+     * 查询指定模块下的帖子,并按插入时间降序排序
+     * @param moduleId 贴模块Id
      * @return
      */
-    List<Post> queryPostByBaId(@Param("baId") String BaId);
+    List<Post> queryPostByModuleId(@Param("moduleId") String moduleId);
+
+    /**
+     * 插入一条帖子
+     * @param post 帖子实例
+     * @return
+     */
+    int insertPost(@Param("post") Post post);
+
+    /**
+     * 查询一条帖子
+     * @param postId 帖子Id
+     * @return
+     */
+    Post queryPostByPostId(@Param("postId") String postId);
+
+    /**
+     * 根据用户Id查询帖子名字
+     * @param userId 用户Id
+     * @return
+     */
+    List<Post> queryPostNameByUserId(@Param("userId") String userId);
+
+    /**
+     * 根据帖子Id修改帖子
+     * @param post
+     * @return
+     */
+    int updatePostByPostId(@Param("post") Post post);
 }

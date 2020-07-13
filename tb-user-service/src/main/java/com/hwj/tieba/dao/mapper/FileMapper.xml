@@ -21,4 +21,15 @@
         WHERE
         ID = #{fileId}
     </select>
+
+    <select id="queryImageListById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM file
+        WHERE
+        ID IN
+        <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+            #{idList}
+        </foreach>
+    </select>
 </mapper>

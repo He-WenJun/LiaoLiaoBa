@@ -6,6 +6,7 @@ import com.hwj.tieba.dao.MenuMapper;
 import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.entity.MenuParent;
 import com.hwj.tieba.entity.MenuSon;
+import com.hwj.tieba.entity.Menu_Role_Item;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.service.MenuService;
 import com.hwj.tieba.util.RedisUtil;
@@ -14,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class MenuServiceImpl implements MenuService {
@@ -40,57 +39,52 @@ public class MenuServiceImpl implements MenuService {
 
         //若redis中包含菜单信息则直接返回，不再查询
         if(redisUtil.hasKey(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId())){
-            MenuVO menuVO = redisUtil.get(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId(),MenuVO.class);
+            List<MenuVO> menuVO = redisUtil.get(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId(),List.class);
             return ServerResponse.createBySuccess(menuVO);
         }
 
-
-        //获取角色Id
-        String roleIdStr = account.getRoleId();
-        String userName = account.getUserName();
-
-        //角色Id是一串数字字符串，一个用户可以有多个角色
-        char[] roleIdArray = roleIdStr.toCharArray();
-        List<Integer> menuParentIdList = new ArrayList<Integer>();
-        for (char roleIdCha:roleIdArray){
-            int roleIdInt = Integer.parseInt(String.valueOf(roleIdCha));
-            //是否为普通用户
-            if(roleIdInt == Constants.RoleType.ORDINARY){
-                menuParentIdList.add(1);
-                menuParentIdList.add(2);
-                menuParentIdList.add(3);
-                continue;
+        //一个用户可以有多个角色
+        //获取角色Id,Id以,号间隔,转换为Int
+        List<Integer> roleIdList = new ArrayList<>(3);
+        //若无，号则表明只有一个角色，不需要拆分
+        if(account.getRoleId().indexOf(",") != -1){
+            for(String idStr : account.getRoleId().split(",")){
+                roleIdList.add(Integer.valueOf(idStr));
             }
-            //是否为贴吧管理员
-            if(roleIdInt == Constants.RoleType.HELPER || roleIdInt == Constants.RoleType.MASTER){
-                menuParentIdList.add(4);
-                continue;
-            }
-            //是否为系统管理员
-            if(roleIdInt == Constants.RoleType.ADMIN){
-                menuParentIdList.add(5);
-                continue;
-            }
+        }else {
+            roleIdList.add(Integer.valueOf(account.getRoleId()));
         }
 
-        //按父菜单Id查询父菜单
-        List<MenuParent> menuParentList = menuMapper.queryMenuParentById(menuParentIdList);
-        //修改父菜单项个人中心名称为当前登录的用户名
-        for(MenuParent menuParent : menuParentList){
-            if(menuParent.getName().equals("Name")){
-                menuParent.setName(userName);
-                break;
-            }
-        }
+        //查询RoleId 对应的父菜单Id
+        List<Menu_Role_Item> menu_role_itemList = menuMapper.queryMenuParentByRoleId(roleIdList);
+        //查询父菜单
+        List<MenuParent> menuParentList = menuMapper.queryMenuParentById(menu_role_itemList);
 
         //按父菜单Id查询对应的子菜单
-        List<MenuSon> menuSonList = menuMapper.queryMenuSonByParentId(menuParentIdList);
+        List<MenuSon> menuSonList = menuMapper.queryMenuSonByParentId(menuParentList);
 
-        MenuVO menuVO = new MenuVO(menuParentList,menuSonList);
+        //修改父菜单项个人中心名称为当前登录的用户名,并组装菜单数据，一个父菜单对应多个子菜单
+        List<MenuVO> menuVOList = new ArrayList<>(5);
+        for(MenuParent menuParent : menuParentList){
+            if(menuParent.getName().equals("Name")){
+                menuParent.setName(account.getUserName());
+            }
+            List<MenuSon> temp = new ArrayList<>(3);
+            for (MenuSon menuSon : menuSonList){
+                if(menuParent.getId().equals(menuSon.getParentId())){
+                    temp.add(menuSon);
+                }
+            }
+            menuVOList.add(new MenuVO(menuParent, temp));
+        }
+
+
+
+        System.out.println("=======Menu=======:"+JSON.toJSONString(menuVOList));
 
         //将结果存入redis
-        redisUtil.set(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId(),60,JSON.toJSONString(menuVO));
+        redisUtil.set(Constants.TOKEN_PREFIX+"MENU:"+account.getUserId(),60,JSON.toJSONString(menuVOList));
 
-        return ServerResponse.createBySuccess(menuVO);
+        return ServerResponse.createBySuccess(menuVOList);
     }
 }

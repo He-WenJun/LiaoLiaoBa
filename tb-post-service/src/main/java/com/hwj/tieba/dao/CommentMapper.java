@@ -1,5 +1,6 @@
 package com.hwj.tieba.dao;
 
+import com.hwj.tieba.entity.Comment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -23,4 +24,18 @@ public interface CommentMapper {
      * @return
      */
     List<Map<String,Object>> commentCount(@Param("postIdList") List<String> postIdList);
+
+    /**
+     * 查询帖子下面的评论
+     * @param postId 帖子Id
+     * @return
+     */
+    List<Comment> queryComment(String postId);
+
+    /**
+     * 插入一条评论
+     * @param comment
+     * @return
+     */
+    int insertComment(@Param("comment") Comment comment);
 }

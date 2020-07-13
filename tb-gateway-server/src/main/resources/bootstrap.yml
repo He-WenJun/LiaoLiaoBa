@@ -24,3 +24,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:8111/eureka
+multipart:
+  enabled: true
+  location: classpath:/temp
