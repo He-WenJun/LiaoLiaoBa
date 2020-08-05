@@ -27,14 +27,14 @@
 
     <select id="queryAccount" parameterType="com.hwj.tieba.entity.Account" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column"/>
+        UserID,RoleID,UserName,Email,EnrollDate
         FROM account
         <where>
             <if test="userId != null" >
-                OR UserId = #{userId}
+                AND UserId = #{userId}
             </if>
             <if test="userName != null" >
-                OR UserName = #{userName}
+                AND UserName = #{userName}
             </if>
             <if test="email != null" >
                 OR Email = #{email}
@@ -44,7 +44,7 @@
 
     <select id="queryAccountList" parameterType="com.hwj.tieba.entity.Account" resultMap="BaseResultMap">
         SELECT
-        <include refid="Base_Column"/>
+        UserID,RoleID,UserName,Email,EnrollDate
         FROM account
         <where>
             UserID IN
@@ -61,5 +61,20 @@
         VALUES
         (#{userId},#{roleId},#{userName},#{email},#{phone},#{password},#{enrollDate},#{updateDate})
     </insert>
+
+    <update id="updateUserByUserId" parameterType="com.hwj.tieba.entity.Account">
+        UPDATE account
+        SET
+        <if test="userName != null">
+            UserName = #{userName}
+        </if>
+        <if test="roleId != null">
+            ,RoleID = #{roleId}
+        </if>
+        WHERE UserID = #{userId}
+    </update>
+
+
+
 
 </mapper>

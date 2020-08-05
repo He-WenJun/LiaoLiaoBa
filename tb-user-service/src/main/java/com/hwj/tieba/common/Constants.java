@@ -10,6 +10,7 @@ public class Constants {
     /**redis account相关的key以这个打头*/
     public static final String TOKEN_PREFIX = "TB:ACCOUNT:";
 
+
     /***redis 帖子相关的key以这个打头**/
     public static final String POST_TOKEN_PREFIX = "TB:POST:";
 

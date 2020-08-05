@@ -47,9 +47,15 @@
         SELECT
         <include refid="Base_Column"/>
         FROM module
-        WHERE
-        TypeId = #{typeId}
+        <where>
+            <if test="typeId != null">
+                TypeId = #{typeId}
+            </if>
+        </where>
+        ORDER BY EXP DESC
+
     </select>
+
 
     <update id="updateModuleExpByModuleId">
         UPDATE module updModule,
@@ -62,5 +68,18 @@
         SET updModule.EXP = selModule.EXP + #{increaseExp}
         WHERE updModule.ModuleId IN (selModule.ModuleId)
     </update>
+
+    <update id="updateModule" parameterType="com.hwj.tieba.entity.Module">
+        UPDATE module
+        SET ModuleName = #{moduleName},Introduce = #{introduce},HeadPictureID = #{headPictureId},BackgroundPictureID = #{backgroundPictureId},UpdateDate = #{updateDate}
+        WHERE ModuleId = #{moduleId}
+    </update>
+
+    <insert id="insertModule" parameterType="com.hwj.tieba.entity.Module">
+        INSERT INTO module
+        (<include refid="Base_Column"/>)
+        VALUES
+        (#{moduleId},#{typeId},#{moduleName},#{introduce},#{exp},#{headPictureId},#{backgroundPictureId},#{enrollDate},#{updateDate})
+    </insert>
 
 </mapper>

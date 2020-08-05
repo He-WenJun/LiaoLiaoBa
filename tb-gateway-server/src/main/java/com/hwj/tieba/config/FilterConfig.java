@@ -1,12 +1,8 @@
 package com.hwj.tieba.config;
 
-import com.hwj.tieba.filter.post.LoginTokenFiltre;
-import com.hwj.tieba.filter.post.SessionFilter;
-import org.springframework.boot.web.servlet.MultipartConfigFactory;
+import com.hwj.tieba.filter.post.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.servlet.MultipartConfigElement;
 
 @Configuration
 public class FilterConfig {
@@ -15,7 +11,20 @@ public class FilterConfig {
        return new SessionFilter();
     }
     @Bean
-    public LoginTokenFiltre getLoginTokenFiltre(){
-        return new LoginTokenFiltre();
+    public LoginTokenFilter getLoginTokenFilter(){
+        return new LoginTokenFilter();
     }
+    @Bean
+    public ModuleAdminFilter getModuleAdminFilter(){
+        return new ModuleAdminFilter();
+    }
+    @Bean
+    public ModuleBlackUserFilter getModuleBlackUserFilter(){
+        return new ModuleBlackUserFilter();
+    }
+    @Bean
+    public UserOthersSettingFilter getUserOthersSettingFilter(){
+        return new UserOthersSettingFilter();
+    }
+
 }

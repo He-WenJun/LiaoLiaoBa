@@ -7,7 +7,6 @@ public class Comment {
     private String postId;
     private String userId;
     private String content;
-    private Long praise;
     private Date enrollDate;
     private Date updateDate;
 
@@ -41,14 +40,6 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Long getPraise() {
-        return praise;
-    }
-
-    public void setPraise(Long praise) {
-        this.praise = praise;
     }
 
     public Date getEnrollDate() {

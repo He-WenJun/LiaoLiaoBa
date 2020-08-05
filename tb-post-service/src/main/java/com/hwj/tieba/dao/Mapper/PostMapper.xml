@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hwj.tieba.dao.PostMapper">
     <sql id="Base_Column">
-        PostId,PostType,TopicId,UserId,ModuleId,PostName,PostContent,ReadCount,EnrollDate,UpdateDate
+        PostId,PostType,TopicId,UserId,ModuleId,PostName,StateId,PostContent,ReadCount,EnrollDate,UpdateDate
     </sql>
     <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Post">
         <id property="postId" column="PostId" jdbcType="VARCHAR" javaType="java.lang.String"/>
@@ -11,6 +11,7 @@
         <result property="userId" column="UserId" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="moduleId" column="ModuleId" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="postName" column="PostName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="stateId" column="StateId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
         <result property="postContent" column="PostContent" jdbcType="VARCHAR" javaType="java.lang.String"/>
         <result property="readCount" column="ReadCount" jdbcType="BIGINT" javaType="java.lang.Long"/>
         <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
@@ -20,43 +21,67 @@
     <select id="countPost" resultType="java.util.Map">
         SELECT COUNT(PostId) AS `count`,ModuleId AS moduleId
         FROM post
-        WHERE ModuleId IN
+        WHERE StateId = 1 AND ModuleId IN
         <foreach collection="moduleIdList" item="moduleIdList" open="(" close=")" separator=",">
             #{moduleIdList}
         </foreach>
         GROUP BY ModuleId
     </select>
 
-    <select id="queryPostByModuleId" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column"/>
+    <select id="queryPostByModuleIdAndPostName" resultMap="BaseResultMap" parameterType="com.hwj.tieba.entity.Post">
+        SELECT PostId,PostName,UserId,ReadCount,EnrollDate
         FROM post
-        WHERE ModuleId = #{moduleId}
+        <where>
+            StateId = 1
+            <if test="moduleId != null">
+                AND ModuleId = #{moduleId}
+            </if>
+            <if test="postName != null">
+                AND PostName LIKE CONCAT('%',#{postName},'%')
+            </if>
+        </where>
         ORDER BY EnrollDate DESC
     </select>
 
     <select id="queryPostByPostId" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column"/>
         FROM post
-        WHERE PostId = #{postId}
+        WHERE StateId = 1 AND PostId = #{postId}
     </select>
 
     <select id="queryPostNameByUserId" resultMap="BaseResultMap">
-        SELECT PostId,PostName
+        SELECT  PostId,PostName,ReadCount,EnrollDate
         FROM post
-        WHERE UserId = #{userId}
+        WHERE StateId = 1 AND UserId = #{userId}
     </select>
 
     <insert id="insertPost" parameterType="com.hwj.tieba.entity.Post">
         INSERT INTO post
         (<include refid="Base_Column"/>)
         VALUES
-        (#{post.postId},#{post.postType},#{post.topicId},#{post.userId},#{post.moduleId},#{post.postName},#{post.postContent},#{post.readCount},#{post.enrollDate},#{post.updateDate})
+        (#{post.postId},#{post.postType},#{post.topicId},#{post.userId},#{post.moduleId},#{post.postName},#{post.stateId},#{post.postContent},#{post.readCount},#{post.enrollDate},#{post.updateDate})
     </insert>
+
+    <update id="updateStateIdByPostId">
+        UPDATE post
+        SET StateId = #{stateId}
+        WHERE PostId = #{post.postId}
+    </update>
 
     <update id="updatePostByPostId">
         UPDATE post
         SET PostName = #{post.postName}, PostContent = #{post.postContent}, UpdateDate = #{post.updateDate}
-        WHERE PostId = #{post.postId} AND UserId = #{post.userId}
+        WHERE StateId = 1 AND PostId = #{post.postId} AND UserId = #{post.userId}
     </update>
+    <update id="updateReadContentByPostId">
+        UPDATE post
+        SET ReadCount = ReadCount+1
+        WHERE PostId = #{postId}
+    </update>
+    <delete id="deletePostByPostId">
+        DELETE
+        FROM post
+        WHERE  PostId = #{post.postId}
+    </delete>
 
 </mapper>

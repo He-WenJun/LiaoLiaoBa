@@ -1,5 +1,6 @@
 package com.hwj.tieba.feign.fallback;
 
+import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.feign.UserService;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.vo.AccountVo;
@@ -22,5 +23,15 @@ public class UserServiceFallback implements UserService {
     @Override
     public ServerResponse<List<AccountVo>> getUserInfoList(List<String> userIdList) {
         return ServerResponse.createByErrorMessage("获取用户信息失败");
+    }
+
+    @Override
+    public ServerResponse<List<Account>> getAccountList(Account account) {
+        return ServerResponse.createByErrorMessage("获取用户信息失败");
+    }
+
+    @Override
+    public ServerResponse<String> updateAccountRoleId(Account account) {
+        return ServerResponse.createByErrorMessage("更新账号角色失败");
     }
 }

@@ -11,21 +11,29 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(name = "restapi.amap.com",url = "https://restapi.amap.com")
 public interface ApiCallUtil {
+    /**控制台应用名*/
+    String KEY = "eee0df052467b43687d0f0dc32d8b367";
+
     /**数据返回格式*/
     interface OUTPUT_TYPE{
         String JSON = "JSON";
         String XML = "XML";
     }
 
-    /**控制台应用名*/
-     String KEY = "eee0df052467b43687d0f0dc32d8b367";
-
     //IP地址查询，获得IP地址所在的城市
-     @GetMapping(value = "/v3/ip")
+     @RequestMapping(value = "/v3/ip")
     String queryIP(@RequestParam("key") String key, @RequestParam("ip") String ip, @RequestParam("output") String outputType);
 
+
+     /**返回的天气类型*/
+     interface EXTENSIONS_TYPE{
+         /**实时天气*/
+         String BASE = "base";
+         /**预测天气*/
+         String ALL = "all";
+     }
      //查询天气
-     @GetMapping(value = "/v3/weather/weatherInfo")
+     @RequestMapping(value = "/v3/weather/weatherInfo")
     String queryWeather(@RequestParam("key") String key,@RequestParam("city") String city, @RequestParam("extensions") String extensions);
 
 }

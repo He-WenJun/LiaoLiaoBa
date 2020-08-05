@@ -9,6 +9,7 @@ public class Post {
     private String userId;
     private String moduleId;
     private String postName;
+    private Integer stateId;
     private String postContent;
     private Long readCount;
     private Date enrollDate;
@@ -93,5 +94,13 @@ public class Post {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public Integer getStateId() {
+        return stateId;
+    }
+
+    public void setStateId(Integer stateId) {
+        this.stateId = stateId;
     }
 }

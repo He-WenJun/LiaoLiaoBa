@@ -7,6 +7,7 @@ import com.hwj.tieba.vo.AccountVO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public interface AccountService {
     /**
@@ -58,5 +59,25 @@ public interface AccountService {
      */
     ServerResponse zhiFuBaoLogin(HttpServletRequest request,HttpServletResponse response);
 
+    /**
+     * 查询账号
+     * @param account 账号
+     * @return
+     */
+    ServerResponse<List<Account>> getAccountList(Account account);
 
+    /**
+     * 修改账号的角色Id
+     * @param account
+     * @return
+     */
+    ServerResponse<String> updateAccountRoleId(Account account);
+
+    /**
+     * 退出登录
+     * @param request
+     * @param response
+     * @return
+     */
+    ServerResponse<String> logout(HttpServletRequest request, HttpServletResponse response);
 }

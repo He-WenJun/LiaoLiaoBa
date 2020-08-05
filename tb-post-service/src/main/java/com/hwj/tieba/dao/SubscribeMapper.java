@@ -1,5 +1,6 @@
 package com.hwj.tieba.dao;
 
+import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.entity.Subscribe;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,6 +19,8 @@ public interface SubscribeMapper {
      * @return 订阅列表
      */
     List<Subscribe> querySubscribeByUserIdAndTypeId(@Param("userId") String userId,@Param("typeId") Integer typeId);
+
+    List<Subscribe> querySubscribeByObjectAndTypeId(@Param("objectId") String objectId,@Param("typeId") Integer typeId);
 
     /**
      * 根据用户Id和订阅目标Id查询订阅记录
@@ -48,4 +51,5 @@ public interface SubscribeMapper {
      * @return 订阅个数
      */
     List<Map<String,Object>> countSubscribe(@Param("objectIdList") List<String> objectIdList);
+
 }

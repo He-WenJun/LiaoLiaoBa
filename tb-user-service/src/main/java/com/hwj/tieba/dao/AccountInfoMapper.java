@@ -47,4 +47,6 @@ public interface AccountInfoMapper {
      * @return 受影响行数
      */
     Integer updateAccountExp(@Param("increaseExp") Integer increaseExp,@Param("userId") String userId);
+
+    Integer updateAccountInfoByUserId(AccountInfo accountInfo);
 }

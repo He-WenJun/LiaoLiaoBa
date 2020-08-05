@@ -29,7 +29,7 @@ public class AccountInfo {
         this.backgroundPictureId = backgroundPictureId;
         this.exp = exp;
         this.enrollDate = enrollDate;
-        updateDate = updateDate;
+        this.updateDate = updateDate;
     }
 
     public String getUserId() {

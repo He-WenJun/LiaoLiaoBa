@@ -20,10 +20,10 @@ public interface PostMapper {
 
     /**
      * 查询指定模块下的帖子,并按插入时间降序排序
-     * @param moduleId 贴模块Id
+     * @param post
      * @return
      */
-    List<Post> queryPostByModuleId(@Param("moduleId") String moduleId);
+    List<Post> queryPostByModuleIdAndPostName(Post post);
 
     /**
      * 插入一条帖子
@@ -52,4 +52,10 @@ public interface PostMapper {
      * @return
      */
     int updatePostByPostId(@Param("post") Post post);
+
+    int deletePostByPostId(@Param("post") Post post);
+
+    int updateStateIdByPostId(@Param("post") Post post,@Param("stateId") int StateId);
+
+    int updateReadContentByPostId(@Param("postId") String postId);
 }

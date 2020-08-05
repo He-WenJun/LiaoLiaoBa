@@ -22,6 +22,7 @@
         <foreach collection="commentList" item="commentList" open="(" close=")" separator=",">
             #{commentList.commentId}
         </foreach>
+        ORDER BY EnrollDate
     </select>
 
 

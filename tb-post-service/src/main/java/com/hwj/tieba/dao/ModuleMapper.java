@@ -36,7 +36,7 @@ public interface ModuleMapper {
      * @param typeId 模块类型Id
      * @return 模块列表
      */
-    List<Module> queryModuleByTypeId(String typeId);
+    List<Module> queryModuleByTypeId(@Param("typeId") String typeId);
 
     /**
      * 根据模块Id修改对应经验值
@@ -45,4 +45,8 @@ public interface ModuleMapper {
      * @return 受影响行数
      */
     Integer updateModuleExpByModuleId(@Param("moduleIdList") List<String> moduleIdList,@Param("increaseExp") int increaseExp);
+
+    Integer updateModule(Module module);
+
+    Integer insertModule(Module module);
 }

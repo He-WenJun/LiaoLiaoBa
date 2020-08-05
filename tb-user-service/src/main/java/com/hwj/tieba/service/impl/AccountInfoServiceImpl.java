@@ -15,6 +15,7 @@ import com.hwj.tieba.util.RedisUtil;
 import com.hwj.tieba.vo.AccountVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -48,10 +49,13 @@ public class AccountInfoServiceImpl implements AccountInfoService {
             return ServerResponse.createBySuccess(accountVO);
         }
 
-        //查询用户头像ID和经验值
         AccountInfo resultAccountInfo = accountInfoMapper.queryAccountInfo(account.getUserId());
-        //查询出头像路径
-        File resultImage = fileMapper.queryImageById(resultAccountInfo.getHeadPictureId());
+
+        List<String> imageIdList = new ArrayList<>(2);
+        imageIdList.add(resultAccountInfo.getHeadPictureId());
+        imageIdList.add(resultAccountInfo.getBackgroundPictureId());
+
+        List<File> resultImage = fileMapper.queryImageListById(imageIdList);
 
         //计算账户等级
         int level = 1;
@@ -64,31 +68,23 @@ public class AccountInfoServiceImpl implements AccountInfoService {
         //将信息装入AccountOV中
         AccountVO accountVO = new AccountVO();
         accountVO.setUserName(account.getUserName());
+        accountVO.setUserId(account.getUserId());
         accountVO.setExp(exp);
         accountVO.setLevel(level);
-        accountVO.setHeadPictureSrc(resultImage.getSrc());
-        //accountVO.setEnrollDate(account.getEnrollDate());
+        accountVO.setAccountInfo(resultAccountInfo);
 
-       /* //若邮箱不为空则进行过滤
-        if(!StringUtils.isEmpty(account.getEmail())){
-            StringBuffer sbEmail = new StringBuffer(account.getEmail());
-            int index = sbEmail.lastIndexOf("@");
-            sbEmail.replace(index-5,index-1,"****");
-            accountVO.setEmail(sbEmail.toString());
-        }*/
-
-        /*//若手机号不为空则也进行过滤
-        if(!StringUtils.isEmpty(account.getPhone())){
-            StringBuffer sbPhone = new StringBuffer(account.getPhone());
-            sbPhone.replace(4,7,"****");
-            accountVO.setPhone(sbPhone.toString());
+        if(resultImage.size() > 1){
+            if(resultImage.get(0).getId().equals(resultAccountInfo.getHeadPictureId())){
+                accountVO.setHeadPictureSrc(resultImage.get(0).getSrc());
+                accountVO.setBackgroundPicture(resultImage.get(1).getSrc());
+            }else {
+                accountVO.setBackgroundPicture(resultImage.get(0).getSrc());
+                accountVO.setHeadPictureSrc(resultImage.get(1).getSrc());
+            }
+        }else {
+            accountVO.setHeadPictureSrc(resultImage.get(0).getSrc());
         }
 
-        //将无用信息置空，把账号信息存入redis保存的session对象当中
-        account.setPassword(null);
-        account.setPhone(null);
-        account.setUpdateDate(null);
-        account.setEnrollDate(null);*/
 
         redisUtil.set(Constants.TOKEN_PREFIX+"INFO:"+account.getUserId(),60,accountVO);
         return ServerResponse.createBySuccess(accountVO);
@@ -112,8 +108,8 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 
         accountInfoMapper.updateAccountExp(increaseExp,userId);
 
-        redisUtil.del(key);
-        redisUtil.del(Constants.TOKEN_PREFIX+"INFO:"+userId);
+        redisUtil.sDel(key);
+        redisUtil.sDel(Constants.TOKEN_PREFIX+"INFO:"+userId);
 
         return ServerResponse.createBySuccess("账号经验+"+increaseExp,null);
     }
@@ -164,6 +160,35 @@ public class AccountInfoServiceImpl implements AccountInfoService {
 
         return ServerResponse.createBySuccess(accountVOList);
     }
+
+    @Transactional
+    @Override
+    public ServerResponse<String> updateUserInfo(AccountInfo accountInfo,  Account account, String sessionId) {
+        Map<String, String> sessionMap = redisUtil.hget(sessionId);
+        if(sessionMap.get("Account") == null){
+            throw new TieBaException("未登录");
+        }
+        Account logInAccount = JSON.parseObject(sessionMap.get("Account"),Account.class);
+
+        List<Account> accountList = accountMapper.queryAccount(account);
+        if(accountList.size() > 0){
+            if(! accountList.get(0).getUserId().equals(logInAccount.getUserId())){
+                return ServerResponse.createByErrorMessage("用户名以被使用");
+            }
+        }
+
+        account.setUserId(logInAccount.getUserId());
+        accountMapper.updateUserByUserId(account);
+        accountInfo.setUserId(logInAccount.getUserId());
+        accountInfoMapper.updateAccountInfoByUserId(accountInfo);
+
+        logInAccount.setUserName(account.getUserName());
+        sessionMap.put("Account", JSON.toJSONString(logInAccount));
+        redisUtil.hmset(sessionId, sessionMap);
+        redisUtil.sDel(Constants.TOKEN_PREFIX+"INFO:"+logInAccount.getUserId());
+        return ServerResponse.createBySuccessMessage("保存成功");
+    }
+
 
 
 }

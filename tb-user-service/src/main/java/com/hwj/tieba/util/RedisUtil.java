@@ -46,13 +46,27 @@ public class RedisUtil {
         return redisTemplate.opsForValue().get(key);
     }
 
-    public void del(String key){
+    public void sDel(String key){
         redisTemplate.delete(key);
     }
-    public void hdel(String map,Object... keys){
+    public void hDel(String map,Object... keys){
         redisTemplate.opsForHash().delete(map,keys);
     }
     public boolean hasKey (String key){
         return redisTemplate.hasKey(key);
     }
+
+    public void listLeftPush(String key, Object value){
+        redisTemplate.opsForList().leftPush(key,JSON.toJSONString(value));
+    }
+
+    public void listRightPush(String key, Object value){
+        redisTemplate.opsForList().rightPush(key,JSON.toJSONString(value));
+    }
+
+    //将key持久化
+    public Boolean persistKey(String key) {
+        return redisTemplate.persist(key);
+    }
+
 }

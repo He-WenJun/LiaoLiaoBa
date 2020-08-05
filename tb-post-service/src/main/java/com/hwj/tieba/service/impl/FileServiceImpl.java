@@ -21,7 +21,6 @@ public class FileServiceImpl implements FileService {
         if(image == null){
             throw new TieBaException("参数有误");
         }
-        System.out.println(image.getSrc());
         //拼接储存路径
         image.setSrc(image.getSrc().substring(image.getSrc().indexOf("file")-1));
         //修改后缀

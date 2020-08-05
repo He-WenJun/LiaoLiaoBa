@@ -23,6 +23,16 @@
         TypeID = #{typeId}
     </select>
 
+    <select id="querySubscribeByObjectAndTypeId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM subscribe
+        WHERE
+        ObjectId = #{objectId}
+        AND
+        TypeID = #{typeId}
+    </select>
+
     <select id="querySubscribeByObjectIdAndUserId" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column"></include>
@@ -57,6 +67,7 @@
         </foreach>
         GROUP BY ID
     </select>
+
 
 
 </mapper>

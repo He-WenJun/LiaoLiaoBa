@@ -1,6 +1,7 @@
 package com.hwj.tieba.dao;
 
 import com.hwj.tieba.entity.Account;
+import com.hwj.tieba.resp.ServerResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -38,5 +39,12 @@ public interface AccountMapper {
      * @return
      */
     Integer insertAccount(Account account);
+
+    /**
+     * 按Id更新账号
+     * @param account
+     * @return
+     */
+    Integer updateUserByUserId(Account account);
 
 }

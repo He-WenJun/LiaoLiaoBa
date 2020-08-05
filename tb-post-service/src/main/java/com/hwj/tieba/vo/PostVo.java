@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class PostVo {
     private String postId;
+    private String userId;
     private String postTypeName;
     private String topic;
     private String moduleId;
@@ -18,6 +19,7 @@ public class PostVo {
     public PostVo(){}
     public PostVo(Post post){
         this.postId = post.getPostId();
+        this.userId = post.getUserId();
         this.moduleId = post.getModuleId();
         if(post.getPostName().length() > 41){
             this.postName = post.getPostName().substring(0,41)+"...";
@@ -28,6 +30,14 @@ public class PostVo {
         this.readCount = post.getReadCount();
         this.enrollDate = post.getEnrollDate();
         this.updateDate = post.getUpdateDate();
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getPostId() {

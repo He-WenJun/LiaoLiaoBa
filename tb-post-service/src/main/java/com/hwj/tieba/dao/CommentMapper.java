@@ -1,6 +1,7 @@
 package com.hwj.tieba.dao;
 
 import com.hwj.tieba.entity.Comment;
+import com.hwj.tieba.entity.Post;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -38,4 +39,6 @@ public interface CommentMapper {
      * @return
      */
     int insertComment(@Param("comment") Comment comment);
+
+    int deleteCommentByPostId(Post post);
 }

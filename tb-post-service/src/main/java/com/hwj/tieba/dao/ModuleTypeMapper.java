@@ -44,4 +44,6 @@ public interface ModuleTypeMapper {
      * @return
      */
     ModuleSonType querySonTypeById(@Param("id") int sonId);
+
+    List<ModuleSonType> querySonTypeByIdList(@Param("idList") List<Integer> idList);
 }

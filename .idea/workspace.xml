@@ -1,159 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8a975e5f-887f-460d-bbbc-c7353af018fb" name="Default Changelist" comment="Commit_6">
-      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/entity/Weather.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/dto/LoginIPDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ReplyMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ReplyMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/AccountInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/PostFileRelation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Reply.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/CommentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/CommentServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/AccountVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/CommentItemVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/ReplyItemVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/entity/Menu_Role_Item.java" afterDir="false" />
+    <list default="true" id="8a975e5f-887f-460d-bbbc-c7353af018fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/entity/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/entity/ModuleBlackUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/entity/OthersSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/ModuleAdminFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/ModuleBlackUserFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/UserOthersSettingFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/exception/ExceptionHandlerAdvice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/exception/TieBaException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/resp/ResponseEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/resp/ServerResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/service/WeatherService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/service/impl/WeatherServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/IpAddressUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/ServerEndpoint/PrivateMessageServerEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/config/CustomSpringConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/config/WebSocketConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleBlackUserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleUserRoleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleBlackUserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleUserRoleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/ModuleBlackUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/ModuleUserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/OthersSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/PrivateMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/ModuleBlackUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/ModuleUserRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/PrivateMessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleBlackUserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleUserRoleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/PrivateMessageServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/MessageVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/ModuleBlackUserVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PrivateMessageVo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/entity/OthersSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/AccountSetting.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountSettingImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-config-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/gateway-server/gateway-server-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/gateway-server/gateway-server-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/post-service/post-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/post-service/post-service-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/user-service/user-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/user-service/user-service-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/verification-service/verification-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/verification-service/verification-service-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/verification-service/verification-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/src/main/resources/shared/mail-service/mail-service-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-config-server/target/classes/shared/gateway-server/gateway-server-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/target/classes/shared/gateway-server/gateway-server-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-config-server/target/classes/shared/post-service/post-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/target/classes/shared/post-service/post-service-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-config-server/target/classes/shared/user-service/user-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/target/classes/shared/user-service/user-service-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-config-server/target/classes/shared/verification-service/verification-service-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-config-server/target/classes/shared/verification-service/verification-service-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-config-server/target/classes/shared/verification-service/verification-service-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/TBGatewayServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/TBGatewayServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/config/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/config/FilterConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-gateway-server/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/config/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/config/common/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/LoginTokenFiltre.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/LoginTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/SessionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/SessionFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/util/RedisUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/TBGatewayServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/TBGatewayServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/config/FilterConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/config/FilterConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/config/common/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/config/common/Constants.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/filter/post/SessionFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/filter/post/SessionFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/util/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-gateway-server/target/classes/com/hwj/tieba/util/RedisUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/controller/VerificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/controller/MailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/entity/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/vo/WeatherVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/ApiCallUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/ApiCallUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/src/test/java/QueryIP.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/test/java/QueryIP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/META-INF/tb-verification-service.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/TBVerificationService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/stream/LoginIpAddressListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/stream/LoginIpAddressListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/DateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/DateUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/QueryIPUtil$OUTPUT_TYPE.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/QueryIPUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/target/test-classes/QueryIP.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/test-classes/QueryIP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-mail-service/tb-mail-service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/common/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/BaMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/BaTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleTypeMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/CommentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/CommentMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/FileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/FileMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/BaMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/BaTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleTypeMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/CommentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/CommentMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/FileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/FileMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ModuleTypeMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/PostMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/PostMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ReplyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/ReplyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/SubscribeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/Mapper/SubscribeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/ModuleTypeMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/PostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/PostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Ba.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Module.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/BaParentType.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/ModuleParentType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/BaSonType.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/ModuleSonType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/SubscribeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/dao/SubscribeMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/File.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/entity/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/exception/ExceptionHandlerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/exception/ExceptionHandlerAdvice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/feign/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/feign/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/feign/fallback/UserServiceFallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/feign/fallback/UserServiceFallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/BaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/ModuleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/BaTypeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/ModuleTypeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/ModuleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/ModuleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/SubscribeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/SubscribeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/BaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/BaTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleTypeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/FileServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/FileServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleTypeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleTypeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/PostServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/SubscribeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/SubscribeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/util/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/BaTypeVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/ModuleTypeVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/BaVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/ModuleVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PostItemVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PostItemVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PostVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PostVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/ModuleVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/ModuleVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PostVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/vo/PostVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-post-service/target/classes/com/hwj/tieba/controller/PostController.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-post-service/target/classes/com/hwj/tieba/controller/PostController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/common/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/controller/AccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/AccountInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/AccountInfoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/AccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/AccountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/FileMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/FileMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/MenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/MenuMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/AccountInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/AccountInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/AccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/AccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/FileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/FileMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/MeunMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/dao/mapper/MeunMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/entity/AccountInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/entity/AccountInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/entity/MenuParent.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/entity/MenuParent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/exception/ExceptionHandlerAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/exception/ExceptionHandlerAdvice.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/AccountInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/AccountInfoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountInfoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/util/RedisUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/vo/AccountVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/vo/AccountVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/vo/MenuVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/vo/MenuVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/META-INF/tb-user-service.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/common/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/common/Constants.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/controller/AccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/controller/AccountController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/AccountInfoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/AccountInfoMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/AccountMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/AccountMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/FileMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/FileMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/MenuMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/MenuMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/AccountInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/AccountInfoMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/AccountMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/AccountMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/FileMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/FileMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/MeunMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/dao/mapper/MeunMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/entity/MenuParent.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/entity/MenuParent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/exception/ExceptionHandlerAdvice.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/exception/ExceptionHandlerAdvice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/entity/AccountInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/entity/AccountInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/AccountInfoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/AccountInfoService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/AccountService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/impl/AccountInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/impl/AccountInfoServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/impl/AccountServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/impl/AccountServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/impl/MenuServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/service/impl/MenuServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/util/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/util/RedisUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/vo/AccountVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/vo/AccountVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/vo/MenuVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-user-service/target/classes/com/hwj/tieba/vo/MenuVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/TBVerificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/TBMailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/controller/VerificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/controller/VerificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/dao/LoginLocationMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/dao/LoginLocationMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/dao/mapper/LoginLocation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/dao/mapper/LoginLocation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/dto/AccountEnrollDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/dto/AccountEnrollDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/dto/LoginIPDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/dto/LoginIPDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/entity/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/entity/LoginLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/entity/LoginLocation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/service/LoginLocationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/service/LoginLocationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/service/impl/LoginLocationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/service/impl/LoginLocationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/stream/EnrollMailVerificationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/stream/EnrollMailVerificationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/stream/LoginIpAddressListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/stream/LoginIpAddressListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/stream/consumer/EnrollMailVerificationConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/stream/consumer/EnrollMailVerificationConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/stream/consumer/LoginIpAddressConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/stream/consumer/LoginIpAddressConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/DateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/util/MailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/MailUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/util/QueryIPUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/ApiCallUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/util/UUIDUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/UUIDUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/java/com/hwj/tieba/util/ValidateCodeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/java/com/hwj/tieba/util/ValidateCodeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/main/resources/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/src/test/java/QueryIP.java" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/src/test/java/QueryIP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/META-INF/spring-configuration-metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/META-INF/tb-verification-service.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/META-INF/tb-verification-service.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/bootstrap.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/TBVerificationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/TBVerificationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/common/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/common/Constants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/controller/VerificationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/dao/LoginLocationMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/dao/LoginLocationMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/dao/mapper/LoginLocation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/dao/mapper/LoginLocation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/dto/LoginIPDto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/entity/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/entity/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/entity/LoginLocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/entity/LoginLocation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/service/LoginLocationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/service/LoginLocationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/service/impl/LoginLocationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/service/impl/LoginLocationServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/stream/EnrollMailVerificationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/stream/EnrollMailVerificationListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/stream/LoginIpAddressListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/stream/LoginIpAddressListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/stream/consumer/EnrollMailVerificationConsumer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/stream/consumer/LoginIpAddressConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/stream/consumer/LoginIpAddressConsumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/DateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/DateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/MailUtil$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/MailUtil$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/MailUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/MailUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/QueryIPUtil$OUTPUT_TYPE.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/QueryIPUtil$OUTPUT_TYPE.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/QueryIPUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/QueryIPUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/RedisUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/RedisUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/UUIDUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/classes/com/hwj/tieba/util/UUIDUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/classes/com/hwj/tieba/util/ValidateCodeUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/target/test-classes/QueryIP.class" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/target/test-classes/QueryIP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tb-verification-service/tb-verification-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tb-mail-service/tb-mail-service.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +192,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -217,7 +203,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/vhr/vhr" />
+    <property name="last_opened_file_path" value="F:/ideaJava/tieba" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -227,22 +213,25 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.21805792" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="DockerRegistry" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.hwj.tieba" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\ideaJava\tieba\tb-mail-service\src\main\java\com\hwj\tieba" />
       <recent name="F:\ideaJava\tieba\tb-post-service\src\main\java\com\hwj\tieba\dao\Mapper" />
       <recent name="F:\ideaJava\tieba\tb-post-service\src\main\java\com\hwj\tieba" />
       <recent name="F:\ideaJava\tieba\tb-config-server\src\main\resources\shared\post-service" />
       <recent name="F:\ideaJava\tieba\tb-post-service\src\main\resources" />
-      <recent name="F:\ideaJava\tieba\tb-gateway-server\src\main\java\com\hwj\tieba" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.hwj.tieba.vo" />
       <recent name="com.hwj.tieba.entity" />
+      <recent name="com.hwj.tieba.service" />
       <recent name="com.hwj.tieba.util" />
+      <recent name="com.hwj.tieba.vo" />
       <recent name="com.hwj.tieba.dto" />
-      <recent name="com.hwj.tieba.dao" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\ideaJava\tieba\tb-user-service\src\main\java\com\hwj\tieba\dao\mapper" />
@@ -255,9 +244,9 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.TBMailService">
-    <configuration name="PostServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hwj.tieba.service.impl.PostServiceImpl" />
+  <component name="RunManager" selected="Spring Boot.TBGatewayServer">
+    <configuration name="ModuleServiceImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.hwj.tieba.service.impl.ModuleServiceImpl" />
       <module name="tb-post-service" />
       <extension name="coverage">
         <pattern>
@@ -270,7 +259,7 @@
       </method>
     </configuration>
     <configuration name="TBConfigServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="tb-config-server" />
+      <module name="tb-config-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.hwj.tieba.*" />
@@ -283,7 +272,7 @@
       </method>
     </configuration>
     <configuration name="TBEurekaService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="tb-eureka-server" />
+      <module name="tb-eureka-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.hwj.tieba.*" />
@@ -296,7 +285,7 @@
       </method>
     </configuration>
     <configuration name="TBGatewayServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="tb-gateway-server" />
+      <module name="tb-gateway-service" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.hwj.tieba.*" />
@@ -308,15 +297,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TBMailService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+    <configuration name="TBMailService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="tb-mail-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.hwj.tieba.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.hwj.tieba.TBMailService" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -338,21 +322,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.PostServiceImpl" />
-      <item itemvalue="Spring Boot.TBPostService" />
+      <item itemvalue="Application.ModuleServiceImpl" />
       <item itemvalue="Spring Boot.TBUserService" />
+      <item itemvalue="Spring Boot.TBPostService" />
+      <item itemvalue="Spring Boot.TBMailService" />
       <item itemvalue="Spring Boot.TBConfigServer" />
       <item itemvalue="Spring Boot.TBEurekaService" />
       <item itemvalue="Spring Boot.TBGatewayServer" />
-      <item itemvalue="Spring Boot.TBMailService" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.TBMailService" />
         <item itemvalue="Spring Boot.TBGatewayServer" />
         <item itemvalue="Spring Boot.TBEurekaService" />
         <item itemvalue="Spring Boot.TBConfigServer" />
-        <item itemvalue="Application.PostServiceImpl" />
+        <item itemvalue="Application.ModuleServiceImpl" />
       </list>
     </recent_temporary>
   </component>
@@ -360,17 +343,12 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.14393939" />
+          <option name="contentProportion" value="0.18668832" />
           <treeState>
             <expand>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -490,7 +468,44 @@
       <workItem from="1594174153057" duration="9984000" />
       <workItem from="1594444520555" duration="15856000" />
       <workItem from="1594535580912" duration="19269000" />
-      <workItem from="1594617896143" duration="5866000" />
+      <workItem from="1594617896143" duration="5968000" />
+      <workItem from="1594628503629" duration="196000" />
+      <workItem from="1594628714041" duration="2229000" />
+      <workItem from="1594630966491" duration="13915000" />
+      <workItem from="1594714067560" duration="2402000" />
+      <workItem from="1594835426675" duration="15000" />
+      <workItem from="1594913102406" duration="3315000" />
+      <workItem from="1594917770950" duration="6398000" />
+      <workItem from="1594924198022" duration="924000" />
+      <workItem from="1594957250706" duration="1680000" />
+      <workItem from="1594963722614" duration="3711000" />
+      <workItem from="1594967450891" duration="6475000" />
+      <workItem from="1595144140378" duration="6067000" />
+      <workItem from="1595216455551" duration="18932000" />
+      <workItem from="1595306100731" duration="22605000" />
+      <workItem from="1595386691827" duration="18077000" />
+      <workItem from="1595469441265" duration="42578000" />
+      <workItem from="1595560155892" duration="6469000" />
+      <workItem from="1595586661789" duration="15338000" />
+      <workItem from="1595648496380" duration="18386000" />
+      <workItem from="1595742836128" duration="23249000" />
+      <workItem from="1595826145555" duration="26349000" />
+      <workItem from="1595915549718" duration="17339000" />
+      <workItem from="1595994105345" duration="17686000" />
+      <workItem from="1596041665148" duration="621000" />
+      <workItem from="1596042478217" duration="1612000" />
+      <workItem from="1596044276812" duration="1265000" />
+      <workItem from="1596046431611" duration="3034000" />
+      <workItem from="1596050623834" duration="957000" />
+      <workItem from="1596052304239" duration="352000" />
+      <workItem from="1596052946317" duration="1138000" />
+      <workItem from="1596076355323" duration="18897000" />
+      <workItem from="1596151611372" duration="22126000" />
+      <workItem from="1596252531568" duration="26618000" />
+      <workItem from="1596338958642" duration="12640000" />
+      <workItem from="1596432971469" duration="6373000" />
+      <workItem from="1596443899859" duration="14447000" />
+      <workItem from="1596472344048" duration="5918000" />
     </task>
     <task id="LOCAL-00001" summary="修改了json字符串存入redis会添加转义符的问题，添加了获取用户信息功能，建立了post-service模块">
       <created>1586534123995</created>
@@ -520,7 +535,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589634048068</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="备份">
+      <created>1594628446868</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1594628446868</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,167 +566,264 @@
     <MESSAGE value="Commit_4" />
     <MESSAGE value="Commit_5" />
     <MESSAGE value="Commit_6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit_6" />
+    <MESSAGE value="备份" />
+    <option name="LAST_COMMIT_MESSAGE" value="备份" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="181" key="#Project_Structure" timestamp="1587391811034">
+    <state x="675" y="199" key="#Docker_Image" timestamp="1594973930714">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="181" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1587391811034" />
+    <state x="675" y="199" key="#Docker_Image/0.0.1920.1040@0.0.1920.1040" timestamp="1594973930714" />
+    <state x="800" y="365" key="#Docker_Registry" timestamp="1594920123840">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="800" y="365" key="#Docker_Registry/0.0.1920.1040@0.0.1920.1040" timestamp="1594920123840" />
+    <state x="552" y="181" key="#Project_Structure" timestamp="1596106798484">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="181" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1596106798484" />
+    <state x="552" y="181" key="#Pull_Image" timestamp="1594920666652">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="181" key="#Pull_Image/0.0.1920.1040@0.0.1920.1040" timestamp="1594920666652" />
+    <state x="595" y="37" key="#TBEurekaService" timestamp="1595144459039">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="595" y="37" key="#TBEurekaService/0.0.1920.1040@0.0.1920.1040" timestamp="1595144459039" />
+    <state x="595" y="37" key="#TBEurekaService_(1)" timestamp="1595144391213">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="595" y="37" key="#TBEurekaService_(1)/0.0.1920.1040@0.0.1920.1040" timestamp="1595144391213" />
     <state x="690" y="278" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1589961118013">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="278" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1589961118013" />
-    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1590542732946">
+    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594630904213">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590542732946" />
-    <state x="908" y="249" key="#com.intellij.ide.util.MemberChooser" timestamp="1594568623114">
+    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594630904213" />
+    <state x="796" y="403" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog" timestamp="1594629606527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="908" y="249" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594568623114" />
-    <state x="689" y="308" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1590542479343">
+    <state x="796" y="403" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594629606527" />
+    <state x="908" y="249" key="#com.intellij.ide.util.MemberChooser" timestamp="1596454443965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="689" y="308" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1590542479343" />
-    <state x="601" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1586857320794">
+    <state x="908" y="249" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1596454443965" />
+    <state x="690" y="300" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1594630801149">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="601" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586857320794" />
-    <state x="716" y="386" width="488" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1586921598674">
+    <state x="690" y="300" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594630801149" />
+    <state x="689" y="308" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594630888291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="716" y="386" width="488" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1586921598674" />
-    <state x="227" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1594625343091">
+    <state x="689" y="308" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594630888291" />
+    <state x="601" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1595258549201">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="227" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594625343091" />
-    <state x="837" y="226" key="#xdebugger.evaluate" timestamp="1586519359951">
+    <state x="601" y="448" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595258549201" />
+    <state x="227" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595478953576">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="837" y="226" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1586519359951" />
-    <state x="563" y="28" width="991" height="1012" key="CommitChangelistDialog2" timestamp="1589634089530">
+    <state x="227" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595478953576" />
+    <state x="675" y="129" key="#docker/Dockerfile" timestamp="1595144199680">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="563" y="28" width="991" height="1012" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1589634089530" />
-    <state width="517" height="466" key="DebuggerActiveHint" timestamp="1594548710614">
+    <state x="675" y="129" key="#docker/Dockerfile/0.0.1920.1040@0.0.1920.1040" timestamp="1595144199680" />
+    <state x="552" y="181" key="#阿里云" timestamp="1595226659696">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="517" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1594548710614" />
-    <state x="184" y="86" key="DiffContextDialog" timestamp="1588695292475">
+    <state x="552" y="181" key="#阿里云/0.0.1920.1040@0.0.1920.1040" timestamp="1595226659696" />
+    <state x="563" y="28" width="991" height="1012" key="CommitChangelistDialog2" timestamp="1594628444613">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588695292475" />
-    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1594026352638">
+    <state x="563" y="28" width="991" height="1012" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1594628444613" />
+    <state width="538" height="466" key="DebuggerActiveHint" timestamp="1596475605716">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594026352638" />
-    <state width="777" height="454" key="GridCell.Tab.0.bottom" timestamp="1594628147967">
+    <state width="538" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1596475605716" />
+    <state x="184" y="86" key="DiffContextDialog" timestamp="1594628458181">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.0.center" timestamp="1594628147967">
+    <state x="184" y="86" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594628458181" />
+    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1596477798702">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.0.left" timestamp="1594628147967">
+    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1596477798702" />
+    <state x="785" y="418" width="373" height="204" key="Github.CreateGistDialog" timestamp="1596444917191">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.0.right" timestamp="1594628147967">
+    <state x="785" y="418" width="373" height="204" key="Github.CreateGistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596444917191" />
+    <state width="1502" height="607" key="GridCell.Tab.0.bottom" timestamp="1596479006000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.1.bottom" timestamp="1594628147967">
+    <state width="1502" height="607" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596479006000" />
+    <state width="1502" height="607" key="GridCell.Tab.0.center" timestamp="1596479005999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.1.center" timestamp="1594628147967">
+    <state width="1502" height="607" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596479005999" />
+    <state width="1502" height="607" key="GridCell.Tab.0.left" timestamp="1596479005999">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.1.left" timestamp="1594628147967">
+    <state width="1502" height="607" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596479005999" />
+    <state width="1502" height="607" key="GridCell.Tab.0.right" timestamp="1596479006000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="777" height="454" key="GridCell.Tab.1.right" timestamp="1594628147967">
+    <state width="1502" height="607" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596479006000" />
+    <state width="1502" height="607" key="GridCell.Tab.1.bottom" timestamp="1596479006000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="777" height="454" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594628147967" />
-    <state width="1581" height="394" key="GridCell.Tab.2.bottom" timestamp="1594554335482">
+    <state width="1502" height="607" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596479006000" />
+    <state width="1502" height="607" key="GridCell.Tab.1.center" timestamp="1596479006000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1581" height="394" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594554335482" />
-    <state width="1581" height="394" key="GridCell.Tab.2.center" timestamp="1594554335482">
+    <state width="1502" height="607" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596479006000" />
+    <state width="1502" height="607" key="GridCell.Tab.1.left" timestamp="1596479006000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1581" height="394" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594554335482" />
-    <state width="1581" height="394" key="GridCell.Tab.2.left" timestamp="1594554335482">
+    <state width="1502" height="607" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596479006000" />
+    <state width="1502" height="607" key="GridCell.Tab.1.right" timestamp="1596479006000">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1581" height="394" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594554335482" />
-    <state width="1581" height="394" key="GridCell.Tab.2.right" timestamp="1594554335482">
+    <state width="1502" height="607" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596479006000" />
+    <state width="1502" height="449" key="GridCell.Tab.2.bottom" timestamp="1596479005993">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1581" height="394" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594554335482" />
+    <state width="1502" height="449" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596479005993" />
+    <state width="1502" height="449" key="GridCell.Tab.2.center" timestamp="1596479005993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1502" height="449" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596479005993" />
+    <state width="1502" height="449" key="GridCell.Tab.2.left" timestamp="1596479005993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1502" height="449" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596479005993" />
+    <state width="1502" height="449" key="GridCell.Tab.2.right" timestamp="1596479005993">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1502" height="449" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596479005993" />
     <state x="490" y="178" key="Maven.ArtifactSearchDialog" timestamp="1594007435071">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="178" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594007435071" />
-    <state x="293" y="132" width="1398" height="845" key="SettingsEditor" timestamp="1594628194153">
+    <state x="632" y="258" key="NewModule_or_Project.wizard" timestamp="1594629578362">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="293" y="132" width="1398" height="845" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594628194153" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1588695295233">
+    <state x="632" y="258" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1594629578362" />
+    <state x="293" y="132" width="1398" height="845" key="SettingsEditor" timestamp="1594967906448">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1588695295233" />
+    <state x="293" y="132" width="1398" height="845" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594967906448" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1594628461313">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1594628461313" />
     <state x="759" y="300" key="chooseDestDirectoryDialog" timestamp="1594007059989">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="759" y="300" key="chooseDestDirectoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594007059989" />
-    <state x="652" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1594619466783">
+    <state x="701" y="264" key="com.intellij.docker.deployment.ui.DockerPortBindingsField.v173.dialogSize" timestamp="1594973906603">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="652" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594619466783" />
-    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587218046090">
+    <state x="701" y="264" key="com.intellij.docker.deployment.ui.DockerPortBindingsField.v173.dialogSize/0.0.1920.1040@0.0.1920.1040" timestamp="1594973906603" />
+    <state x="652" y="347" key="com.intellij.ide.util.TipDialog" timestamp="1596444010388">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="754" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587218046090" />
-    <state x="344" y="303" width="1172" height="565" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1594554324743">
+    <state x="652" y="347" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1596444010388" />
+    <state x="344" y="303" width="1172" height="565" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1596456832251">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="344" y="303" width="1172" height="565" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1594554324743" />
-    <state x="334" y="224" key="new project wizard" timestamp="1594628183541">
+    <state x="344" y="303" width="1172" height="565" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1040@0.0.1920.1040" timestamp="1596456832251" />
+    <state x="334" y="224" key="new project wizard" timestamp="1594629492011">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="334" y="224" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1594628183541" />
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1594449007226">
+    <state x="334" y="224" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1594629492011" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1596441590171">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594449007226" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1594553428070">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596441590171" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1596307677724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1594553428070" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1596307677724" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountInfoServiceImpl.java</url>
-          <line>98</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountServiceImpl.java</url>
+          <line>357</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountInfoServiceImpl.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="34" />
+          <url>file://$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/PrivateMessageServiceImpl.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/PrivateMessageServiceImpl.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/LoginTokenFilter.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/LoginTokenFilter.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/CommentServiceImpl.java</url>
+          <line>182</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/controller/PostController.java</url>
+          <line>292</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleServiceImpl.java</url>
+          <line>386</line>
+          <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/tb-user-service/src/main/java/com/hwj/tieba/service/impl/AccountServiceImpl.java</url>
-          <line>322</line>
-          <option name="timeStamp" value="60" />
+          <line>133</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-post-service/src/main/java/com/hwj/tieba/service/impl/ModuleBlackUserServiceImpl.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/LoginTokenFilter.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/ModuleAdminFilter.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/ModuleBlackUserFilter.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/UserOthersSettingFilter.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="104" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/tb-gateway-server/src/main/java/com/hwj/tieba/filter/post/ModuleBlackUserFilter.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

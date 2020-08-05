@@ -13,8 +13,6 @@ public class AccountVO {
     private String userName;
     /**用户邮箱*/
     private String email;
-    /**用户手机号*/
-    private String phone;
     /**注册时间*/
     private Date enrollDate;
     /**头像路径*/
@@ -58,9 +56,6 @@ public class AccountVO {
     }
 
     /**每级所需经验*/
-
-
-
     private Integer levelExp = Constants.LEVEL;
 
     public String getUserId() {
@@ -101,14 +96,6 @@ public class AccountVO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public Date getEnrollDate() {
@@ -158,4 +145,5 @@ public class AccountVO {
     public void setAccountInfo(AccountInfo accountInfo) {
         this.accountInfo = accountInfo;
     }
+
 }

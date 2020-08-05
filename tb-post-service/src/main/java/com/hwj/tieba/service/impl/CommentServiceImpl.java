@@ -17,6 +17,7 @@ import com.hwj.tieba.util.RedisUtil;
 import com.hwj.tieba.util.UUIDUtil;
 import com.hwj.tieba.vo.AccountVo;
 import com.hwj.tieba.vo.CommentItemVo;
+import com.hwj.tieba.vo.MessageVo;
 import com.hwj.tieba.vo.ReplyItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -148,7 +149,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public ServerResponse<String> insertComment(Comment comment, List<String> uploadIdList, String sessionId) {
+    public ServerResponse<String> insertComment(Comment comment, String targetUserId ,List<String> uploadIdList, String sessionId) {
         if(comment == null || comment.getPostId() == null || comment.getContent() == null){
             throw new TieBaException("参数错误");
         }
@@ -174,10 +175,15 @@ public class CommentServiceImpl implements CommentService {
         //删除当前评论帖子的评论缓存
         redisUtil.deletes(Constants.POST_TOKEN_PREFIX + "COMMENT:" + comment.getPostId()+":*");
 
-        //拼接用于增加账号经验值的token Key，帮助判断增加账号经验值的请求是不是系统发出的
+        //拼接用于增加账号经验值的Key，帮助判断增加账号经验值的请求是不是系统发出的
         String increaseAccountExpKey = Constants.POST_TOKEN_PREFIX+"INCREASE_ACCOUNT_EXP_TOKEN:"+account.getUserId();
         String token = UUIDUtil.getStringUUID();
         redisUtil.setStr(increaseAccountExpKey,60,token);
+
+        if(!comment.getUserId().equals(targetUserId)){
+            redisUtil.listRightPush(Constants.POST_TOKEN_PREFIX + "MESSAGE_LIST:" + targetUserId, new MessageVo<Comment>(UUIDUtil.getStringUUID(), "有人评论了你的帖子", comment,Constants.MessageType.COMMENT, comment.getEnrollDate()));
+        }
+
         //调用user-service服务，为当前账号增加经验值
         ServerResponse serverResponse = userService.increaseAccountExp(Constants.COMMENT_EXP,token,account.getUserId());
         serverResponse.setMsg("评论成功，"+serverResponse.getMsg());
@@ -194,10 +200,11 @@ public class CommentServiceImpl implements CommentService {
         reply.setReplyId(UUIDUtil.getStringUUID());
         replyMapper.insertReply(reply);
         redisUtil.del(Constants.POST_TOKEN_PREFIX + "COMMENT:" + reply.getPostId() +":" + reply.getPageNumber());
-        //将新产生的回复id存入redis,以接收回复账号Id为Key
-        String key = Constants.POST_TOKEN_PREFIX + "REPLY:" + targetUserId;
-        redisUtil.listRightPush(key,reply.getCommentId());
-        return ServerResponse.createBySuccess();
+        if(reply.getUserId() != targetUserId){
+            String key = Constants.POST_TOKEN_PREFIX + "MESSAGE_LIST:" + targetUserId;
+            redisUtil.listRightPush(key,new MessageVo<Reply>(UUIDUtil.getStringUUID(), "有人回复了你的评论", reply, Constants.MessageType.REPLY, reply.getEnrollDate()));
+        }
+        return ServerResponse.createBySuccess("回复成功");
     }
 
     private Account getAccount(String sessionId){

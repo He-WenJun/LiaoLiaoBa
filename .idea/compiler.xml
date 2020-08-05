@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="tb-gateway-service" />
+        <module name="tb-eureka-service" />
         <module name="tb-config-server" />
         <module name="tb-post-service" />
+        <module name="tb-config-service" />
         <module name="tb-user-service" />
         <module name="tb-mail-service" />
         <module name="tb-eureka-server" />

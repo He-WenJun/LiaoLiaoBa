@@ -22,8 +22,10 @@ public class ModuleVo {
     /**每级所需经验*/
     private Integer levelExp = Constants.LEVEL;
     /**头像的图片Id*/
+    private String headPictureId;
     private String headPictureSrc;
     /**背景图片Id*/
+    private String moduleBackgroundPictureId;
     private String moduleBackgroundPictureSrc;
     /**模块的订阅数量*/
     private String countSubscribe;
@@ -42,8 +44,10 @@ public class ModuleVo {
         this.introduce = introduce;
         this.level = level;
         this.exp = exp;
-        this.headPictureSrc = headPictureSrc;
-        this.moduleBackgroundPictureSrc = moduleBackgroundPictureSrc;
+        this.headPictureSrc = headPictureSrc.substring(headPictureSrc.lastIndexOf("file")-1,headPictureSrc.length());
+        if(moduleBackgroundPictureSrc != null){
+            this.moduleBackgroundPictureSrc = moduleBackgroundPictureSrc.substring(moduleBackgroundPictureSrc.lastIndexOf("file")-1,moduleBackgroundPictureSrc.length());
+        }
         this.enrollDate = enrollDate;
     }
 
@@ -86,6 +90,7 @@ public class ModuleVo {
     public void setIntroduceOmit(String introduce) {
         this.introduce = introduce.length() >= 17 ? introduce.substring(0,13) + "..." : introduce;
     }
+
     public void setIntroduce(String introduce) {
         this.introduce = introduce;
     }
@@ -152,5 +157,21 @@ public class ModuleVo {
 
     public void setEnrollDate(Date enrollDate) {
         this.enrollDate = enrollDate;
+    }
+
+    public String getHeadPictureId() {
+        return headPictureId;
+    }
+
+    public void setHeadPictureId(String headPictureId) {
+        this.headPictureId = headPictureId;
+    }
+
+    public String getModuleBackgroundPictureId() {
+        return moduleBackgroundPictureId;
+    }
+
+    public void setModuleBackgroundPictureId(String moduleBackgroundPictureId) {
+        this.moduleBackgroundPictureId = moduleBackgroundPictureId;
     }
 }

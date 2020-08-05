@@ -73,7 +73,6 @@ public class ModuleTypeServiceImpl implements ModuleTypeService {
         //存入redis
         redisUtil.set(key,500,pageInfo);
 
-        System.out.println("PageInfo："+JSON.toJSONString(ServerResponse.createBySuccess(pageInfo)));
         return ServerResponse.createBySuccess(pageInfo);
     }
 

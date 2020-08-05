@@ -1,5 +1,7 @@
 package com.hwj.tieba.service;
 
+import com.hwj.tieba.entity.Account;
+import com.hwj.tieba.entity.AccountInfo;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.vo.AccountVO;
 
@@ -24,8 +26,18 @@ public interface AccountInfoService {
 
     /**
      * 获取账号信息列表
-     * @param userIdList 包含用户Id
+     * @param userIdList 用户Id
      * @return
      */
     ServerResponse<List<AccountVO>> getUserInfoList(List<String> userIdList);
+
+    /**
+     * 修改当前登录账号的账号信息
+     * @param accountInfo
+     * @param account
+     * @param sessionId
+     * @return
+     */
+    ServerResponse<String> updateUserInfo(AccountInfo accountInfo, Account account, String sessionId);
+
 }

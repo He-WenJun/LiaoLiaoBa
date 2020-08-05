@@ -59,7 +59,7 @@ public class RedisUtil {
         }
     }
 
-    public void hdel(String map,Object... keys){
+    public void hDel(String map,Object... keys){
         redisTemplate.opsForHash().delete(map,keys);
     }
 
@@ -75,5 +75,18 @@ public class RedisUtil {
         redisTemplate.opsForList().rightPush(key,JSON.toJSONString(value));
     }
 
+    //将key持久化
+    public Boolean persistKey(String key) {
+        return redisTemplate.persist(key);
+    }
+
+    public <T> List<T> listRange(String key, long start, long end ,Class<T> type){
+        List<T> resultList = JSON.parseArray(redisTemplate.opsForList().range(key, start, end).toString(), type);
+        return resultList;
+    }
+
+    public RedisTemplate getRedisTemplate(){
+        return this.redisTemplate;
+    }
 
 }

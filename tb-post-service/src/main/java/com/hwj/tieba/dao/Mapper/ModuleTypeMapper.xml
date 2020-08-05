@@ -61,4 +61,16 @@
         FROM module_son_type
         WHERE Id = #{id}
     </select>
+
+    <select id="querySonTypeByIdList" resultMap="Ba_Son_Type_BaseResultMap">
+        SELECT
+        <include refid="Ba_Son_Type_Base_Column"/>
+        FROM module_son_type
+        <where>
+            Id IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
 </mapper>

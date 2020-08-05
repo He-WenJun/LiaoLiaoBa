@@ -7,6 +7,21 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class DateUtil {
+
+
+
+
+    public static Date dateType(String source){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            return simpleDateFormat.parse(source);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     /**
      * 获得当前日期 yyyy-MM-dd HH:mm:ss
      *
@@ -328,8 +343,23 @@ public class DateUtil {
         return list;
     }
 
-    public static void main(String[] args) {
-        Date date = new Date();
+    public static String yearToMonth(String source){
+        SimpleDateFormat month = new SimpleDateFormat("MM-dd HH:mm:ss");
+        SimpleDateFormat year = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = null;
+        try {
+           date = year.parse(source);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return month.format(date);
+    }
 
+    public static void main(String[] args) throws ParseException {
+
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date1 = simpleDateFormat2.parse("2020-11-11 11:11:11");
+        System.out.println(simpleDateFormat1.format(date1));
     }
 }

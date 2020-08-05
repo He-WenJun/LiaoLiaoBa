@@ -46,7 +46,7 @@ public class MenuServiceImpl implements MenuService {
         //一个用户可以有多个角色
         //获取角色Id,Id以,号间隔,转换为Int
         List<Integer> roleIdList = new ArrayList<>(3);
-        //若无，号则表明只有一个角色，不需要拆分
+        //若无逗号则表明只有一个角色，不需要拆分
         if(account.getRoleId().indexOf(",") != -1){
             for(String idStr : account.getRoleId().split(",")){
                 roleIdList.add(Integer.valueOf(idStr));
@@ -72,6 +72,9 @@ public class MenuServiceImpl implements MenuService {
             List<MenuSon> temp = new ArrayList<>(3);
             for (MenuSon menuSon : menuSonList){
                 if(menuParent.getId().equals(menuSon.getParentId())){
+                    if(menuSon.getId() == 1){
+                        menuSon.setResource(menuSon.getResource() + account.getUserId());
+                    }
                     temp.add(menuSon);
                 }
             }

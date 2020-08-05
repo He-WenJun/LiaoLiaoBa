@@ -2,7 +2,7 @@ server:
   port: 8212
 spring:
   application:
-    name: verification-service
+    name: mail-service
   cloud:
     config:
       discovery:

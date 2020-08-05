@@ -18,9 +18,11 @@ import com.hwj.tieba.util.UUIDUtil;
 import com.hwj.tieba.vo.ModuleVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -37,9 +39,13 @@ public class ModuleServiceImpl implements ModuleService {
     @Autowired
     private FileMapper fileMapper;
     @Autowired
+    private ModuleUserRoleMapper moduleUserRoleMapper;
+
+    @Autowired
     private UserService userService;
     @Autowired
     private RedisUtil redisUtil;
+
 
 
     @Override
@@ -216,10 +222,6 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     public ServerResponse<PageInfo<ModuleVo>> moduleList(int pageNumber, String typeId) {
-        //判断字符串是否为空，并判断是否是数字
-        if(StringUtils.isEmpty(typeId) || !FigureUtil.isNumeric(typeId)){
-            throw new TieBaException("参数有误");
-        }
         String key = Constants.POST_TOKEN_PREFIX + "MODULE_LIST:"+ typeId + ":" + pageNumber;
         if(redisUtil.hasKey(key)){
             PageInfo<ModuleVo> pageInfo = redisUtil.get(key,PageInfo.class);
@@ -232,12 +234,14 @@ public class ModuleServiceImpl implements ModuleService {
         if(moduleList.size() == 0){
             return ServerResponse.createByErrorMessage("没有更多数据了");
         }
-        //取出模块Id和头像Id
-        List<String> moduleIdList = new ArrayList<String>();
-        List<String> headPictureList = new ArrayList<String>();
+        //取出模块Id和头像Id，以及模块类型Id
+        List<String> moduleIdList = new ArrayList<>(12);
+        List<String> headPictureList = new ArrayList<>(12);
+        List<Integer> moduleTypeIdList = new ArrayList<>(12);
         for(Module module : moduleList){
             moduleIdList.add(module.getModuleId());
             headPictureList.add(module.getHeadPictureId());
+            moduleTypeIdList.add(module.getTypeId());
         }
         //查询模块对应的喜欢数量
         List<Map<String,Object>> countSubscribeMap = subscribeMapper.countSubscribe(moduleIdList);
@@ -245,6 +249,9 @@ public class ModuleServiceImpl implements ModuleService {
         List<Map<String,Object>> countPostMap = postMapper.countPost(moduleIdList);
         //查询模块对应的头像图片路径
         List<File> imageList = fileMapper.queryFileListById(headPictureList);
+        //查询模块的类型名称
+        List<ModuleSonType> moduleSonTypeList = moduleTypeMapper.querySonTypeByIdList(moduleTypeIdList);
+
         List<ModuleVo> moduleVoList = new ArrayList<ModuleVo>();
         for(int i = 0; i < moduleList.size(); i++){
             Module module = moduleList.get(i);
@@ -270,6 +277,14 @@ public class ModuleServiceImpl implements ModuleService {
             for (int j = 0; j < imageList.size(); j++){
                 if(module.getHeadPictureId().equals(imageList.get(j).getId())){
                     moduleVo.setHeadPictureSrc(imageList.get(j).getSrc().substring(imageList.get(j).getSrc().indexOf("file")-1));
+                    break;
+                }
+            }
+
+            for (int j = 0; j < moduleSonTypeList.size(); j++){
+                if(module.getTypeId().equals(moduleSonTypeList.get(j).getId())){
+                    moduleVo.setTypeName(moduleSonTypeList.get(j).getTypeName());
+                    moduleVo.setTypeId(String.valueOf(moduleSonTypeList.get(j).getId()));
                     break;
                 }
             }
@@ -359,6 +374,65 @@ public class ModuleServiceImpl implements ModuleService {
         return ServerResponse.createBySuccess(moduleVo);
     }
 
+    @Override
+    public ServerResponse<String> updateModule(Module module) {
+        module.setUpdateDate(new Date());
+        moduleMapper.updateModule(module);
+        return ServerResponse.createBySuccessMessage("保存成功");
+    }
+
+    @Transactional
+    @Override
+    public ServerResponse<String> mkdirModule(Module module, String sessionId) {
+        Map<String, String> sessionMap = redisUtil.hget(sessionId);
+        if(sessionMap.get("Account") == null){
+            throw new TieBaException("未登录");
+        }
+        Account account = JSON.parseObject(sessionMap.get("Account"), Account.class);
+        //查询判断模块名称是否重复
+        Module resultModule = moduleMapper.queryModuleByModuleName(module.getModuleName());
+        if(resultModule != null){
+            ServerResponse.createByErrorMessage("模块名称以被使用，请修改");
+        }
+
+        Date nowDate = new Date();
+        module.setEnrollDate(nowDate);
+        module.setUpdateDate(nowDate);
+        module.setExp(0l);
+        module.setModuleId(UUIDUtil.getStringUUID());
+        module.setBackgroundPictureId("6470bc30e574459b89a5fe81a45321ca");
+        //插入模块
+        moduleMapper.insertModule(module);
+
+        //插入被模块与模块创建者的关系
+        ModuleUserRole moduleUserRole = new ModuleUserRole(UUIDUtil.getStringUUID(), module.getModuleId(),
+                account.getUserId(), Constants.RoleType.MASTER, nowDate, nowDate);
+        moduleUserRoleMapper.insertModuleUserRole(moduleUserRole);
+
+        //将被创建的模块添加到模块创建者喜欢的模块
+        //插入订阅记录
+        Subscribe subscribeModule = new Subscribe(UUIDUtil.getStringUUID(),
+                Constants.SubscribeType.MODULE, module.getModuleId(), account.getUserId(), nowDate, nowDate);
+        subscribeMapper.insertSubscribe(subscribeModule);
+
+        //修改缓存中的角色Id，为模块创建者添加吧主角色Id
+        if(account.getRoleId().indexOf(String.valueOf(Constants.RoleType.MASTER)) == -1){
+            account.setRoleId(account.getRoleId()+","+Constants.RoleType.MASTER);
+            sessionMap.put("Account", JSON.toJSONString(account));
+            redisUtil.hmset(sessionId, sessionMap);
+            //调用user-service服务，修改角色Id
+            ServerResponse<String> serverResponse = userService.updateAccountRoleId(account);
+            if(serverResponse.getStatus() != 0){
+                throw new TieBaException(serverResponse.getMsg());
+            }
+        }
+        return ServerResponse.createBySuccessMessage("创建成功");
+    }
+
+    @Override
+    public ServerResponse<PageInfo<ModuleVo>> moduleRanking() {
+        return moduleList(1, null);
+    }
 
 
     private Account getAccount(String sessionId){
@@ -369,5 +443,4 @@ public class ModuleServiceImpl implements ModuleService {
         }
         return JSON.parseObject(sessionMap.get("Account"),Account.class);
     }
-
 }

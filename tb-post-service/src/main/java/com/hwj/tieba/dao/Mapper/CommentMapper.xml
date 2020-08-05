@@ -47,4 +47,10 @@
         (#{comment.commentId},#{comment.postId},#{comment.userId},#{comment.content},#{comment.enrollDate},#{comment.updateDate})
     </insert>
 
+    <delete id="deleteCommentByPostId" parameterType="com.hwj.tieba.entity.Post">
+        DELETE
+        FROM `comment`
+        WHERE PostId = #{postId}
+    </delete>
+
 </mapper>

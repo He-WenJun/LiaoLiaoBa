@@ -14,6 +14,9 @@ zuul:
     post-service:
       path: /post/**
       serviceId: post-service
+    mail-service:
+      path: /mail/**
+      serviceId: mail-service
   sensitive-headers: true
   #在请求路由转发前为请求设置Host头信息
   add-host-header: true
@@ -23,4 +26,4 @@ hystrix:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 10000
+            timeoutInMilliseconds: 1000

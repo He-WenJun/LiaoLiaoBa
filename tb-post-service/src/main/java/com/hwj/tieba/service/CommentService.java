@@ -1,6 +1,7 @@
 package com.hwj.tieba.service;
 
 import com.github.pagehelper.PageInfo;
+import com.hwj.tieba.entity.Account;
 import com.hwj.tieba.entity.Comment;
 import com.hwj.tieba.entity.Reply;
 import com.hwj.tieba.resp.ServerResponse;
@@ -21,10 +22,11 @@ public interface CommentService {
      * 插入评论
      * @param comment 评论实例
      * @param uploadIdList 评论上传的图片Id
+     * @param userId
      * @param sessionId
      * @return
      */
-    ServerResponse<String> insertComment(Comment comment, List<String> uploadIdList, String sessionId);
+    ServerResponse<String> insertComment(Comment comment, String userId, List<String> uploadIdList, String sessionId);
 
     /**
      * 插入一条回复信息

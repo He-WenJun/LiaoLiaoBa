@@ -7,15 +7,13 @@ import com.hwj.tieba.util.RedisUtil;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
-public class LoginTokenFiltre extends ZuulFilter {
+public class LoginTokenFilter extends ZuulFilter {
     @Autowired
     private RedisUtil redisUtil;
 
@@ -33,14 +31,15 @@ public class LoginTokenFiltre extends ZuulFilter {
     public boolean shouldFilter() {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-        if("/api/user/verificationCode".equals(request.getRequestURI())){
-            return false;
-        }else if("/api/user/login".equals(request.getRequestURI())){
-            return false;
-        }else if("/api/user/enrollHold".equals(request.getRequestURI())){
-            return false;
+        if(ctx.sendZuulResponse()){
+            if("/api/user/verificationCode".equals(request.getRequestURI())){
+                return false;
+            }else if("/api/user/login".equals(request.getRequestURI())){
+                return false;
+            }else if("/api/user/enrollHold".equals(request.getRequestURI())){
+                return false;
+            }
         }
-
         return true;
     }
 
@@ -65,7 +64,15 @@ public class LoginTokenFiltre extends ZuulFilter {
             }
             if(loginNameKeyCookie != null && loginTokenCookie != null){
                 //获取redis中的token
-                String correctLoginToken =  redisUtil.get(loginNameKeyCookie.getValue(),String.class);
+                String correctLoginToken =null;
+                try {
+                    correctLoginToken = redisUtil.getStr(loginNameKeyCookie.getValue());
+                }catch (Exception e){
+                    System.err.println(e.getMessage());
+                    e.printStackTrace();
+                }
+
+
                 //判断登录Token是否与redis中相同，若不同说明账号已在别处登录
                 if(correctLoginToken.equals(loginTokenCookie.getValue())){
                     System.out.println("Token正确");
@@ -76,7 +83,7 @@ public class LoginTokenFiltre extends ZuulFilter {
 
                     String sessionId = ctx.getZuulRequestHeaders().get("sessionid");
                     //删除保存账号信息
-                    redisUtil.hdel(sessionId,"Account");
+                    redisUtil.hDel(sessionId,"Account");
                     //不对请求进行路由
                     ctx.setSendZuulResponse(false);
 

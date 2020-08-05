@@ -1,8 +1,11 @@
 package com.hwj.tieba.service;
 
 import com.github.pagehelper.PageInfo;
+import com.hwj.tieba.entity.Module;
 import com.hwj.tieba.resp.ServerResponse;
 import com.hwj.tieba.vo.ModuleVo;
+
+import java.util.List;
 
 
 public interface ModuleService {
@@ -45,4 +48,25 @@ public interface ModuleService {
      * @return
      */
     ServerResponse<ModuleVo> moduleInfo(String id);
+
+    /**
+     * 修改模块信息
+     * @param module
+     * @return
+     */
+    ServerResponse<String> updateModule(Module module);
+
+    /**
+     * 创建模块
+     * @param module
+     * @param sessionId
+     * @return
+     */
+    ServerResponse<String> mkdirModule(Module module, String sessionId);
+
+    /**
+     * 获取模块排名
+     * @return
+     */
+    ServerResponse<PageInfo<ModuleVo>> moduleRanking();
 }
