@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>注册结果</title>
+<link rel="stylesheet" href="/resources/css/my_css/bootstrap.min.css"/>
+</head>
+<body>
+    <!-- 模态声明，show 表示显示 -->
+  <div class="modal" data-backdrop='true' id="myModal" tabindex="-1">
+    <!-- 窗口声明 -->
+    <div class="modal-dialog">
+        <!-- 内容声明 -->
+        <div class="modal-content">
+          <!-- 头部 -->
+          <div class="modal-header">
+			<h4 class="modal-title">系统提示</h4>
+            <button type="button" class="close" data-dismiss="modal">
+            	<span>&times;</span>
+            </button>
+          </div>
+          <!-- 主体 -->
+          <div class="modal-body">
+            <span th:text="${serverResponse.data}"></span>
+          </div>
+          <!-- 注脚 -->
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" id="okbtn">好</button>
+          </div>
+        </div>
+      </div>
+  </div>
+<script src="/resources/js/login/jquery.min.js"></script>
+<script src="/resources/Bootstrap/dist/js/bootstrap.min.js"></script>   
+<script>
+    $(document).ready(function(){
+        $("#myModal").modal('show');
+    });
+    //关闭模态窗
+   $("#okbtn").click(function(){
+      $("#myModal").modal('hide');
+   });
+</script>
+</body>
+</html>

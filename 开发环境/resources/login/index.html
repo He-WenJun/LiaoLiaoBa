@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS3登录</title>
+
+<link rel="stylesheet" href="../css/login/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/login/style.css">
+<link rel="stylesheet" href="../Bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<div class="materialContainer">
+	<div class="box">
+		<div class="title">登录</div>
+		<div class="input">
+			<label for="name">用户名/邮箱</label>
+			<input type="text" name="name" id="name">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="pass">密码</label>
+			<input type="password" name="pass" id="pass">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="verificationCode">验证码 <img id="verificationCodeImg" src="/api/user/verificationCode"/></label>
+			<input type="text" name="verificationCode" id="verificationCode">
+			<span class="spin"></span>
+		</div>
+		<div class="button login">
+			<button>
+				<span>登录</span>
+				<i class="fa fa-check"></i>
+			</button>
+		</div>
+		<div class="pass-forgot">
+			<div><span>其他登录方式</span></div>
+			<div>
+				<a href="/api/user/zhifubao">支付宝登录</a>
+			</div>
+		</div>
+		<!--<a href="javascript:" class="pass-forgot">忘记密码？</a>-->
+	</div>
+
+	<div class="overbox">
+		<div class="material-button alt-2">
+			<span class="shape"></span>
+		</div>
+		<div class="title">注册</div>
+		<div class="input">
+			<label for="regname">用户名</label>
+			<input type="text" name="regname" id="regname">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="regmail">邮箱</label>
+			<input type="text" name="regmail" id="regmail">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="regpass">密码</label>
+			<input type="password" name="regpass" id="regpass">
+			<span class="spin"></span>
+		</div>
+		<div class="input">
+			<label for="reregpass">确认密码</label>
+			<input type="password" name="reregpass" id="reregpass">
+			<span class="spin"></span>
+		</div>
+		<div class="button enroll">
+			<button>
+				<span>注册</span>
+			</button>
+		</div>
+	</div>
+
+</div>
+
+<!-- 模态声明，show 表示显示 -->
+<div class="modal fade" data-backdrop='true' id="myModal" tabindex="-1">
+    <!-- 窗口声明 -->
+    <div class="modal-dialog">
+        <!-- 内容声明 -->
+        <div class="modal-content">
+          <!-- 头部 -->
+          <div class="modal-header">
+			<h4 class="modal-title">系统提示</h4>
+            <button type="button" class="close" data-dismiss="modal">
+            	<span>&times;</span>
+            </button>
+          </div>
+          <!-- 主体 -->
+          <div class="modal-body">
+              <p></p>
+          </div>
+          <!-- 注脚
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" id="okbtn">好</button>
+          </div> -->
+        </div>
+      </div>
+  </div>
+
+<script src="../js/login/jquery.min.js"></script>
+<script src="../Bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script src="../js/login/index.js"></script>
+
+</body>
+</html>

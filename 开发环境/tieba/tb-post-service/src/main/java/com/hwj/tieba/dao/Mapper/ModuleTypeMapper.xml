@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.ModuleTypeMapper">
+    <sql id="Ba_Parent_Type_Base_Column">
+        Id,TypeName,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="Ba_Parent_Type_BaseResultMap" type="com.hwj.tieba.entity.ModuleParentType">
+        <id property="id" column="Id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="typeName" column="TypeName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="queryBaParentType" resultMap="Ba_Parent_Type_BaseResultMap">
+        SELECT
+        <include refid="Ba_Parent_Type_Base_Column"/>
+        FROM module_parent_type
+    </select>
+
+    <select id="queryParentTypeById" resultMap="Ba_Parent_Type_BaseResultMap">
+        SELECT
+        <include refid="Ba_Parent_Type_Base_Column"/>
+        FROM module_parent_type
+        WHERE Id = #{id}
+    </select>
+
+
+
+    <sql id="Ba_Son_Type_Base_Column">
+        Id,ParentId,TypeName,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="Ba_Son_Type_BaseResultMap" type="com.hwj.tieba.entity.ModuleSonType">
+        <id property="id" column="Id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="parentId" column="ParentId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="typeName" column="TypeName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="queryBaSonTypeByParentId" resultMap="Ba_Son_Type_BaseResultMap">
+        SELECT
+        <include refid="Ba_Son_Type_Base_Column"/>
+        FROM module_son_type
+        <where>
+            ParentId IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="queryParentIdBySonTypeId" resultType="java.lang.Integer">
+        SELECT ParentId
+        FROM module_son_type
+        WHERE Id = #{sonTypeId}
+    </select>
+
+    <select id="querySonTypeById" resultMap="Ba_Son_Type_BaseResultMap">
+        SELECT
+        <include refid="Ba_Son_Type_Base_Column"/>
+        FROM module_son_type
+        WHERE Id = #{id}
+    </select>
+
+    <select id="querySonTypeByIdList" resultMap="Ba_Son_Type_BaseResultMap">
+        SELECT
+        <include refid="Ba_Son_Type_Base_Column"/>
+        FROM module_son_type
+        <where>
+            Id IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
+</mapper>

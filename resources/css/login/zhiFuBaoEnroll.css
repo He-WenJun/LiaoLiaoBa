@@ -1,0 +1,19 @@
+body{
+    font-size: 14px;
+}
+.content{
+    background-color: #F4F4F4;
+    border: 1px solid Silver;
+    margin-top: 10%;
+}
+.bottom{
+    margin-bottom: 5px;
+}
+.top{
+    margin-top: 5px;
+}
+.headPortrait{
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mymoduletis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.ModuleMapper">
+    <sql id="Base_Column">
+        ModuleId,TypeId,ModuleName,Introduce,EXP,HeadPictureID,BackgroundPictureID,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.Module">
+        <id property="moduleId" column="ModuleId" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="typeId" column="TypeId" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="moduleName" column="ModuleName" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="introduce" column="Introduce" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="exp" column="EXP" jdbcType="BIGINT" javaType="java.lang.Long"/>
+        <result property="headPictureId" column="HeadPictureID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="backgroundPictureId" column="BackgroundPictureID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="queryModuleByModuleName" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM module
+        WHERE
+        ModuleName = #{moduleName}
+    </select>
+
+    <select id="queryModuleByIdList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM module
+        <where>
+            ModuleId IN
+            <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+                #{idList}
+            </foreach>
+        </where>
+    </select>
+
+    <select id="queryModuleByModuleId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM module
+        WHERE ModuleId = #{id}
+    </select>
+
+    <select id="queryModuleByTypeId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM module
+        <where>
+            <if test="typeId != null">
+                TypeId = #{typeId}
+            </if>
+        </where>
+        ORDER BY EXP DESC
+
+    </select>
+
+
+    <update id="updateModuleExpByModuleId">
+        UPDATE module updModule,
+        (
+            SELECT ModuleId,EXP FROM module WHERE ModuleId IN
+            <foreach collection="moduleIdList" item="moduleIdList" open="(" close=")" separator=",">
+                #{moduleIdList}
+            </foreach>
+        ) selModule
+        SET updModule.EXP = selModule.EXP + #{increaseExp}
+        WHERE updModule.ModuleId IN (selModule.ModuleId)
+    </update>
+
+    <update id="updateModule" parameterType="com.hwj.tieba.entity.Module">
+        UPDATE module
+        SET ModuleName = #{moduleName},Introduce = #{introduce},HeadPictureID = #{headPictureId},BackgroundPictureID = #{backgroundPictureId},UpdateDate = #{updateDate}
+        WHERE ModuleId = #{moduleId}
+    </update>
+
+    <insert id="insertModule" parameterType="com.hwj.tieba.entity.Module">
+        INSERT INTO module
+        (<include refid="Base_Column"/>)
+        VALUES
+        (#{moduleId},#{typeId},#{moduleName},#{introduce},#{exp},#{headPictureId},#{backgroundPictureId},#{enrollDate},#{updateDate})
+    </insert>
+
+</mapper>
