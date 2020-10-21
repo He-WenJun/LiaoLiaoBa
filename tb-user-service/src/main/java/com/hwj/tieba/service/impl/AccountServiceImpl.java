@@ -401,12 +401,8 @@ public class AccountServiceImpl implements AccountService {
         //创建LoginIPDto对象，存入当前用户id,登录的IP地址，登录时间，为验证服务提供数据
         LoginIPDTO loginIPDto = new LoginIPDTO(account.getUserId(),IpAddress,nowDate,sessionId);
         //发送到消息中间件中
-        new Thread(){
-            @Override
-            public void run() {
-                loginIpAddressProducer.sendLoginIpMessage().send(MessageBuilder.withPayload(loginIPDto).build());
-            }
-        }.start();
+        loginIpAddressProducer.sendLoginIpMessage().send(MessageBuilder.withPayload(loginIPDto).build());
+
         return ServerResponse.createBySuccess("登录成功",null);
     }
 

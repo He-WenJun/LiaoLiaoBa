@@ -6,11 +6,7 @@ $(document).ready(function(){
         styleselect formatselect fontsizeselect | bullist numlist | blockquote subscript superscript removeformat | image',
         min_height: 500,
         max_height: 600,
-        language : "zh_CN",
-        external_plugins: {
-            'language': '/resources/tinymce_5.4.0/tinymce/js/tinymce/langs/zh_CN.js',
-        },
-
+        language: "zh_CN",
         convert_urls: false,
         images_upload_handler: function (blobInfo, succFun, failFun) {
             let formData = new FormData();
@@ -23,6 +19,7 @@ $(document).ready(function(){
                 processData : false, // 使数据不做处理
                 contentType : false, // 不要设置Content-Type请求头
                 success: function(data) {
+                    alert(JSON.stringify(data));
                     if(data.status != 0){
                         failFun('Error Status: ' + data.status);
                         return;
@@ -141,6 +138,7 @@ $(".postOrModule").on("change",function(){
                 type: "get",
                 data: "postId=" + $(".postOrModule option:selected").attr("postId"),
                 success: function(data){
+                    alert(JSON.stringify(data));
                     if(data.status != 0){
                         $(".modal-body h4").html(data.msg);
                         $(".modal").removeClass("hidden");
@@ -161,6 +159,7 @@ $(".postOrModule").on("change",function(){
 
 
 $("#commitPost1").click(function(){
+    alert($(".data").val());
     var t = setInterval(function(){
         var uploadId = getUploadId();
          $.ajax({

@@ -1,14 +1,10 @@
 package com.hwj.tieba.util;
 
 import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class IpAddressUtil {
-    private Logger logger = LoggerFactory.getLogger(IpAddressUtil.class);
-
     public static String getIpAddress(final HttpServletRequest request) throws Exception {
         if (request == null) {
             throw (new Exception("getIpAddr method HttpServletRequest Object is null"));

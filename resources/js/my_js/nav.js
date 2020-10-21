@@ -118,7 +118,7 @@ $('body').on('click', function (e) {
 
 function getMuen(){
     $.ajax({
-        url: "/api/user/menu",
+        url: "http://liaoliaoba.com/api/user/menu",
         type: "get",
         dataType:"json",
         success:function(data){
@@ -132,7 +132,7 @@ function getMuen(){
             strVar += "";
             strVar += "		<div class=\"mCustomScrollbar\" data-mcs-theme=\"dark\">";
             strVar += "			<ul class=\"left-menu\">";
-            strVar += "			  <li><a class=\"nav-link dropdown btn\" href="+"/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>	";
+            strVar += "			  <li><a class=\"nav-link dropdown btn\" href="+"http://liaoliaoba.com/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>	";
             strVar += "			<\/ul>";
             strVar += "		<\/div>";
             strVar += "	<\/div>";
@@ -149,17 +149,17 @@ function getMuen(){
             strVar += "";
             strVar += "		<div class=\"mCustomScrollbar\" data-mcs-theme=\"dark\">";
             strVar += "			<ul class=\"left-menu\">";
-            strVar += "			  <li><a class=\"nav-link dropdown btn\" href="+"/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>	";
+            strVar += "			  <li><a class=\"nav-link dropdown btn\" href="+"http://liaoliaoba.com/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>	";
             strVar += "			<\/ul>";
             strVar += "		<\/div>";
             strVar += "	<\/div>";
            if(data.status == 1){
                 $(".nav-left").append(strVar);
-                $(".phoneMenu").append("<li><a class=\"nav-link dropdown btn\" href="+"/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>");
+                $(".phoneMenu").append("<li><a class=\"nav-link dropdown btn\" href="+"http://liaoliaoba.com/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>");
            }else if(data.status == 0){
                 navInit(data.data);
            }else if(data.status == 3){
-                $(".phoneMenu").append("<li><a class=\"nav-link dropdown btn\" href="+"/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>");
+                $(".phoneMenu").append("<li><a class=\"nav-link dropdown btn\" href="+"http://liaoliaoba.com/resources/login/index.html"+">"+"登录<br/>注册"+"</a></li>");
                  $("#nav").append(strVar);
                 $(".modal-body p").html(data.msg);
                 $("#myModal").modal('show');
@@ -175,8 +175,20 @@ function getuserInfo(){
         type: 'get',
         success: function(data){
             if(data.status == 0){
-                $(".myHeadImg").attr("src",data.data.headPictureSrc);
-                $(".author-title").html(data.data.userName);
+               /* $(".Name").html(data.data.userName);
+                $(".level").html(data.data.level+"级");
+                $(".have").html(data.data.exp);
+                $(".have").css("width",data.data.exp + "%");
+                $(".need").html(100 - data.data.exp);
+                $(".need").css("width",100 - data.data.exp + "%");
+                $(".exp").removeClass("fade");
+                var src =  data.data.headPictureSrc;
+                var name = src.substr(src.lastIndexOf("/"));
+                $(".headPortrait").attr("src","/file/img"+name);*/
+                var src =  data.data.headPictureSrc;
+                var name = src.substr(src.lastIndexOf("/")-2);
+                $(".myHeadImg").attr("src","/file/img"+name);
+                $(".author-title").html(data.data.userName + "<svg class='olymp-dropdown-arrow-icon'><use xlink:href='svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon'></use></svg>");
                 $(".my_info").removeClass("hidden");
             }
         }
@@ -185,7 +197,7 @@ function getuserInfo(){
 
  $("header").on("click","#okbtn",function(){
     $("#myModal").modal('hide');
-    window.location.replace("/resources/login/index.html");
+    window.location.replace("http://liaoliaoba.com/resources/login/index.html");
 })
 $("#reminderModalOkBtn").click(function(){
     $(".modal").modal('hide');

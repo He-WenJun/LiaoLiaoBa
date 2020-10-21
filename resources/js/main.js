@@ -2,6 +2,7 @@
 var CRUMINA = {};
 
 (function ($) {
+    //最新最全最好的Bootstrap模板：http://www.bootstrapmb.com
 	// USE STRICT
 	"use strict";
 
@@ -285,6 +286,19 @@ var CRUMINA = {};
 			.addTo(controller);
 	};
 
+	CRUMINA.perfectScrollbarInit = function () {
+		var $chatContainer = $('.popup-chat-responsive .mCustomScrollbar');
+		var $containers = $('.mCustomScrollbar');
+
+		$containers.perfectScrollbar({wheelPropagation:false});
+
+		if(!$chatContainer.length){
+			return;
+		}
+
+		$chatContainer.scrollTop( $chatContainer.prop( "scrollHeight" ) );
+		$chatContainer.perfectScrollbar('update');
+	};
 
 
 	/* -----------------------------
@@ -335,6 +349,8 @@ var CRUMINA = {};
 	$document.ready(function () {
 
 		CRUMINA.preloader();
+
+		CRUMINA.perfectScrollbarInit();
 
 		// Row background animation
 		if ($('.call-to-action-animation').length) {

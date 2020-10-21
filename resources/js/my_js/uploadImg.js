@@ -7,7 +7,7 @@ imgUpload({
 	inputId:'file', //input框id
 	imgBox:'imgBox', //图片容器id
 	buttonId:'commitPost', //提交按钮id
-	upUrl:'/api/post/uploadImg',  //提交地址
+	upUrl:'http://liaoliaoba.com/api/post/uploadImg',  //提交地址
 	//data:'file1' //参数名
 })
 

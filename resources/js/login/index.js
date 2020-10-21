@@ -98,6 +98,7 @@ $(function() {
          data: "userName="+$("#regname").val()+"&password="+$("#regpass").val()+"&email="+$("#regmail").val(),
          dataType:"json",
          success:function(data){
+            alert(JSON.stringify(data));
             if(data.status == 0){
                $(".modal-body p").html(data.msg);
                $("#okbtn").addClass("enrollVerification");
@@ -163,6 +164,7 @@ $(function() {
    });
    //更换验证码
    $("#verificationCodeImg").click(function(){
+      alert("更换验证码");
       $(this).attr('src','/api/user/verificationCode?'+Math.random());
    });
 

@@ -23,9 +23,9 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">用户名</span>
                 </div>
-                <input type="text" class="form-control userName" placeholder="3~6个字符" th:value="${serverResponse.data.userName}" th:if="${!#strings.isEmpty(serverResponse.data)}">
+                <input type="text" class="form-control userName" placeholder="2~5个字符" th:value="${serverResponse.data.userName}" th:if="${!#strings.isEmpty(serverResponse.data)}">
                 <div class="input-group-append">
-                  <button class="btn btn-danger" type="button" id="buttonName">重填</button>  
+                  <button class="btn btn-danger" type="button">重填</button>  
                 </div>
               </div>
             <div class="input-group mb-3">
@@ -34,7 +34,7 @@
                   </div>
                 <input type="text" class="form-control password" placeholder="6~10个字符">
                 <div class="input-group-append">
-                  <button class="btn btn-danger" type="button" id="buttonPassword">重填</button>  
+                  <button class="btn btn-danger" type="button">重填</button>  
                 </div>
             </div>
             <div class="input-group mb-3">
@@ -43,7 +43,7 @@
                   </div>
                 <input type="text" class="form-control mail" placeholder="填写的邮箱会与账号绑定">
                 <div class="input-group-append">
-                  <button class="btn btn-danger" type="button" id="buttonMail">重填</button>  
+                  <button class="btn btn-danger" type="button">重填</button>  
                 </div>
             </div>
             <input class="userId" type="hidden" th:value="${serverResponse.data.userId}" th:if="${!#strings.isEmpty(serverResponse.data)}">
@@ -92,39 +92,13 @@
         $(document).ready(function(){
           var status = /*[[${serverResponse.status}]]*/ 0;
           if(status == 0){
-              window.location.replace("/resources/index.html");
+              window.location.replace("http://liaoliaoba.com/resources/index.html");
           }else{
               $(".content").removeClass("fade");
           }
         });
 
-        $("#buttonName").click(function(){
-          $(".userName").val("");
-        })
-        $("#buttonPassword").click(function(){
-          $(".password").val("");
-        })
-        $("#buttonMail").click(function(){
-          $(".mail").val("");
-        })
-        
         $(".submit").click(function(){
-            //验证邮箱正则
-            var re = /^(([^()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if($(".userName").val() == "" || $(".userName").val().length < 3 || $(".userName").val().length > 6){
-              $(".modal-body p").html("用户名不能为空，且长度大于等于三个字符，小于等于六个字符");
-              $("#myModal").modal('show');
-              return;
-            }else if($(".password").val() == "" || $(".password").val().length < 6 || $(".password").val().length > 10){
-              $(".modal-body p").html("密码不能为空，且长度大于等于六个字符，小于等于十个字符");
-              $("#myModal").modal('show');
-              return;
-            }else if(! re.test($(".mail").val())){
-              $(".modal-body p").html("邮箱错误");
-              $("#myModal").modal('show');
-              return;
-            }
-
             if($(".headPortrait").parent().attr("imageId") == ""){
                 let url = $(".headPortrait").attr("src");
                 var xhr = new XMLHttpRequest();
@@ -137,7 +111,7 @@
                     let formData = new FormData();
                     formData.append('crowd_file',file2 );
                     $.ajax({
-                        url:'/api/post/uploadImg',
+                        url:'http://liaoliaoba.com/api/post/uploadImg',
                         dataType:'json',
                         type:'POST',
                         async: false,
@@ -158,7 +132,7 @@
         function enrollVerification (uname){   
             var t = setInterval(function(){
               $.ajax({
-                  url: "/api/user/enrollVerification",
+                  url: "http://liaoliaoba.com/api/user/enrollVerification",
                   type: "get",
                   data: "userName="+uname,
                   dataType:"json",
@@ -167,7 +141,7 @@
                         $(".modal-body p").html(data.msg);
                         $("#myModal").modal('show');
                         setTimeout(function(){
-                          window.location.replace("/resources/index.html");
+                          window.location.replace("http://liaoliaoba.com/resources/index.html");
                         },3000);
                     }else if(data.status == 1){
                         $(".modal-body p").html(data.msg);
@@ -206,7 +180,7 @@
         function enroll(imgId){
             //提交注册请求
             $.ajax({
-                url: "/api/user/zhiFuBaoEnrollHold",
+                url: "http://liaoliaoba.com/api/user/zhiFuBaoEnrollHold",
                 type: "post",
                 data: "a.userId="+$(".userId").val()+"&a.userName="+$(".userName").val()+"&a.password="+$(".password").val()+"&a.email="+$(".mail").val()+"&a_f.headPictureId="+imgId,
                 dataType:"json",

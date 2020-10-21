@@ -17,6 +17,8 @@ CRUMINA.Bootstrap = function () {
 	   * Documentation about used plugin:
 	   * https://silviomoreto.github.io/bootstrap-select/
 	   * ---------------------------*/
+	$('.selectpicker').selectpicker();
+
 	/* -----------------------------
 	 * Date time picker input field
 	 * Script file: daterangepicker.min.js, moment.min.js
@@ -53,6 +55,10 @@ CRUMINA.Bootstrap = function () {
 
 	}
 };
+
+$(document).ready(function () {
+	CRUMINA.Bootstrap();
+});
 
 /* -----------------------------
      * End * Init Bootstrap components init
@@ -225,7 +231,22 @@ $(document).ready(function () {
  * GitHub page:     https://github.com/IonDen/ion.rangeSlider
  * --------------------- */
 
+CRUMINA.rangeSlider = function () {
+	$(".range-slider-js").ionRangeSlider({
+			type: "double",
+			grid: true,
+			min: 0,
+			max: 1000,
+			from: 200,
+			to: 800,
+			prefix: "$"
+		}
+	);
+};
 
+$(document).ready(function () {
+	CRUMINA.rangeSlider();
+});
 
 /* -----------------------
    * End * Init Range Slider

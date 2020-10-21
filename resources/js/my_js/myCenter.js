@@ -254,7 +254,8 @@ function getSubscribeModule(userId){
         success: function(data){
             if(data.status == 0){
                 for(var i = 0; i < data.data.length; i++){
-                    var html = "<li class='list-group-item'><div class='container'><img class='img-responsive img-thumbnail display-inline-block' width='60px' heigth='60px' src='"+ data.data[i].headPictureSrc +"'/><div class='display-inline-block float-right'><span class='float-right'>"+data.data[i].moduleName+"</span><br/><span class='fudong float-right'>"+data.data[i].level+"级</span><br/><span class='fudong float-right'><a href='/api/post/moduleInfo/dispatcher/"+data.data[i].moduleId+"'>进入模块</a></span></div></div></li>";
+                    var imgName = data.data[i].headPictureSrc.substr(data.data[i].headPictureSrc.lastIndexOf("/"));
+                    var html = "<li class='list-group-item'><div class='container'><img class='img-responsive img-thumbnail display-inline-block' width='60px' heigth='60px' src='/file/img/"+imgName+"'/><div class='display-inline-block float-right'><span class='float-right'>"+data.data[i].moduleName+"</span><br/><span class='fudong float-right'>"+data.data[i].level+"级</span><br/><span class='fudong float-right'><a href='/api/post/moduleInfo/dispatcher/"+data.data[i].moduleId+"'>进入模块</a></span></div></div></li>";
                     $(".subscribe").append(html);
                     $(".management").append("<button type='button' class='btn btn-secondary btn-sm my-auto baOption' myBaId='"+data.data[i].moduleId+"'><span style='float: left;'>"+data.data[i].moduleName+"</span>&nbsp;&nbsp;<span>&times;</span></button>&nbsp;");
                 }
@@ -264,6 +265,7 @@ function getSubscribeModule(userId){
                 $(".subscribe").append(html);
                 $(".management").append("<p>"+data.msg+"</p>");
                 $(".signIn").hide();
+
             }
         }
     });

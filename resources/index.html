@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-	<title>主页</title>
+	<title>Newsfeed</title>
 
 	<!-- Required meta tags always come first -->
 	<meta charset="utf-8">
@@ -11,9 +11,15 @@
 
 
 	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-reboot.css">
+	<link rel="stylesheet" href="https://formden.com/static/assets/demos/bootstrap-iso/bootstrap-iso/bootstrap-iso.css" />
 	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap-grid.css">
+
 	<!-- Main Styles CSS -->
-	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.min.css">
+
 	<!--My CSS-->
 	<link rel="stylesheet" type="text/css" href="css/my_css/utils.css">
 	<link rel="stylesheet" type="text/css" href="css/my_css/index.css">
@@ -307,7 +313,7 @@
 				
 				<div class="row">
 					<div class="col col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
-						<!--<div id="myCarousel" class="carousel bootstrap-iso slide" data-rede="carousel">
+						<div id="myCarousel" class="carousel bootstrap-iso slide">
 							<div class="row">
 								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto">
 									<button class="left btn btn-sm btn-primary" style="float: left;" href="#myCarousel" role="button" data-slide="prev">
@@ -315,46 +321,19 @@
 									</button>
 								</div>
 								<div class="col col-lg-10 col-xl-10 col-md-10 col-sm-10 col-10">
-
+									<!-- 轮播（Carousel）项目 -->
 									<div class="carousel-inner rankingList">
 									</div>
-								
 								</div>
 								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto">
+									<!-- 轮播（Carousel）导航 -->
 									<button class="right btn btn-sm btn-primary" href="#myCarousel" role="button" data-slide="next" style="float: right;">
 										>
 									</button>
 								</div>
 							</div>
 							
-						</div> -->
-
-
-						<div id="demo" class="carousel slide" data-ride="carousel">
- 
-							<div class="row" style="padding: 0px; margin: 0px;">
-								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto" style="padding: 0px; margin: 0px;">
-									<button class="carousel-control-prev btn btn-sm btn-primary" href="#demo" style="float:right;" role="button" data-slide="prev">
-										<
-									</button>
-								</div>
-								<div class="col col-lg-10 col-xl-10 col-md-10 col-sm-10 col-10" style="padding: 0px; margin: 0px;">
-									<!-- 轮播（Carousel）项目 -->
-									<div class="carousel-inner rankingList text-center" style="padding: 0px; margin: 0px;">
-									</div>
-								</div>
-								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto" style="padding: 0px; margin: 0px;">
-									<!-- 轮播（Carousel）导航 -->
-									<button class="carousel-control-next btn btn-sm btn-primary" href="#demo" role="button" style="float:left;" data-slide="next" >
-										>
-									</button>
-								</div>
-							</div>
-						   
-						  </div>
-
-
-
+						</div> 
 					</div>
 				</div>
 			</div>
@@ -366,8 +345,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-							<div class="row sidebar">
-								<ul class="list-group col-lg-12 col-md-12 postBox" style="padding:0px;">
+							<div class="row sidebar padding-10">
+								<ul class="list-group col-lg-12 col-md-12 postBox">
 										
 								</ul>
 							</div>
@@ -376,7 +355,7 @@
 				</div>
 			</div>
 
-			<button style="padding: 6px;" id="load-more-button" href="#" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></button>
+			<button id="load-more-button" href="#" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></button>
 
 		</main>
 
@@ -587,14 +566,51 @@
 <!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
 
 <!-- JS Scripts -->
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="js/my_js/item.js"></script>
+<script src="js/jQuery/jquery-3.4.1.js"></script>
+<script src="js/my_js/nav.js"></script>
+<script src="js/libs/jquery.appear.js"></script>
+<script src="js/libs/jquery.mousewheel.js"></script>
+<script src="js/libs/perfect-scrollbar.js"></script>
+<script src="js/libs/jquery.matchHeight.js"></script>
+<script src="js/libs/svgxuse.js"></script>
+<script src="js/libs/imagesloaded.pkgd.js"></script>
+<script src="js/libs/Headroom.js"></script>
+<script src="js/libs/velocity.js"></script>
+<script src="js/libs/ScrollMagic.js"></script>
+<script src="js/libs/jquery.waypoints.js"></script>
+<script src="js/libs/jquery.countTo.js"></script>
+<script src="js/libs/popper.min.js"></script>
+<script src="js/libs/material.min.js"></script>
+<script src="js/libs/bootstrap-select.js"></script>
+<script src="js/libs/smooth-scroll.js"></script>
+<script src="js/libs/selectize.js"></script>
+<script src="js/libs/swiper.jquery.js"></script>
+<script src="js/libs/moment.js"></script>
+<script src="js/libs/daterangepicker.js"></script>
+<script src="js/libs/fullcalendar.js"></script>
+<script src="js/libs/isotope.pkgd.js"></script>
+<script src="js/libs/Chart.js"></script>
+<script src="js/libs/chartjs-plugin-deferred.js"></script>
+<script src="js/libs/circle-progress.js"></script>
+<script src="js/libs/loader.js"></script>
+<script src="js/libs/run-chart.js"></script>
+<script src="js/libs/jquery.magnific-popup.js"></script>
+<script src="js/libs/jquery.gifplayer.js"></script>
+<script src="js/libs/mediaelement-and-player.js"></script>
+<script src="js/libs/mediaelement-playlist-plugin.min.js"></script>
+<script src="js/libs/ion.rangeSlider.js"></script>
+
+<script src="js/main.js"></script>
+<script src="js/my_js/popover.js"></script>
 <script src="js/my_js/index_init.js"></script>
-
-
+<script src="js/libs-init/libs-init.js"></script>
+<script src="js/my_js/transition.js"></script>
+<script src="js/my_js/carousel.js"></script>
+<script src="js/my_js/privateMessage.js"></script>
+<script src="js/my_js/message.js"></script>
+<script src="js/my_js/searchPost.js"></script>
+<script defer src="fonts/fontawesome-all.js"></script>
+<script src="Bootstrap/dist/js/bootstrap.bundle.js"></script>
 
 </body>
 </html>

@@ -21,6 +21,7 @@ public class WeatherServiceImpl implements WeatherService {
     @Override
     public ServerResponse<WeatherVo> queryWeather(String ipAddress) {
         //查询ip对应的城市
+        ipAddress = "123.125.71.38";
         String locationJsonStr = apiCallUtil.queryIP(ApiCallUtil.KEY, ipAddress, ApiCallUtil.OUTPUT_TYPE.JSON);
         JSONObject locationJsonObject = JSON.parseObject(locationJsonStr);
         if(locationJsonObject.getInteger("status") == 0){

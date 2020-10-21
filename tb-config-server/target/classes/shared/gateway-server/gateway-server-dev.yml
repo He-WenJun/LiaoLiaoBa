@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: 120.55.194.0
+    host: 127.0.0.1
     port: 6666
     password: 510151
     database: 0
@@ -20,17 +20,10 @@ zuul:
   sensitive-headers: true
   #在请求路由转发前为请求设置Host头信息
   add-host-header: true
-#hystrix的超时时间
 hystrix:
   command:
     default:
       execution:
-        timeout:
-          enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 12000
-#ribbon的超时时间
-ribbon:
-  ReadTimeout: 6000
-  ConnectTimeout: 6000
+            timeoutInMilliseconds: 1000

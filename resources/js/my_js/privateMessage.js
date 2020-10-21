@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    $("#sidebar-right-responsive").addClass("hidden");
     getPrivateMessageList();
 });
 
@@ -95,31 +94,8 @@ $(".privateMessageBox").on("click",".privateMessageUser",function(){
             getOldMessage();
         }
     });
-})
 
-$(".minPrivateMessageBox").on("click",".privateMessageUser",function(){
-    $(".sendMessage").attr("myVaule", $(this).attr("myValue"));
-    $.ajax({
-        url: "/api/user/getUserInfoList",
-        data:JSON.stringify([$(this).attr("myValue")]),
-        type: "post",
-        dataType:'json',
-        contentType: "application/json;charset=utf-8",
-        success: function(data) {
-            if(data.status != 0){
-                return;
-            }
-            $("#messageBox").empty();
-            startIndex = -1;
-            chatTargetUser = data.data[0];
-            $(".chatName").html(chatTargetUser.userName);
-            $(".chatBox").addClass("open-chat");
-            firstOldMessage = 0;
-            getOldMessage();
-        }
-    });
 })
-
 $(".chatBox").on("click",".closeChatBtn",function(){
     $(".chatBox").removeClass("open-chat");
 })
@@ -135,8 +111,11 @@ function getPrivateMessageList(){
         dataType:"json",
         success: function(data){
             if(data.status != 0){
+                alert(JSON.stringify(data));
                 return;
             }
+            console.log(data);
+            webSocket_init();
             var privateMessage = data.data;
             
             var minNav = "<div class=\"fixed-sidebar-right sidebar--small\" id=\"sidebar-right\">"+
@@ -205,9 +184,6 @@ function getPrivateMessageList(){
 
             $(".privateMessageBox").append(bigNav);
             $(".minPrivateMessageBox").append(bigNav);
-            $("#sidebar-right-responsive").removeClass("hidden");
-            
-            webSocket_init();
         }
     });
 }
@@ -240,7 +216,7 @@ function getOldMessage(){
                     "							<span class=\"chat-message-item\" style=\"word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ; background-color: #f0f4f9; float:left; width: 150px;\" class=\"text-center\">"+ messageList.privateMessageList[i].message +"</span>"+
                     "						</div>"+
                     "					</li>"+
-                                        "<li class=\"row\"><div class=\"mx-auto\">"+ MDHM(messageList.privateMessageList[i].date) +"<div></li>";
+                                        "<li class=\"row\"><div class=\"mx-auto\">"+ timestampToTime(messageList.privateMessageList[i].date) +"<div></li>";
 
 
                    }else{
@@ -253,7 +229,7 @@ function getOldMessage(){
                     "						    <img width='45px' height='45px' src=\""+ myHeadImg +"\"  style=\"margin-top: 5px; border-radius:50%;\" alt=\"author\" class=\"img-thumbnail\">"+
                     "						</div>"+
                     "					</li>"+
-                                        "<li class=\"row\"><div class=\"mx-auto\">"+ MDHM(messageList.privateMessageList[i].date) +"<div></li>";
+                                        "<li class=\"row\"><div class=\"mx-auto\">"+ timestampToTime(messageList.privateMessageList[i].date) +"<div></li>";
                  }
             }
             $("#messageBox").prepend(html);
@@ -284,7 +260,7 @@ $(".chatBox").on("click",".sendMessage",function(){
         "						    <img width='45px' height='45px' src=\""+ $(".myHeadImg").attr("src") +"\"  style=\"margin-top: 5px; border-radius:50%;\" alt=\"author\" class=\"img-thumbnail\">"+
         "						</div>"+
         "					</li>"+
-                            "<li class=\"row\"><div class=\"mx-auto\">"+ MDHM(Date.parse(new Date())) +"<div></li>";
+                            "<li class=\"row\"><div class=\"mx-auto\">"+ timestampToTime(Date.parse(new Date())) +"<div></li>";
         $("#messageBox").append(html);
     webSocket.send(JSON.stringify(createMessage($(this).attr("myVaule"), sessionId, $(".message").val())));
     goBottom();
@@ -301,7 +277,7 @@ function webSocket_init(){
                 return;
             }
             sessionId = data.data;
-            webSocket = new WebSocket("ws://49.234.121.88:8213/privateMessage/"+data.data);
+            webSocket = new WebSocket("ws://liaoliaoba.com/privateMessage/"+data.data);
             webSocket.onmessage=function(result){
                 var respJson = JSON.parse(result.data);
                 if(respJson.status != 0){
@@ -317,13 +293,14 @@ function webSocket_init(){
                     "							<span class=\"chat-message-item\" style=\"word-break:normal; width:auto; display:block; white-space:pre-wrap;word-wrap : break-word ;overflow: hidden ; background-color: #f0f4f9; float:left; width: 150px;\" class=\"text-center\">"+ respJson.data.message +"</span>"+
                     "						</div>"+
                     "					</li>"+
-                                        "<li class=\"row\"><div class=\"mx-auto\">"+ MDHM(respJson.data.date) +"<div></li>";
+                                        "<li class=\"row\"><div class=\"mx-auto\">"+ timestampToTime(respJson.data.date) +"<div></li>";
                 $("#messageBox").append(html);
                 goBottom();
             };
 
-            webSocket.onerror = function(){
-                alert("私信列表WebSocket连接失败");
+            webSocket.onerror = function(e){
+                console.log(e);
+                alert("连接失败");
             }
         }
     });
@@ -338,7 +315,7 @@ function createMessage (targetUserId,sessionId,message){
     return obj;
 }
 
-function MDHM(timestamp) {
+function timestampToTime(timestamp) {
     var date = new Date(timestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
     Y = date.getFullYear() + '-';
     M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';

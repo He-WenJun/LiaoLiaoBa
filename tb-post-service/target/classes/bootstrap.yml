@@ -1,0 +1,23 @@
+server:
+  port: 8213
+spring:
+  application:
+    name: post-service
+  cloud:
+    config:
+      discovery:
+        #通过服务访问配置中心，拥有负载均衡功能
+        enabled: true
+        #配置中心服务名
+        service-id: config-server
+      profile: dev
+      username: user
+      password: user
+      fail-fast: true
+      retry:
+        max-attempts: 20
+        multiplier: 1500
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8111/eureka

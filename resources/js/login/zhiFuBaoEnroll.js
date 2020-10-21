@@ -1,6 +1,6 @@
 $(document).ready(function(){
     if(/*[${serverResponse.status}]*/ 0 == 0){
-        window.location.replace("/resources/index.html");
+        window.location.replace("http://liaoliaoba.com/resources/index.html");
     }else{
         $(".content").show();
     }
@@ -19,7 +19,7 @@ $(".submit").click(function(){
             let formData = new FormData();
             formData.append('crowd_file',file2 );
             $.ajax({
-                url:'/api/post/uploadImg',
+                url:'http://liaoliaoba.com/api/post/uploadImg',
                 dataType:'json',
                 type:'POST',
                 async: false,
@@ -40,7 +40,7 @@ $(".submit").click(function(){
 function enrollVerification (uname){   
     var t = setInterval(function(){
        $.ajax({
-          url: "/api/user/enrollVerification",
+          url: "http://liaoliaoba.com/api/user/enrollVerification",
           type: "get",
           data: "userName="+uname,
           dataType:"json",
@@ -49,7 +49,7 @@ function enrollVerification (uname){
                 $(".modal-body p").html(data.msg);
                 $("#myModal").modal('show');
                 setTimeout(function(){
-                   window.location.replace("/resources/index.html");
+                   window.location.replace("http://liaoliaoba.com/resources/index.html");
                 },3000);
              }else if(data.status == 1){
                 $(".modal-body p").html(data.msg);
@@ -88,7 +88,7 @@ function upload(){
 function enroll(imgId){
     //提交注册请求
     $.ajax({
-        url: "/api/user/zhiFuBaoEnrollHold",
+        url: "http://liaoliaoba.com/api/user/zhiFuBaoEnrollHold",
         type: "post",
         data: "a.userId="+$(".userId").val()+"&a.userName="+$(".userName").val()+"&a.password="+$(".password").val()+"&a.email="+$(".mail").val()+"&a_f.headPictureId="+imgId,
         dataType:"json",

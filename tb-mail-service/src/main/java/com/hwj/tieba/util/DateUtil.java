@@ -355,4 +355,11 @@ public class DateUtil {
         return month.format(date);
     }
 
+    public static void main(String[] args) throws ParseException {
+
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date1 = simpleDateFormat2.parse("2020-11-11 11:11:11");
+        System.out.println(simpleDateFormat1.format(date1));
+    }
 }

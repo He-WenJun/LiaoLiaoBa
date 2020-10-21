@@ -32,7 +32,6 @@ $(".managementBaBtn").click(function(){
 
 $(".addSubscribeBa").click(function(){
     var moduleName = $(".baName").val();
-    $(".baName").val("")
     $.ajax({
         url: '/api/post/addSubscribeModule',
         dataType: 'json',
@@ -199,15 +198,15 @@ function moduleRanking(){
                     continue;
                 }else if(sing == 1){
                     if(i == 2){
-                        html += "<div class=\"carousel-item active\">";
+                        html += "<div class=\"item active\">";
                     }else{
-                        html += "<div class=\"carousel-item\">";
+                        html += "<div class=\"item\">";
                     }
                     sing++;
                     i--;
                     continue;
                 }else{
-                    html += "<div class=\"display-inline-block border-radius-shadow\" style=\"width: 115px; margin-left:5px;\">"+
+                    html += "<div class=\"display-inline-block border-radius-shadow\" style=\"width: 120px; margin-left: 5px;\">"+
                     "			<div class=\"display-inline-block\">"+
                     "				<img class=\"img-responsive img-rounded display-inline-block\" width=\"40px\" height=\"40px\" src=\""+ moduleList[i].headPictureSrc +"\">"+
                     "			</div>"+
@@ -234,6 +233,7 @@ function getNewestPost(pageNumber){
         data: {"pageNumber" : pageNumber},
         type: 'get',
         success: function(data){
+            console.log(data);
             if(data.status != 0){
                 return;
             }
