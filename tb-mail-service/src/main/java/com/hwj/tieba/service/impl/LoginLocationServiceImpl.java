@@ -110,7 +110,6 @@ public class LoginLocationServiceImpl implements LoginLocationService {
 
             //若结果为异地，则从redis中取出用户信息，发送提醒邮件
             if(abnormal){
-                log.info("异地登录，已发送提醒邮件");
                 //获取session对象
                 Map<String,String> sessionMap =(Map<String, String>) redisUtil.hget(sessionId);
                 //获取当前登录账号实例,包含用户绑定的邮箱账号
@@ -131,7 +130,13 @@ public class LoginLocationServiceImpl implements LoginLocationService {
                         "</html>";
 
                 //发送邮件
-                MailUtil.sendMail(account.getEmail(),title,content);
+                new Thread(){
+                    @Override
+                    public void run() {
+                        MailUtil.sendMail(account.getEmail(),title,content);
+                    }
+                }.start();
+                log.info("异地登录，已发送提醒邮件");
             }
         }
     }
@@ -142,7 +147,5 @@ public class LoginLocationServiceImpl implements LoginLocationService {
     }
 
 
-    public static void main(String[] args) throws ParseException {
 
-    }
 }

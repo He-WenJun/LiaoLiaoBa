@@ -113,9 +113,6 @@ public class AccountServiceImpl implements AccountService {
             log.error("响应验证码图片异常： "+e.getMessage());
         }
 
-        //verifyCode = "\""+verifyCode+"\"";
-        //在请求头中获取网关写入的sessionId
-        //verifyCode = verifyCode+"";
         final String sessionId = request.getHeader("SessionId");
         System.out.println("验证码sessionId:"+sessionId);
         //获取redis中的session对象
@@ -217,6 +214,7 @@ public class AccountServiceImpl implements AccountService {
         }
         if(StringUtils.isEmpty(accountInfo.getHeadPictureId()) || accountInfo.getHeadPictureId().equals("undefined"))
             accountInfo.setHeadPictureId("0031cab2f3234845bfdd41ba7e93de38");
+
         accountInfo.setUserId(account.getUserId());
         accountInfo.setEnrollDate(account.getEnrollDate());
         accountInfo.setUpdateDate(account.getUpdateDate());
@@ -366,8 +364,12 @@ public class AccountServiceImpl implements AccountService {
         //创建LoginIPDto对象，存入当前用户id,登录的IP地址，登录时间，为验证服务提供数据
         LoginIPDTO loginIPDto = new LoginIPDTO(account.getUserId(),IpAddress,nowDate,sessionId);
         //发送到消息中间件中
-        loginIpAddressProducer.sendLoginIpMessage().send(MessageBuilder.withPayload(loginIPDto).build());
-
+        new Thread(){
+            @Override
+            public void run() {
+                loginIpAddressProducer.sendLoginIpMessage().send(MessageBuilder.withPayload(loginIPDto).build());
+            }
+        }.start();
         return ServerResponse.createBySuccess("登录成功",null);
     }
 

@@ -1,20 +1,29 @@
 server:
   port: 8112
 spring:
+  rabbitmq:
+    host: 120.55.194.0
+    username: springcloud
+    password: 510151
   application:
     name: config-server
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          #配置文件读取路径
-          search-locations: classpath:/shared/{application}
+        git:
+          uri: https://github.com/nuliba/liaoliaoba_config/
+          searchPaths: /{application}/
+          username: nuliba
+          password: hewenjun5101
+          default-label: master
+
 eureka:
+  instance:
+    prefer-ip-address: true
+    ip-address: 120.55.194.0
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8111/eureka
+      defaultZone: http://120.55.194.0:8111/eureka
 security:
   user:
     name: user

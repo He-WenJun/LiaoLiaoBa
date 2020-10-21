@@ -25,7 +25,6 @@ public class LoginIpAddressListener {
     @StreamListener(com.hwj.tieba.stream.consumer.LoginIpAddressConsumer.INPUT_LOGIN_IP_ADDRESS)
     public void receiveLoginIpMessage(LoginIPDTO logInMessage){
         //测试ip 110.179.228.16山西太原 120.243.244.245安徽马鞍山 218.195.219.255新疆乌鲁木齐
-        logInMessage.setLoginIpAddress("120.243.244.245");
 
         log.info("mail-service端input_login_ip_address输入通道 : "+logInMessage.toString());
         //查询登录的IP地址所在位置
