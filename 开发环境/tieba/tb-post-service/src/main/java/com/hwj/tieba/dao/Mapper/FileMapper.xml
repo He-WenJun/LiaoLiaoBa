@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hwj.tieba.dao.FileMapper">
+    <sql id="Base_Column">
+        ID,`Name`,Src,TypeID,Suffix,EnrollDate,UpdateDate
+    </sql>
+    <resultMap id="BaseResultMap" type="com.hwj.tieba.entity.File">
+        <id property="id" column="ID" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="name" column="Name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="src" column="Src" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="typeId" column="TypeID" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+        <result property="suffix" column="Suffix" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        <result property="enrollDate" column="EnrollDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        <result property="updateDate" column="UpdateDate" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+    </resultMap>
+
+    <select id="queryFileById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM file
+        WHERE
+        ID = #{fileId}
+    </select>
+
+    <select id="queryFileListById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column"></include>
+        FROM file
+        WHERE
+        ID IN
+        <foreach collection="idList" item="idList" open="(" close=")" separator=",">
+            #{idList}
+        </foreach>
+    </select>
+
+    <select id="queryPostCommentFile" resultType="java.util.Map">
+        SELECT ObjectId AS objectId,FileId AS fileId
+        FROM post_file_relation
+        WHERE ObjectId IN 
+        <foreach collection="objectIdList" item="objectIdList" open="(" close=")" separator=",">
+            #{objectIdList}
+        </foreach>
+    </select>
+
+    <insert id="insertFileList">
+        INSERT INTO
+        file
+        (<include refid="Base_Column"/>)
+        VALUES
+        <foreach collection="fileList" item="fileList" separator=",">
+            (#{fileList.id},#{fileList.name},#{fileList.src},#{fileList.typeId},#{fileList.suffix},#{fileList.enrollDate},#{fileList.updateDate})
+        </foreach>
+    </insert>
+
+    <insert id="insertFile">
+        INSERT INTO
+        file
+        (<include refid="Base_Column"/>)
+        VALUES
+        (#{file.id},#{file.name},#{file.src},#{file.typeId},#{file.suffix},#{file.enrollDate},#{file.updateDate})
+    </insert>
+
+    <insert id="insertPostCommentFile" parameterType="com.hwj.tieba.entity.PostFileRelation">
+        INSERT INTO post_file_relation
+        (Id,ObjectId,FileId,EnrollDate,UpdateDate)
+        VALUES
+        <foreach collection="uploads" item="uploads" separator=",">
+            (#{uploads.id},#{uploads.objectId},#{uploads.fileId},#{uploads.enrollDate},#{uploads.updateDate})
+        </foreach>
+    </insert>
+
+</mapper>

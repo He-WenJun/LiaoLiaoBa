@@ -1,0 +1,22 @@
+
+
+.subscribeBaBox{
+    display: inline-block;
+    border: 1px solid Silver;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius:5px;
+    background-color: white;
+    margin: 1px;
+    width: 280px;
+}
+.infoUl{
+    padding: 0px;
+    float: right;
+}
+.infoUl li{
+    list-style: none;
+    padding: 0px;
+}
+

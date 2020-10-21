@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>主页</title>
+
+	<!-- Required meta tags always come first -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" href="Bootstrap/dist/css/bootstrap.css">
+	<!-- Main Styles CSS -->
+	<link rel="stylesheet" type="text/css" href="css/main.min.css">
+	<!--My CSS-->
+	<link rel="stylesheet" type="text/css" href="css/my_css/utils.css">
+	<link rel="stylesheet" type="text/css" href="css/my_css/index.css">
+	
+</head>
+<body class="page-has-left-panels page-has-right-panels">
+
+
+<!-- Preloader -->
+
+<div id="hellopreloader">
+	<div class="preloader">
+		<svg width="45" height="45" stroke="#fff">
+			<g fill="none" fill-rule="evenodd" stroke-width="2" transform="translate(1 1)">
+				<circle cx="22" cy="22" r="6" stroke="none">
+					<animate attributeName="r" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
+					<animate attributeName="stroke-opacity" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
+					<animate attributeName="stroke-width" begin="1.5s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
+				</circle>
+				<circle cx="22" cy="22" r="6" stroke="none">
+					<animate attributeName="r" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="6;22"/>
+					<animate attributeName="stroke-opacity" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="1;0"/>
+					<animate attributeName="stroke-width" begin="3s" calcMode="linear" dur="3s" repeatCount="indefinite" values="2;0"/>
+				</circle>
+				<circle cx="22" cy="22" r="8">
+					<animate attributeName="r" begin="0s" calcMode="linear" dur="1.5s" repeatCount="indefinite" values="6;1;2;3;4;5;6"/>
+				</circle>
+			</g>
+		</svg>
+
+		<div class="text">Loading ...</div>
+	</div>
+</div>
+<!-- Fixed Sidebar Left -->
+<div class="fixed-sidebar nav-left">
+	
+</div>
+
+<!-- ... end Fixed Sidebar Left -->
+
+
+<!-- Fixed Sidebar Left -->
+
+<div class="fixed-sidebar fixed-sidebar-responsive">
+
+	<div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
+		<a class="logo js-sidebar-open">
+			<img src="/resources/img/logo.png" alt="Olympus">
+		</a>
+
+	</div>
+
+	<div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
+		<a class="logo">
+			<div class="img-wrap">
+				<img src="/resources/img/logo.png" alt="Olympus">
+			</div>
+			<div class="title-block">
+			</div>
+		</a>
+
+		<div class="mCustomScrollbar" data-mcs-theme="dark">
+
+			<div class="control-block">
+				<div class="author-page author vcard inline-items">
+					<div class="author-thumb">
+						<img alt="author" src="" class="avatar myHeadImg" width="50px" height="50px">
+						 
+					</div>
+					<a class="author-name fn">
+						<div class="author-title">
+						</div>
+						<span class="author-subtitle"></span>
+					</a>
+				</div>
+			</div>
+
+			<div class="ui-block-title ui-block-title-small">
+				<h6 class="title"></h6>
+			</div>
+
+			<ul class="left-menu phoneMenu">
+				
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+<!-- ... end Fixed Sidebar Left -->
+
+
+<!-- Fixed Sidebar Right -->
+<!--右边的小头像-->
+<div class="fixed-sidebar right privateMessageBox">
+	
+
+	
+</div>
+
+<!-- ... end Fixed Sidebar Right -->
+
+
+<!-- Fixed Sidebar Right-Responsive -->
+
+<div class="fixed-sidebar right fixed-sidebar-responsive" id="sidebar-right-responsive">
+
+	<div class="fixed-sidebar-right sidebar--small">
+		<a class="js-sidebar-open">
+			<svg class="olymp-menu-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-menu-icon"></use></svg>
+			<svg class="olymp-close-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+		</a>
+	</div>
+
+	<div class="fixed-sidebar-right sidebar--large minPrivateMessageBox">
+	</div>
+
+</div>
+
+<!-- ... end Fixed Sidebar Right-Responsive -->
+
+
+<!-- Header-BP -->
+
+<header class="header" id="site-header">
+
+	<div class="page-title">
+	</div>
+
+	<div class="header-content-wrapper">
+		<form class="search-bar w-search notification-list friend-requests">
+			<div class="form-group with-button">
+				<input type="text" class="form-control searchValue" placeholder="搜索帖子...">
+				<span>
+					<button class="btn btn-md-2 btn-primary searchBtn" type="button" style="padding:0px;">
+						搜索
+					</button>
+				</span>
+			</div>
+		</form>
+
+		<div class="control-block my_info hidden">
+			<div class="control-icon more has-items">
+				<svg class="olymp-chat---messages-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+				<div class="label-avatar bg-purple messageCount hidden" style="background-color: red;"></div>
+
+				<div class="more-dropdown more-with-triangle triangle-top-center">
+					<div class="ui-block-title ui-block-title-small">
+						<h6 class="title">消息</h6>
+					</div>
+					
+					<div class="mCustomScrollbar" data-mcs-theme="dark" style="margin-bottom: 0px;">
+						<ul class="notification-list chat-message messageList">
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="author-page author vcard inline-items more">
+				<div class="author-thumb">
+					<img alt="我的" class="avatar myHeadImg" width="50px" height="50">
+					 
+				</div>
+				<a class="author-name fn">
+					<div class="author-title">
+						Name
+					</div>
+				</a>
+			</div>
+
+		</div>
+	</div>
+
+</header>
+
+<!-- ... end Header-BP -->
+
+
+<!-- Responsive Header-BP -->
+
+<header class="header header-responsive" id="site-header-responsive">
+
+	<div class="header-content-wrapper">
+		<ul class="nav nav-tabs mobile-app-tabs" role="tablist">
+				<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#chat" role="tab">
+					<div class="control-icon has-items">
+						<svg class="olymp-chat---messages-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-chat---messages-icon"></use></svg>
+						<div class="label-avatar bg-purple messageCount hidden" style="background-color: red;"></div>
+					</div>
+				</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#search" role="tab">
+					<svg class="olymp-magnifying-glass-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+					<svg class="olymp-close-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-close-icon"></use></svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="tab-content tab-content-responsive">
+		<div class="tab-pane" id="chat" role="tabpanel">
+
+			<div class="mCustomScrollbar ps ps--theme_default" data-mcs-theme="dark" data-ps-id="ff1c838a-fa3d-f7ec-08fa-18bc737e7703">
+				<ul class="notification-list chat-message messageList">
+					
+				</ul>
+			<div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+
+		</div>
+
+		<div class="tab-pane " id="search" role="tabpanel">
+
+				<form class="search-bar w-search notification-list friend-requests">
+					<div class="form-group with-button is-empty">
+						<input type="text" class="form-control searchValue2" placeholder="搜索帖子...">
+				<span class="input-group-btn">
+					<button class="btn btn-md-2 btn-primary searchBtn" type="button" style="padding:0px;">
+						搜索
+					</button>
+				</span>
+					<span class="material-input"></span></div>
+				</form>
+		</div>
+
+	</div>
+
+
+
+</header>
+
+<!-- ... end Responsive Header-BP -->
+<div class="header-spacer"></div>
+
+
+<div class="container">
+	<div class="row">
+
+		<!-- Main Content 中间 -->
+
+		<main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
+			<div class="ui-block">
+				<div class="ui-block-title">
+					<h6 class="title">热门模块</h6>
+				</div>
+				<div class="container">
+					<div class="row top2">
+						<div class="col col-lg-6 col-xl-6 col-md-12 col-sm-12 col-12">
+							<div class="row">
+								<div class="col col-lg-5 col-xl-5 col-md-4 col-sm-4 col-4">
+									<img class="img-responsive img-thumbnail display-inline-block firstModuleHeadPictureSrc" src="">
+								</div>
+								<div class="col col-lg-7 col-xl-7 col-md-8 col-sm-8 col-8">
+									<div>
+										<a href="" class="firstModuleName"></a>
+									</div>
+									<div style="margin-top: 5%;">
+										<span class="firstModuleIntroduce"></span>
+									</div>
+									<div style="margin-top: 5%;">
+										<span class="firstModuleCountSubscribe"></span><br/>
+										<span class="firstModuleCountPost"></span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="col col-lg-6 col-xl-6 col-md-12 col-sm-12 col-12">
+							<div class="row">
+								<div class="col col-lg-5 col-xl-5 col-md-4 col-sm-4 col-4">
+									<img class="img-responsive img-thumbnail display-inline-block secondModuleHeadPictureSrc">
+								</div>
+								<div class="col col-lg-7 col-xl-7 col-md-8 col-sm-8 col-8">
+									<div>
+										<a href="" class="secondModuleName"></a>
+									</div>
+									<div style="margin-top: 5%;">
+										<span class="secondModuleIntroduce"></span>
+									</div>
+									<div style="margin-top: 5%;">
+										<span class="secondModuleCountSubscribe"></span><br/>
+										<span class="secondModuleCountPost"></span>
+									</div>
+								</div>
+							</div> 
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col col-lg-12 col-xl-12 col-md-12 col-sm-12 col-12">
+						<!--<div id="myCarousel" class="carousel bootstrap-iso slide" data-rede="carousel">
+							<div class="row">
+								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto">
+									<button class="left btn btn-sm btn-primary" style="float: left;" href="#myCarousel" role="button" data-slide="prev">
+										<
+									</button>
+								</div>
+								<div class="col col-lg-10 col-xl-10 col-md-10 col-sm-10 col-10">
+
+									<div class="carousel-inner rankingList">
+									</div>
+								
+								</div>
+								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto">
+									<button class="right btn btn-sm btn-primary" href="#myCarousel" role="button" data-slide="next" style="float: right;">
+										>
+									</button>
+								</div>
+							</div>
+							
+						</div> -->
+
+
+						<div id="demo" class="carousel slide" data-ride="carousel">
+ 
+							<div class="row" style="padding: 0px; margin: 0px;">
+								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto" style="padding: 0px; margin: 0px;">
+									<button class="carousel-control-prev btn btn-sm btn-primary" href="#demo" style="float:right;" role="button" data-slide="prev">
+										<
+									</button>
+								</div>
+								<div class="col col-lg-10 col-xl-10 col-md-10 col-sm-10 col-10" style="padding: 0px; margin: 0px;">
+									<!-- 轮播（Carousel）项目 -->
+									<div class="carousel-inner rankingList text-center" style="padding: 0px; margin: 0px;">
+									</div>
+								</div>
+								<div class="col col-lg-1 col-xl-1 col-md-1 col-sm-1 col-1 my-auto" style="padding: 0px; margin: 0px;">
+									<!-- 轮播（Carousel）导航 -->
+									<button class="carousel-control-next btn btn-sm btn-primary" href="#demo" role="button" style="float:left;" data-slide="next" >
+										>
+									</button>
+								</div>
+							</div>
+						   
+						  </div>
+
+
+
+					</div>
+				</div>
+			</div>
+
+			<div class="ui-block">
+				<div class="ui-block-title">
+					<h6 class="title">最新帖子</h6>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="row sidebar">
+								<ul class="list-group col-lg-12 col-md-12 postBox" style="padding:0px;">
+										
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button style="padding: 6px;" id="load-more-button" href="#" class="btn btn-control btn-more"><svg class="olymp-three-dots-icon"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-three-dots-icon"></use></svg></button>
+
+		</main>
+
+		<!-- ... end Main Content -->
+
+
+		<!-- 左边的模块 -->
+		<aside class="col col-xl-3 order-xl-1 col-lg-6 order-lg-2 col-md-6 col-sm-6 col-12">
+			<div class="ui-block">
+				
+				<!-- W-Weather -->
+				
+				<div class="widget w-wethear">
+					<div class="wethear-now inline-items">
+						<div class="temperature-sensor temperature">64°</div>
+						<div class="max-min-temperature">
+							<span></span>
+							<span></span>
+						</div>
+				
+						<h1 class="olymp-weather-partly-sunny-icon weather color-white" style="color: white;"></h1>
+					</div>
+				
+					<div class="wethear-now-description">
+						<div class="climate"><span>空气湿度：</span><span class="humidity"></span></div>
+						<span>风向：<span class="winddirection"></span></span>
+						<span>风力级别： <span class="windpower"></span></span>
+					</div>
+				
+					<ul class="weekly-forecast">
+				
+						<li>
+							<div class="day">星期:</div>
+							<div class="day">日间天气:</div>
+							<div class="day">夜间天气:</div>
+							<div class="day">最高气温:</div>
+							<div class="day">最低气温:</div>
+						</li>
+						
+					
+				
+					</ul>
+				
+					<div class="date-and-place">
+						<h5 class="date"></h5>
+						<div class="place"></div>
+					</div>
+				
+				</div>
+				
+				<!-- W-Weather -->			</div>
+
+			<!--模块分类-->
+			<div class="ui-block">
+				<div class="ui-block-title">
+					<h6 class="title">模块分类</h6>
+					<a href="/resources/mkdirModule.html" class="btn-primary btn-sm my-auto mx-auto" style="float: right;">创建模块</a>
+				</div>
+				<div class="row align-items-center sidebar padding-10 baType">
+					<div class="container">
+						<div id="accordion">
+						</div>
+						<div class="row">
+						  <div class="col-lg-12 col-md-12">
+							  <button class="btn btn-secondary btn-block btn-light gengduo my-auto" value="1">
+								查看更多
+							</button>
+						  </div>
+					   </div>
+					</div>
+				</div>
+			</div>
+
+		</aside>
+
+		<!-- ... end Left Sidebar -->
+
+
+		<!-- 右边的模块 -->
+
+		<aside class="col col-xl-3 order-xl-3 col-lg-6 order-lg-3 col-md-6 col-sm-6 col-12">
+
+			<div class="ui-block hidden">
+					<div class="row align-items-center sidebar padding-10 subscribeUl">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="my-auto mx-auto"><strong>喜欢的模块</strong></div>
+								<button class="btn btn-primary btn-sm my-auto mx-auto signIn">
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+											一键签到
+										</font>
+									</font>
+								</button>
+							</div>
+							<div class="row">
+								<div class="container">
+									<ul class="list-group subscribe">
+									</ul>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<button class="btn btn-secondary btn-block btn-light my-auto managementBaBtn">管理喜欢的模块</button>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="ui-block"> 
+				<!-- 模态声明，show 表示显示 -->
+				<div class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="managementBa">
+					<!-- 窗口声明 -->
+					<div class="modal-dialog">
+						<!-- 内容声明 -->
+						<div class="modal-content">
+							<!-- 头部 -->
+							<div class="modal-header">
+								<h6 class="modal-title">管理喜欢的模块</h6>
+								<button type="button" class="close" data-dismiss="modal">
+									<span>&times;</span>
+								</button>
+							</div>
+							<!-- 主体 -->
+							<div class="modal-body managementContent">
+								<div class="management">
+									
+								</div>
+								<hr/>
+								<div class="form-group label-floating is-empty">
+									<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请输入准确的模块名称：</font></font></label>
+									<input class="form-control baName" type="text" placeholder="">
+									<span class="material-input"></span>
+								</div>
+								<button class="btn btn-primary btn-block btn-light my-auto addSubscribeBa" type="button">添加喜欢</button>
+
+								<p class="text-center managementMsg"></p>
+							</div>
+							<!-- 注脚 
+							<div class="modal-footer">
+									<button type="button" class="btn btn-danger" id="okbtn">好</button>
+							</div>-->
+						</div>
+					</div>
+				</div>
+				<div class="reminder text-center">
+					<span></span>
+				</div>
+			</div>
+
+			<div class="ui-block login">
+				
+				<!-- W-Action -->
+				
+				<div class="widget w-action" style="background-image: none; background-color: orangered;">
+					<img src="/resources/img/logo.png" alt="Olympus">
+					<div class="content">
+						<a href="login/index.html" class="btn btn-bg-secondary btn-md">登录|注册</a>
+					</div>
+				</div>
+				
+				<!-- ... end W-Action -->
+			</div>
+
+		</aside>
+
+		<!-- ... end Right Sidebar -->
+
+	</div>
+</div>
+
+
+<a class="back-to-top" href="#">
+	<img src="svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
+</a>
+
+
+
+
+<!-- Window-popup-CHAT for responsive min-width: 768px -->
+
+<div class="ui-block popup-chat popup-chat-responsive chatBox" tabindex="-1" role="dialog" aria-labelledby="popup-chat-responsive" aria-hidden="true">
+	<div class="modal-content">
+		<div class="modal-header">
+			<h6 class="title chatName" >Name</h6>	
+			<div class="more closeChatBtn">
+				<svg class="olymp-little-delete js-chat-open"><use xlink:href="/resources/svg-icons/sprites/icons.svg#olymp-little-delete"></use></svg>
+			</div>
+		</div>
+		<div class="modal-body">
+			<div>
+				<div class="container pre-scrollable" id = "pre-scrollable">
+					<ul id="messageBox" style="height:140px;">
+					
+					</ul>
+				</div>
+			</div>
+				<div class="form-group label-floating is-empty">
+					<div class="control-label" style="padding-left: 80%;"><button class="btn btn-md-2 btn-primary sendMessage" style="width: 40px; height: 20px; padding: 0px;">发送</button></div>
+					<textarea class="form-control message" placeholder="请输入发送的消息..."></textarea>
+				</div>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="sessionId" />
+</div>
+
+<!-- ... end Window-popup-CHAT for responsive min-width: 768px -->
+
+<!-- JS Scripts -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="js/my_js/item.js"></script>
+<script src="js/my_js/index_init.js"></script>
+
+
+
+</body>
+</html>

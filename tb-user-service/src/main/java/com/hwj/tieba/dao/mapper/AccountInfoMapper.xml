@@ -47,8 +47,7 @@
     </select>
 
     <update id="updateUserExp" parameterType="com.hwj.tieba.entity.AccountInfo">
-        UPDATE
-        account_info
+        UPDATE account_info
         SET EXP = #{exp} , UpdateDate = #{updateDate}
         WHEN UserID = #{userID}
     </update>
@@ -58,5 +57,14 @@
         (SELECT EXP FROM account_info WHERE UserID = #{userId}) info_b
         SET info_a.EXP = info_b.EXP + #{increaseExp}
         WHERE info_a.UserID = #{userId};
+    </update>
+
+    <update id="updateAccountInfoByUserId" parameterType="com.hwj.tieba.entity.AccountInfo">
+        UPDATE account_info
+        SET Introduce = #{introduce}, HeadPictureID = #{headPictureId}
+        <if test="backgroundPictureId != null">
+            , BackgroundPictureId = #{backgroundPictureId}
+        </if>
+        WHERE UserID = #{userId}
     </update>
 </mapper>

@@ -93,7 +93,7 @@ public class AccountServiceImpl implements AccountService {
         }
 
         //删除登录验证码
-        redisUtil.hdel(sessionId,"LoginVerifyCode");
+        redisUtil.hDel(sessionId,"LoginVerifyCode");
 
         //验证账号状态
         return accountVerify(sessionMap,sessionId,account,request,response);
@@ -137,7 +137,7 @@ public class AccountServiceImpl implements AccountService {
 
         List<Account> resultAccountList = accountMapper.queryAccount(verificationAccount);
 
-        if(!StringUtils.isEmpty(resultAccountList)){
+        if(resultAccountList.size() > 0){
             for (Account resultAccount : resultAccountList ){
                 if(resultAccount.getUserName().equals(account.getUserName())){
                     throw new TieBaException("用户名以被使用");
@@ -150,6 +150,7 @@ public class AccountServiceImpl implements AccountService {
         //到这里说明注册信息正确，将注册信息存入redis
         //使用md5将密码加密
         account.setPassword(MD5Util.MD5EncodeUtf8(account.getPassword(),Constants.MD5_SALT));
+        account.setUserId(UUIDUtil.getStringUUID());
         //生成注册token
         String token = UUIDUtil.getStringUUID();
         //拼接key
@@ -183,7 +184,7 @@ public class AccountServiceImpl implements AccountService {
         //取出redis中的账号注册信息
         Account account = redisUtil.get(key_Account,Account.class);
         //删除redis中暂存的注册信息
-        redisUtil.del(key_Account);
+        redisUtil.sDel(key_Account);
         //存入用户Id,注册时间,角色id
         if(account.getUserId() == null)
             account.setUserId(UUIDUtil.getStringUUID());
@@ -307,6 +308,42 @@ public class AccountServiceImpl implements AccountService {
         return  serverResponse;
     }
 
+    @Override
+    public ServerResponse<List<Account>> getAccountList(Account account) {
+        List<Account> resultAccountList = accountMapper.queryAccount(account);
+        if(resultAccountList.size() == 0){
+            return ServerResponse.createByErrorMessage("没有这个用户");
+        }
+        return ServerResponse.createBySuccess(resultAccountList);
+    }
+
+    @Override
+    public ServerResponse<String> updateAccountRoleId(Account account) {
+        accountMapper.updateUserByUserId(account);
+        return ServerResponse.createBySuccessMessage("已更新角色Id");
+    }
+
+    @Override
+    public ServerResponse<String> logout(HttpServletRequest request, HttpServletResponse response) {
+        redisUtil.hDel(request.getHeader("SessionId"),"Account");
+
+        //让cookie中的登录token以及key过期
+        Cookie loginNameKeyCookie = new Cookie("LoginNameKey", null);
+        Cookie loginTokenCookie = new Cookie("LoginToken", null);
+
+        loginNameKeyCookie.setMaxAge(0);
+        loginNameKeyCookie.setValue(null);
+        loginNameKeyCookie.setPath("/api/");
+
+        loginTokenCookie.setMaxAge(0);
+        loginTokenCookie.setValue(null);
+        loginTokenCookie.setPath("/api/");
+
+        response.addCookie(loginNameKeyCookie);
+        response.addCookie(loginTokenCookie);
+        return ServerResponse.createBySuccessMessage("账号已退出登录");
+    }
+
     /**
      * 验证账号状态
      * @param sessionMap redis中的session对象
@@ -339,8 +376,8 @@ public class AccountServiceImpl implements AccountService {
 
         //生成登录token，保证账号登录的唯一性，存入redis
         String loginToken = UUIDUtil.getStringUUID();
-        String loginNameKey = Constants.TOKEN_PREFIX+"LOGINTNAME:"+account.getUserId();
-        redisUtil.set(loginNameKey,Constants.KEY_EXPIRES,loginToken);
+        String loginNameKey = Constants.TOKEN_PREFIX+"LOGIN_NAME:"+account.getUserId();
+        redisUtil.setStr(loginNameKey,Constants.KEY_EXPIRES,loginToken);
 
         //将key和token存入cookie，为了让网关的过滤器对登录的唯一性进行验证
         Cookie loginNameKeyCookie = new Cookie("LoginNameKey",loginNameKey);

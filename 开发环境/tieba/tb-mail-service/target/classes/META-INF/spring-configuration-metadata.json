@@ -1,0 +1,25 @@
+{
+  "groups": [{
+    "name": "mail",
+    "type": "com.hwj.tieba.util.MailUtil",
+    "sourceType": "com.hwj.tieba.util.MailUtil"
+  }],
+  "properties": [
+    {
+      "name": "mail.account",
+      "type": "java.lang.String",
+      "sourceType": "com.hwj.tieba.util.MailUtil"
+    },
+    {
+      "name": "mail.authorization-code",
+      "type": "java.lang.String",
+      "sourceType": "com.hwj.tieba.util.MailUtil"
+    },
+    {
+      "name": "mail.mail-host",
+      "type": "java.lang.String",
+      "sourceType": "com.hwj.tieba.util.MailUtil"
+    }
+  ],
+  "hints": []
+}

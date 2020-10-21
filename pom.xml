@@ -91,7 +91,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <!-- 使用docker部署项目 -->
         <!-- 引用我们的项目名字 -->
@@ -186,5 +185,4 @@
             </resource>
         </resources>
     </build>
-
 </project>
